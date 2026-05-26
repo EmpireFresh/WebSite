@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Empire Fresh — Fruits &amp; Légumes Frais · Casablanca</title>
-<meta name="description" content="Empire Fresh — Distribution fruits et légumes frais Casablanca. CHR, marchands et particuliers. Livraison standard 24h et express 2h."/>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%231B4332'/><text y='.9em' font-size='60' x='50%' dominant-baseline='middle' text-anchor='middle'>🍃</text></svg>"/>
+<title>Vita Fresh — Fruits &amp; Légumes Frais · Casablanca · VITACORE GROUP</title>
+<meta name="description" content="Vita Fresh — Distribution fruits et légumes frais Casablanca. CHR, marchands et particuliers. Livraison standard 24h et express 2h. Membre du groupe VITACORE."/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%231E5631'/><path d='M28 42 L50 78 L72 42' stroke='white' stroke-width='12' fill='none' stroke-linejoin='miter'/><rect x='47' y='18' width='6' height='14' fill='%232D7A45'/><path d='M53 22 C62 10,80 8,90 14 C84 30,66 34,53 22Z' fill='%232D7A45'/></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-:root{--g1:#1B4332;--g2:#2D6A4F;--gp:#D8F3DC;--gd:#080F09;--o1:#B8960C;--o2:#D4A843;--op:#FFF8E1;--gy:#5A6B5C;--gl:#E2E8E3;--wh:#fff;--cr:#FAFAF5;--green:#16a34a;--green-dark:#15803d;--green-light:#dcfce7;--gold:#b8860b;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-500:#6b7280;--gray-700:#374151;--gray-900:#111827;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.08);--shadow-lg:0 8px 40px rgba(0,0,0,.14)}
+:root{--g1:#1E5631;--g2:#2D7A45;--gp:#D8F3DC;--gd:#060C07;--o1:#B8960C;--o2:#D4A843;--op:#FFF8E1;--gy:#5A6B5C;--gl:#E2E8E3;--wh:#fff;--cr:#FAFAF5;--green:#16a34a;--green-dark:#15803d;--green-light:#dcfce7;--gold:#b8860b;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-500:#6b7280;--gray-700:#374151;--gray-900:#111827;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.08);--shadow-lg:0 8px 40px rgba(0,0,0,.14)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter','DM Sans','Noto Sans Arabic',sans-serif;background:var(--cr);color:var(--gray-900);overflow-x:hidden;line-height:1.6}
@@ -26,13 +26,13 @@ html[dir="rtl"] .pro-perk{flex-direction:row-reverse;text-align:right}
 html[dir="rtl"] .zone-card-badges{justify-content:flex-end}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 /* NAVBAR */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(8,15,9,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);height:72px;display:flex;align-items:center}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,12,7,.97);backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(78,222,128,.10);height:76px;display:flex;align-items:center;transition:box-shadow .3s}.navbar.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.45)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1200px;margin:0 auto;padding:0 20px;gap:12px}
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
 .nav-logo{height:44px;width:auto;object-fit:contain}
 .nav-logo-fallback{height:44px;width:44px;border-radius:10px;background:linear-gradient(135deg,var(--g1),var(--g2));display:none;align-items:center;justify-content:center;font-size:20px}
 .nav-brand-text{line-height:1.1}
-.nav-brand-name{font-size:17px;font-weight:900;color:#4ade80;display:block;letter-spacing:-.3px}
+.nav-brand-name{font-size:17px;font-weight:900;color:#4ade80;display:block;letter-spacing:-.3px;background:linear-gradient(90deg,#4ade80,#86efac);-webkit-background-clip:text;background-clip:text;color:transparent}
 .nav-brand-sub{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.8px;display:block}
 .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
 .nav-links a{padding:7px 11px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(255,255,255,.65);text-decoration:none;transition:all .2s;white-space:nowrap}
@@ -56,7 +56,7 @@ html[dir="rtl"] .zone-card-badges{justify-content:flex-end}
 .mobile-menu a{padding:10px 14px;border-radius:8px;font-size:15px;color:rgba(255,255,255,.8);text-decoration:none;display:block}
 .mobile-menu a:hover{background:rgba(255,255,255,.08)}
 /* ERP BAR */
-.erp-bar{background:#0A1208;border-bottom:1px solid rgba(168,216,120,.12);padding:8px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:72px}
+.erp-bar{background:#081008;border-bottom:1px solid rgba(168,216,120,.12);padding:8px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:72px}
 .erp-status{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.55)}
 .erp-dot{width:8px;height:8px;border-radius:50%;background:#6FCF97;animation:pulse-dot 2s infinite;box-shadow:0 0 8px rgba(111,207,151,.7);flex-shrink:0}
 .erp-dot.offline{background:#E24B4A;animation:none;box-shadow:0 0 8px rgba(226,75,74,.7)}
@@ -66,7 +66,7 @@ html[dir="rtl"] .zone-card-badges{justify-content:flex-end}
 .erp-refresh{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);padding:4px 10px;border-radius:5px;font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
 .erp-refresh:hover{border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.8)}
 /* HERO */
-.hero{background:linear-gradient(135deg,#030805,var(--gd),#0F1E10,var(--g1),#0A1A0C);background-size:300% 300%;animation:gradientShift 12s ease infinite;min-height:92vh;display:flex;align-items:center;padding:60px 20px;position:relative;overflow:hidden}
+.hero{background:linear-gradient(135deg,#030805,var(--gd),#0D1A0D,var(--g1),#0A1A0C);background-size:300% 300%;animation:gradientShift 12s ease infinite;min-height:92vh;display:flex;align-items:center;padding:60px 20px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;right:-80px;top:-80px;width:580px;height:580px;border-radius:50%;background:rgba(184,150,12,.06)}
 .hero::after{content:"";position:absolute;left:40%;bottom:-90px;width:480px;height:480px;border-radius:50%;background:rgba(27,67,50,.35)}
 .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;position:relative;z-index:1}
@@ -91,7 +91,7 @@ html[dir="rtl"] .zone-card-badges{justify-content:flex-end}
 .hcard:nth-child(3){animation-delay:1.1s}
 .hcard:nth-child(4){animation-delay:1.7s}
 .hcard:hover{border-color:rgba(184,150,12,.5);transform:translateY(-3px);box-shadow:0 8px 32px rgba(184,150,12,.25)}
-.hcard-img{width:100%;height:82px;object-fit:cover;display:block;background:#132015}
+.hcard-img{width:100%;height:82px;object-fit:cover;display:block;background:#102010}
 .hcard-b{padding:9px 11px}
 .hcard-n{font-size:12px;color:rgba(255,255,255,.85);font-weight:500}
 .hcard-p{font-size:13px;color:var(--o2);font-weight:700;margin-top:2px}
@@ -161,7 +161,7 @@ html[dir="rtl"] .section-sub{margin:0}
 .pc-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .5s cubic-bezier(.22,1,.36,1)}
 .pc:hover .pc-img img{transform:scale(1.08)}
 .pc-tag{position:absolute;top:9px;left:9px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:7px;backdrop-filter:blur(4px);z-index:1}
-.tf{background:rgba(216,243,220,.92);color:#1B4332}.te{background:rgba(255,243,225,.92);color:#7A4F00}.tl{background:rgba(220,235,255,.92);color:#1A3A7A}.tc{background:rgba(240,225,255,.92);color:#4A1A7A}.tp{background:rgba(255,220,220,.92);color:#7A1A1A}
+.tf{background:rgba(216,243,220,.92);color:#1E5631}.te{background:rgba(255,243,225,.92);color:#7A4F00}.tl{background:rgba(220,235,255,.92);color:#1A3A7A}.tc{background:rgba(240,225,255,.92);color:#4A1A7A}.tp{background:rgba(255,220,220,.92);color:#7A1A1A}
 .out-badge{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:2;font-size:13px;font-weight:700;color:#fff}
 .pc-body{padding:14px}
 .pc-n{font-size:14px;font-weight:600;margin-bottom:2px}
@@ -439,7 +439,7 @@ html[dir="rtl"] .modal-close{right:auto;left:14px}
 .erp-conn-dot{width:10px;height:10px;border-radius:50%;background:#6FCF97;flex-shrink:0}
 .erp-conn-dot.err{background:#E24B4A}.erp-conn-dot.warn{background:var(--o2)}
 .erp-conn-sub{font-size:11px;color:var(--gy);margin-top:4px}
-.code-block{background:#0A1208;border-radius:10px;padding:13px;font-family:monospace;font-size:11px;color:#A8D878;line-height:1.9;overflow-x:auto;white-space:pre;margin-top:5px}
+.code-block{background:#081008;border-radius:10px;padding:13px;font-family:monospace;font-size:11px;color:#A8D878;line-height:1.9;overflow-x:auto;white-space:pre;margin-top:5px}
 .test-btn{width:100%;background:rgba(27,67,50,.08);border:1.5px solid var(--g1);color:var(--g1);padding:10px;border-radius:9px;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;margin-top:7px}
 .test-btn:hover{background:var(--gp)}
 .price-box{background:var(--gp);border-radius:10px;padding:12px;margin-top:9px;font-size:12px;color:var(--g1);line-height:1.9}
@@ -478,7 +478,7 @@ html[dir="rtl"] .modal-close{right:auto;left:14px}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 /* ── HARVEST ANIMATION SECTION ── */
-.harvest-sec{padding:0;overflow:hidden;background:linear-gradient(135deg,#0a1a0c,#1B4332,#0d2b14);position:relative}
+.harvest-sec{padding:0;overflow:hidden;background:linear-gradient(135deg,#0a1a0c,#1E5631,#0d2b14);position:relative}
 .harvest-track{display:flex;align-items:center;gap:0;width:100%;overflow:hidden;height:120px;position:relative}
 .harvest-scene{display:flex;align-items:flex-end;gap:0;white-space:nowrap;animation:harvestMove 18s linear infinite;will-change:transform}
 @keyframes harvestMove{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -603,9 +603,123 @@ html[dir="rtl"] .modal-close{right:auto;left:14px}
 .chat-input-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid rgba(0,0,0,.06);background:#f0f0f0}
 .chat-input{flex:1;border:1px solid #ddd;border-radius:24px;padding:9px 14px;font-size:13px;outline:none;font-family:'Inter',sans-serif;background:#fff}
 .chat-send-btn{background:#25d366;color:#fff;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ═══════ VITA FRESH — DYNAMIC PRO POLISH ═══════ */
+
+/* Scroll reveal */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+.reveal.visible { opacity:1; transform:none; }
+
+/* Hero gradient animation enhanced */
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero { background-size:300% 300%; animation:gradientShift 14s ease infinite; }
+
+/* Floating animation for hero cards */
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Product cards hover lift */
+.pc:hover { transform:translateY(-8px) scale(1.015); box-shadow:0 24px 56px rgba(27,67,50,.18); }
+
+/* Stats numbers — pulse on load */
+@keyframes statPop{0%{transform:scale(.8);opacity:0}70%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+.stat-num { animation:statPop .6s cubic-bezier(.22,1,.36,1) both; }
+.stat-item:nth-child(1) .stat-num{animation-delay:.1s}
+.stat-item:nth-child(2) .stat-num{animation-delay:.2s}
+.stat-item:nth-child(3) .stat-num{animation-delay:.3s}
+.stat-item:nth-child(4) .stat-num{animation-delay:.4s}
+
+/* Service cards */
+.service-card { transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s, border-color .35s; }
+.service-card:hover { transform:translateY(-7px) scale(1.015); box-shadow:0 20px 48px rgba(27,67,50,.13); }
+
+/* Category chips */
+.ccat { transition:transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s, border-color .28s; }
+.ccat:hover { transform:translateY(-4px) scale(1.03); box-shadow:0 12px 32px rgba(27,67,50,.13); }
+
+/* Avis cards glow */
+.tc2 { transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s; }
+.tc2:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.22); }
+
+/* Zone cards */
+.zone-card:hover { transform:translateY(-5px) scale(1.015); }
+
+/* WhatsApp cards */
+.wa-card { transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s; }
+.wa-card:hover { transform:translateY(-5px); box-shadow:0 20px 48px rgba(0,0,0,.25); }
+
+/* Buttons — shimmer effect */
+.btn-hero-primary, .sbtn, .cbtn {
+  position:relative; overflow:hidden;
+}
+.btn-hero-primary::after, .sbtn::after, .cbtn::after {
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.22),transparent 60%);
+  transform:translateX(-100%); transition:transform .5s;
+}
+.btn-hero-primary:hover::after, .sbtn:hover::after, .cbtn:hover::after { transform:translateX(100%); }
+
+/* Filter badges */
+.fb { transition:all .22s cubic-bezier(.22,1,.36,1); }
+.fb:hover { transform:translateY(-2px); }
+
+/* Chat bot button pulse */
+#chat-fab { animation:chatPulse 3s ease-in-out infinite; }
+@keyframes chatPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.3)}50%{box-shadow:0 4px 32px rgba(37,211,102,.6),0 0 0 8px rgba(37,211,102,.08)}}
+
+/* Scroll progress bar gradient */
+#scroll-progress { background:linear-gradient(90deg,#22c55e,#D4A843,#22c55e) !important; background-size:200% 100% !important; animation:progressShimmer 2s linear infinite; }
+@keyframes progressShimmer{0%{background-position:0% 0}100%{background-position:200% 0}}
+
+/* Pro perks animated border */
+.pro-perk { transition:transform .25s cubic-bezier(.22,1,.36,1), border-color .25s; }
+.pro-perk:hover { transform:translateX(4px); border-color:var(--g1); }
+
+/* Footer brand */
+.footer-logo { filter:drop-shadow(0 2px 8px rgba(108,188,78,.3)); }
+
+/* Input focus glow */
+.fg input:focus, .fg select:focus, .fg textarea:focus,
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  box-shadow:0 0 0 3px rgba(108,188,78,.18);
+}
+
+/* Hero badge pulse dot */
+.hero-badge .dot { box-shadow:0 0 0 0 rgba(74,222,128,.6); animation:badgeDot 2s ease-in-out infinite; }
+@keyframes badgeDot{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}50%{box-shadow:0 0 0 6px rgba(74,222,128,0)}}
+
+/* Section tags */
+.section-tag { position:relative; overflow:hidden; }
+.section-tag::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent); transform:translateX(-100%); animation:tagShimmer 3s ease-in-out infinite; }
+@keyframes tagShimmer{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+
+/* Add-to-cart button bounce */
+.qb:active { animation:btnBounce .2s cubic-bezier(.22,1,.36,1); }
+@keyframes btnBounce{0%{transform:scale(1)}40%{transform:scale(.85)}100%{transform:scale(1)}}
+
+/* ERP dot */
+.erp-dot { animation:pulse-erp 2s ease-in-out infinite; }
+@keyframes pulse-erp{0%,100%{box-shadow:0 0 0 0 rgba(111,207,151,.6)}50%{box-shadow:0 0 0 5px rgba(111,207,151,0)}}
+
+/* Stars rating shimmer */
+.stars { background:linear-gradient(90deg,#f59e0b,#fbbf24,#f59e0b); -webkit-background-clip:text; background-clip:text; color:transparent; background-size:200% 100%; animation:starsShimmer 3s ease infinite; }
+@keyframes starsShimmer{0%,100%{background-position:0%}50%{background-position:100%}}
 </style>
 </head>
 <body>
+<script>
+// ── NAVBAR SCROLL CLASS ──
+window.addEventListener('scroll',function(){
+  document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 30);
+}, {passive:true});
+
+// ── SCROLL REVEAL ──
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
 <!-- Scroll progress bar -->
 <div id="scroll-progress" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--g1,#22c55e),var(--o1,#B8960C));z-index:99999;transition:width .1s linear;pointer-events:none"></div>
 
@@ -614,9 +728,9 @@ html[dir="rtl"] .modal-close{right:auto;left:14px}
 ══════════════════════════════════════════════ -->
 <script>
 const CONFIG = {
-  COMPANY_NAME:    "Empire Fresh",
+  COMPANY_NAME:    "Vita Fresh",
   COMPANY_TAGLINE: "Fruit & Vegetable Distribution — Casablanca, Maroc",
-  COMPANY_EMAIL:   "contact@empire-fresh.ma",
+  COMPANY_EMAIL:   "contact@vitafresh.ma",
   COMPANY_ADDRESS: "Zone Industrielle, Casablanca, Maroc",
   PHONE:           "+212 6 00 00 00 00",
   WHATSAPP:        "212600000000",
@@ -626,9 +740,9 @@ const CONFIG = {
   WA_EQUIPE_1:     "212647333456",
   WA_EQUIPE_2:     "212681736910",
   HOURS:           "Lun–Sam : 06h00 – 18h00",
-  APP_URL:         "https://empire-fresh.netlify.app/",
+  APP_URL:         "https://vitafresh.vitacore.ma/",
   API_URL:         "https://f-l.vercel.app",
-  LOGO_URL:        "./logo.png",
+  LOGO_URL:        "data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20130%20130'%3E%3Cpath%20d%3D'M65%2032C41%2032%2C22%2052%2C22%2078C22%20104%2C41%20120%2C65%20120C89%20120%2C108%20104%2C108%2078C108%2052%2C89%2032%2C65%2032Z'%20fill%3D'%25236CBC4E'%2F%3E%3Cpath%20d%3D'M41%2058L65%20100L89%2058'%20stroke%3D'white'%20stroke-width%3D'12'%20fill%3D'none'%20stroke-linejoin%3D'miter'%2F%3E%3Crect%20x%3D'62'%20y%3D'22'%20width%3D'6'%20height%3D'14'%20fill%3D'%25232D7A45'%2F%3E%3Cpath%20d%3D'M68%2026C80%2012%2C100%2010%2C110%2017C103%2034%2C84%2038%2C68%2026Z'%20fill%3D'%25232D7A45'%2F%3E%3C%2Fsvg%3E",
   // ── الإحصائيات — قابلة للتعديل من لوحة الإدارة ──
   // كل عنصر: num = الرقم، fr/ar/en = الترجمة
   STATS: [
@@ -705,7 +819,7 @@ const TEXTS = {
     hero_h1:"Distribution de <em>Fruits & Légumes Frais</em> au Maroc",
     hero_sub:"Tarifs professionnels pour CHR, marchands et particuliers. Livraison à Casablanca en 24h ou Express 2–4h.",
     btn_catalogue:"Voir le catalogue", btn_wa_order:"Commander sur WhatsApp", btn_app:"Accéder à l'Application",
-    card_title:"Pourquoi Empire Fresh ?",
+    card_title:"Pourquoi Vita Fresh ?",
     svc_tag:"Nos services", svc_title:"Tout ce dont vous avez besoin", svc_sub:"Solutions adaptées à chaque profil client",
     svc1_title:"Livraison Standard 24h", svc1_desc:"Commandez avant 18h, livré le lendemain matin.",
     svc2_title:"Livraison Express 2–4h", svc2_desc:"Zones prioritaires — livraison en 2 à 4 heures.",
@@ -722,7 +836,7 @@ const TEXTS = {
     cat_wa:"📦 Commander par WhatsApp",
     btn_add_cart:"Ajouter", btn_fav:"♡",
     price_on_request:"Prix sur demande",
-    pro_tag:"Espace Pro", pro_title:"Accès Professionnel", pro_sub:"Créez votre compte et accédez aux tarifs exclusifs Empire Fresh.",
+    pro_tag:"Espace Pro", pro_title:"Accès Professionnel", pro_sub:"Créez votre compte et accédez aux tarifs exclusifs Vita Fresh.",
     pro_p1_title:"Tarifs négociés",    pro_p1_desc:"CHR et marchands — prix selon profil et volume.",
     pro_p2_title:"Livraison dédiée",   pro_p2_desc:"Tournée fixe selon votre zone, créneau garanti.",
     pro_p3_title:"Suivi commandes",    pro_p3_desc:"Application mobile + espace web temps réel.",
@@ -750,18 +864,18 @@ const TEXTS = {
     portal_orders:"Mes commandes récentes", portal_no_orders:"Aucune commande pour le moment.",
     portal_wa:"📦 Passer une commande",
     contact_direct:"Contact direct",
-    wa_grp_title:"Rejoignez notre communauté WhatsApp",
+    wa_grp_title:"Rejoignez la communauté Vita Fresh",
     wa_grp_sub:"Restez connectés avec nos groupes WhatsApp professionnels",
     wa_order_title:"Groupe Commandes", wa_order_desc:"Passez vos commandes directement dans notre groupe WhatsApp dédié. Réponse garantie sous 1h.",
     wa_signup_title:"Devenir Partenaire", wa_signup_desc:"Rejoignez notre réseau de partenaires professionnels et accédez aux tarifs exclusifs.",
     wa_join:"Rejoindre le groupe",
-    avis_title:"Ce que disent nos partenaires", avis_sub:"Avis vérifiés — clients et fournisseurs",
+    avis_title:"Ce que disent nos clients", avis_sub:"Avis vérifiés — CHR, marchands &amp; particuliers",
     stor_tag:"Conservation",
     stor_title:"Conseils de stockage",
     stor_sub:"Gardez vos fruits & légumes frais plus longtemps",
     rec_badge:"Recette du jour",
     rec_title:"Une recette par jour",
-    rec_sub:"Des idées fraîches pour cuisiner vos fruits & légumes Empire Fresh",
+    rec_sub:"Des idées fraîches pour cuisiner vos fruits & légumes Vita Fresh",
     ha_grow:"Culture",
     ha_harvest:"Récolte",
     ha_sort:"Tri qualité",
@@ -769,7 +883,7 @@ const TEXTS = {
     ha_deliver:"Livraison",
     ha_client:"Client",
     ft_links:"Liens rapides", ft_contact:"Contact", ft_legal:"Légal",
-    ft_copy:"© 2026 Empire Fresh. Tous droits réservés.", ft_made:"Synchronisé FreshLink ERP ⚡",
+    ft_copy:"© 2026 Vita Fresh · VITACORE GROUP. Tous droits réservés.", ft_made:"Synchronisé FreshLink ERP ⚡",
     ft_desc:"Distribution alimentaire professionnelle à Casablanca. Fruits, légumes et produits frais.",
     ft_legal_1:"Mentions légales", ft_legal_2:"Confidentialité", ft_legal_3:"CGV",
     ft_wa_title:"WhatsApp", ft_links_title:"Liens rapides",
@@ -779,7 +893,7 @@ const TEXTS = {
     avis_tab_all:"Tous", avis_tab_client:"Clients", avis_tab_fourn:"Fournisseurs",
     search_ph:"Rechercher un produit...",
     sort_def:"Tri par défaut", sort_asc:"Prix ↑ croissant", sort_desc:"Prix ↓ décroissant", sort_az:"Nom A→Z", sort_dispo:"Disponibilité",
-    prep_banner:"🔪💧 <strong>Produits lavés et/ou épluchés disponibles sur demande</strong> — sélectionnez la préparation dans votre commande. <em>Confirmation sous 1h par l'équipe Empire Fresh.</em>",
+    prep_banner:"🔪💧 <strong>Produits lavés et/ou épluchés disponibles sur demande</strong> — sélectionnez la préparation dans votre commande. <em>Confirmation sous 1h par l'équipe Vita Fresh.</em>",
     ord_tag:"Passez votre commande", ord_title:"Commander en ligne", ord_sub:"Standard ou express, avec ou sans préparation. Enregistré dans FreshLink ERP.",
     ord_info_title:"📋 Vos informations",
     ord_tab_part:"🏠 Particulier", ord_tab_pro:"🏢 Professionnel", ord_tab_resto:"🍽️ Restaurant",
@@ -800,6 +914,7 @@ const TEXTS = {
     avis_form_title:"Partagez votre avis", avis_form_sub:"Votre retour nous aide à améliorer notre service",
     avis_form_nom:"Votre nom *", avis_form_type:"Type *", avis_form_act:"Activité / Secteur",
     avis_form_note:"Note *", avis_form_msg:"Votre avis *", avis_form_btn:"Soumettre mon avis",
+  },
   ar: {
     nav_services:"الخدمات", nav_delivery:"التوصيل", nav_catalogue:"الكتالوج",
     nav_pro:"فضاء المهنيين", nav_contact:"تواصل معانا", nav_app:"📱 التطبيق",
@@ -808,7 +923,7 @@ const TEXTS = {
     hero_h1:"توزيع <em>الفواكه والخضرة الطازة</em> فالمغرب",
     hero_sub:"أثمنة مزيانة للمطاعم والتجار والأفراد. التوصيل فالدار البيضاء في 24 ساعة أو سريع 2-4 ساعات.",
     btn_catalogue:"شوف الكتالوج", btn_wa_order:"طلب عبر واتساب", btn_app:"دخل للتطبيق",
-    card_title:"علاش Empire Fresh؟",
+    card_title:"علاش Vita Fresh؟",
     svc_tag:"الخدمات ديالنا", svc_title:"كل شي كتحتاجو", svc_sub:"حلول مناسبة لكل نوع زبون",
     svc1_title:"توصيل عادي 24 ساعة",   svc1_desc:"طلب قبل 18h، كيوصلك الصباح الجاي.",
     svc2_title:"توصيل سريع 2-4 ساعات",svc2_desc:"المناطق الأولى — في 2 لـ4 ساعات.",
@@ -825,7 +940,7 @@ const TEXTS = {
     cat_wa:"📦 طلب عبر واتساب",
     btn_add_cart:"زيد", btn_fav:"♡",
     price_on_request:"الثمن حسب الطلب",
-    pro_tag:"فضاء المهنيين", pro_title:"الدخول المهني", pro_sub:"دير حسابك وستفيد من الأثمنة الخاصة ديال Empire Fresh.",
+    pro_tag:"فضاء المهنيين", pro_title:"الدخول المهني", pro_sub:"دير حسابك وستفيد من الأثمنة الخاصة ديال Vita Fresh.",
     pro_p1_title:"أثمنة مفاوضة",  pro_p1_desc:"CHR والتجار — حسب الملف والكمية.",
     pro_p2_title:"توصيل مخصص",    pro_p2_desc:"دورة ثابتة حسب منطقتك.",
     pro_p3_title:"تتبع الطلبيات", pro_p3_desc:"تطبيق موبايل + فضاء ويب.",
@@ -864,7 +979,7 @@ const TEXTS = {
     stor_sub:"احفظ الفواكه والخضرة ديالك طازة أكثر وقت ممكن",
     rec_badge:"وصفة اليوم",
     rec_title:"وصفة في اليوم",
-    rec_sub:"أفكار طازة لطبخ الفواكه والخضرة ديال Empire Fresh",
+    rec_sub:"أفكار طازة لطبخ الفواكه والخضرة ديال Vita Fresh",
     ha_grow:"الزراعة",
     ha_harvest:"الحصاد",
     ha_sort:"الفرز",
@@ -872,7 +987,7 @@ const TEXTS = {
     ha_deliver:"التوصيل",
     ha_client:"الزبون",
     ft_links:"لينكات سريعة", ft_contact:"تواصل", ft_legal:"قانوني",
-    ft_copy:"© 2026 Empire Fresh. جميع الحقوق محفوظة.", ft_made:"مزامن مع FreshLink ERP ⚡",
+    ft_copy:"© 2026 Vita Fresh · VITACORE GROUP. جميع الحقوق محفوظة.", ft_made:"مزامن مع FreshLink ERP ⚡",
     ft_desc:"توزيع غذائي مهني فالدار البيضاء. فواكه، خضرة ومنتجات طازة.",
     ft_legal_1:"المعلومات القانونية", ft_legal_2:"الخصوصية", ft_legal_3:"الشروط العامة",
     ft_wa_title:"واتساب", ft_links_title:"لينكات سريعة",
@@ -882,7 +997,7 @@ const TEXTS = {
     avis_tab_all:"الكل", avis_tab_client:"الزبائن", avis_tab_fourn:"المورّدين",
     search_ph:"قلّب على منتج...",
     sort_def:"ترتيب افتراضي", sort_asc:"الثمن ↑ من الأرخص", sort_desc:"الثمن ↓ من الأغلى", sort_az:"الاسم أ→ي", sort_dispo:"التوفر",
-    prep_banner:"🔪💧 <strong>المنتجات المغسولة و/أو المقشرة متوفرة عند الطلب</strong> — اختار التحضير المطلوب فالطلبية ديالك. <em>التأكيد خلال ساعة من فريق Empire Fresh.</em>",
+    prep_banner:"🔪💧 <strong>المنتجات المغسولة و/أو المقشرة متوفرة عند الطلب</strong> — اختار التحضير المطلوب فالطلبية ديالك. <em>التأكيد خلال ساعة من فريق Vita Fresh.</em>",
     ord_tag:"سيفط طلبيتك", ord_title:"طلب أونلاين", ord_sub:"عادي أو سريع، مع أو بلا تحضير. مسجّل فـ FreshLink ERP.",
     ord_info_title:"📋 معلوماتك",
     ord_tab_part:"🏠 فرد", ord_tab_pro:"🏢 مهني", ord_tab_resto:"🍽️ مطعم",
@@ -912,7 +1027,7 @@ const TEXTS = {
     hero_h1:"<em>Fresh Fruit & Vegetable</em> Distribution in Morocco",
     hero_sub:"Professional pricing for CHR, merchants and individuals. Delivery in Casablanca in 24h or Express 2–4h.",
     btn_catalogue:"View catalogue", btn_wa_order:"Order via WhatsApp", btn_app:"Open the App",
-    card_title:"Why Empire Fresh?",
+    card_title:"Why Vita Fresh?",
     svc_tag:"Our services", svc_title:"Everything you need", svc_sub:"Solutions tailored to every client profile",
     svc1_title:"Standard 24h delivery", svc1_desc:"Order before 6pm, delivered next morning.",
     svc2_title:"Express 2–4h delivery", svc2_desc:"Priority zones — delivered in 2 to 4 hours.",
@@ -929,7 +1044,7 @@ const TEXTS = {
     cat_wa:"📦 Order via WhatsApp",
     btn_add_cart:"Add", btn_fav:"♡",
     price_on_request:"Price on request",
-    pro_tag:"Pro Space", pro_title:"Professional Access", pro_sub:"Create your account and access exclusive Empire Fresh pricing.",
+    pro_tag:"Pro Space", pro_title:"Professional Access", pro_sub:"Create your account and access exclusive Vita Fresh pricing.",
     pro_p1_title:"Negotiated pricing",  pro_p1_desc:"CHR and merchants — by profile and volume.",
     pro_p2_title:"Dedicated delivery",  pro_p2_desc:"Fixed route for your zone.",
     pro_p3_title:"Order tracking",      pro_p3_desc:"Mobile app + web portal.",
@@ -968,7 +1083,7 @@ const TEXTS = {
     stor_sub:"Keep your fruits & vegetables fresh longer",
     rec_badge:"Recipe of the day",
     rec_title:"One recipe per day",
-    rec_sub:"Fresh ideas to cook your Empire Fresh fruits & vegetables",
+    rec_sub:"Fresh ideas to cook your Vita Fresh fruits & vegetables",
     ha_grow:"Farming",
     ha_harvest:"Harvest",
     ha_sort:"Sorting",
@@ -976,7 +1091,7 @@ const TEXTS = {
     ha_deliver:"Delivery",
     ha_client:"Customer",
     ft_links:"Quick links", ft_contact:"Contact", ft_legal:"Legal",
-    ft_copy:"© 2026 Empire Fresh. All rights reserved.", ft_made:"Synced with FreshLink ERP ⚡",
+    ft_copy:"© 2026 Vita Fresh · VITACORE GROUP · VITACORE GROUP. Tous droits réservés.", ft_made:"Synced with FreshLink ERP ⚡",
     ft_desc:"Professional food distribution in Casablanca. Fresh fruits, vegetables and produce.",
     ft_legal_1:"Legal notice", ft_legal_2:"Privacy policy", ft_legal_3:"Terms",
     ft_wa_title:"WhatsApp", ft_links_title:"Quick links",
@@ -986,7 +1101,7 @@ const TEXTS = {
     avis_tab_all:"All", avis_tab_client:"Clients", avis_tab_fourn:"Suppliers",
     search_ph:"Search a product...",
     sort_def:"Default order", sort_asc:"Price ↑ low to high", sort_desc:"Price ↓ high to low", sort_az:"Name A→Z", sort_dispo:"Availability",
-    prep_banner:"🔪💧 <strong>Washed and/or peeled products available on request</strong> — select desired preparation in your order. <em>Confirmed within 1h by Empire Fresh team.</em>",
+    prep_banner:"🔪💧 <strong>Washed and/or peeled products available on request</strong> — select desired preparation in your order. <em>Confirmed within 1h by Vita Fresh team.</em>",
     ord_tag:"Place your order", ord_title:"Order online", ord_sub:"Standard or express, with or without preparation. Saved in FreshLink ERP.",
     ord_info_title:"📋 Your information",
     ord_tab_part:"🏠 Individual", ord_tab_pro:"🏢 Professional", ord_tab_resto:"🍽️ Restaurant",
@@ -1039,7 +1154,7 @@ function setLang(lang){
 <!-- CONFIG DRAWER -->
 <div class="cfg-drawer" id="cfg-drawer">
   <div class="cfg-hdr">
-    <div><div class="cfg-hdr-title">⚙️ Configuration Admin</div><div class="cfg-hdr-sub">Empire Fresh — Panneau de contrôle</div></div>
+    <div><div class="cfg-hdr-title">⚙️ Configuration Admin</div><div class="cfg-hdr-sub">Vita Fresh — Panneau de contrôle</div></div>
     <button class="cfg-hdr-close" onclick="closeCfg()">✕</button>
   </div>
   <div class="cfg-tabs">
@@ -1054,11 +1169,11 @@ function setLang(lang){
     <div class="cfg-sec on" id="s-contact">
       <div class="cfg-grp">📱 Coordonnées principales</div>
       <div class="cfg-f"><label>Numéro WhatsApp</label><input id="c-wa" type="tel" placeholder="212661234567"><div class="cfg-hint">Sans le + — ex: 212661234567</div></div>
-      <div class="cfg-f"><label>Email</label><input id="c-email" type="email" placeholder="contact@empire-fresh.ma"></div>
+      <div class="cfg-f"><label>Email</label><input id="c-email" type="email" placeholder="contact@vitafresh.ma"></div>
       <div class="cfg-f"><label>Adresse / Ville</label><input id="c-addr" type="text" placeholder="Casablanca, Maroc"></div>
       <div class="cfg-grp">🏦 Virement bancaire — RIB</div>
       <div class="cfg-f"><label>RIB complet</label><input id="c-rib" type="text" placeholder="007 780 0000000000000 53" style="font-family:monospace"><div class="cfg-hint">Affiché automatiquement quand le client choisit "Virement bancaire".</div></div>
-      <div class="cfg-f"><label>Bénéficiaire</label><input id="c-rib-benef" type="text" placeholder="Empire Fresh SARL"></div>
+      <div class="cfg-f"><label>Bénéficiaire</label><input id="c-rib-benef" type="text" placeholder="Vita Fresh SARL"></div>
       <div class="cfg-f"><label>Banque</label><input id="c-rib-banque" type="text" placeholder="CIH / Attijariwafa / BMCE"></div>
       <div class="cfg-grp">🌍 Réseaux sociaux</div>
       <div class="cfg-f"><label>Facebook</label><input id="c-fb" type="url" placeholder="https://facebook.com/empirefreshmaroc"></div>
@@ -1099,7 +1214,7 @@ function setLang(lang){
         <div style="margin-top:8px;padding:10px;background:#fff;border-radius:8px;font-size:12px;color:#555;line-height:1.8">
           URL : <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px">https://f-l.vercel.app/api/ext/catalogue</code><br>
           <strong style="color:#b45309">❗ Si erreur 403 :</strong> L'API est désactivée dans votre ERP.<br>
-          → <a href="https://empire-fresh.netlify.app/" target="_blank" style="color:#1a7a3c;font-weight:700">Ouvrir FreshLink ERP</a>
+          → <a href="https://vitafresh.vitacore.ma/" target="_blank" style="color:#1a7a3c;font-weight:700">Ouvrir FreshLink ERP</a>
           → <strong>Administration → Intégration Site Web</strong><br>
           1. Cliquez <strong>"Activer l'API externe"</strong> 🔛<br>
           2. Activez <strong>"Catalogue public"</strong> ✅<br>
@@ -1146,7 +1261,7 @@ function setLang(lang){
       <div class="cfg-grp">🚀 Comment publier ce site</div>
       <div style="font-size:13px;color:var(--gy);line-height:1.8;margin-bottom:14px">Ce site est un fichier HTML autonome. Déployez-le en glissant le dossier sur <a href="https://netlify.com/drop" target="_blank" style="color:var(--g1);font-weight:700">netlify.com/drop</a>.</div>
       <div class="cfg-grp">🔗 Application FreshLink</div>
-      <div style="font-size:13px;color:var(--gy);line-height:1.8;margin-bottom:14px">Application de gestion ERP disponible sur : <a href="https://empire-fresh.netlify.app/" target="_blank" style="color:var(--g1);font-weight:700">empire-fresh.netlify.app</a></div>
+      <div style="font-size:13px;color:var(--gy);line-height:1.8;margin-bottom:14px">Application de gestion ERP disponible sur : <a href="https://vitafresh.vitacore.ma/" target="_blank" style="color:var(--g1);font-weight:700">vitafresh.vitacore.ma</a></div>
       <div class="cfg-grp">📋 API FreshLink utilisées</div>
       <div class="code-block">GET  /api/ext/catalogue  → articles publiés
 POST /api/ext/commandes  → nouvelle commande
@@ -1165,32 +1280,26 @@ GET  /api/ext/commandes/:id → suivi commande</div>
 <nav class="navbar">
   <div class="nav-inner">
     <a href="#" class="nav-brand">
-<svg width="140" height="44" viewBox="0 0 280 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Warehouse outline -->
-  <path d="M60 38 L60 56 L120 56 L120 38 L90 24 Z" stroke="#22c55e" stroke-width="2.5" fill="none"/>
-  <rect x="68" y="42" width="10" height="14" fill="#22c55e" opacity=".4"/>
-  <rect x="102" y="42" width="10" height="14" fill="#22c55e" opacity=".4"/>
-  <!-- Fruit (orange circle) -->
-  <circle cx="90" cy="31" r="9" fill="#B8960C"/>
-  <path d="M90 22 Q87 16 83 14" stroke="#22c55e" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <path d="M90 22 Q93 15 90 12" stroke="#22c55e" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <!-- EMPIRE text -->
-  <text x="134" y="32" font-family="'Inter',sans-serif" font-size="22" font-weight="900" fill="#1B4332" letter-spacing="2">EMPIRE</text>
-  <!-- FRESH text in gold -->
-  <text x="134" y="54" font-family="'Inter',sans-serif" font-size="22" font-weight="900" fill="#B8960C" letter-spacing="2">FRESH</text>
-  <!-- Line separator -->
-  <line x1="134" y1="58" x2="278" y2="58" stroke="#B8960C" stroke-width="1.2" opacity=".6"/>
+<svg width="180" height="56" viewBox="0 0 360 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Apple mark -->
+  <g transform="translate(0,4)">
+    <!-- Apple body -->
+    <path d="M44 18C31 18,21 28,21 42C21 56,31 64,44 64C57 64,67 56,67 42C67 28,57 18,44 18Z" fill="#6CBC4E"/>
+    <!-- V on apple -->
+    <path d="M32 32L44 56L56 32" stroke="white" stroke-width="7" fill="none" stroke-linejoin="miter"/>
+    <!-- Stem -->
+    <rect x="42" y="11" width="4" height="9" fill="#2D7A45"/>
+    <!-- Leaf -->
+    <path d="M46 13C52 6,63 5,68 9C64 18,53 19,46 13Z" fill="#2D7A45"/>
+  </g>
+  <!-- VITA in green -->
+  <text x="84" y="44" font-family="'DM Sans','Inter',sans-serif" font-size="28" font-weight="900" fill="#4ade80" letter-spacing="1">VITA</text>
+  <!-- FRESH in gold -->
+  <text x="155" y="44" font-family="'DM Sans','Inter',sans-serif" font-size="28" font-weight="900" fill="#D4A843" letter-spacing="1">FRESH</text>
+  <!-- Separator line -->
+  <line x1="84" y1="51" x2="348" y2="51" stroke="#D4A843" stroke-width="1" opacity="0.5"/>
   <!-- Tagline -->
-  <text x="134" y="72" font-family="'Inter',sans-serif" font-size="7.5" fill="#1B4332" letter-spacing="1.2" opacity=".75">FRUIT &amp; VEGETABLE · CASABLANCA</text>
-  <!-- Truck -->
-  <rect x="38" y="60" width="22" height="12" rx="2" fill="#1B4332"/>
-  <rect x="26" y="64" width="14" height="8" rx="1.5" fill="#22c55e"/>
-  <circle cx="32" cy="72" r="3" fill="#1B4332"/><circle cx="32" cy="72" r="1.5" fill="#ccc"/>
-  <circle cx="54" cy="72" r="3" fill="#1B4332"/><circle cx="54" cy="72" r="1.5" fill="#ccc"/>
-  <!-- Speed lines -->
-  <line x1="16" y1="66" x2="26" y2="66" stroke="#B8960C" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <line x1="10" y1="69" x2="26" y2="69" stroke="#B8960C" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
-  <line x1="14" y1="72" x2="26" y2="72" stroke="#B8960C" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
+  <text x="84" y="66" font-family="'Inter',sans-serif" font-size="9" fill="rgba(255,255,255,0.55)" letter-spacing="1.8">FRUITS &amp; LÉGUMES · CASABLANCA · VITACORE</text>
 </svg>
     </a>
     <ul class="nav-links">
@@ -1395,7 +1504,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   </div>
 </div>
 
-<!-- ── قسم الخدمات — كل الخدمات ديال Empire Fresh ── -->
+<!-- ── قسم الخدمات — كل الخدمات ديال Vita Fresh ── -->
 <!-- SERVICES -->
 <section id="services" class="reveal">
   <div class="container">
@@ -1477,7 +1586,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     </div>
     <!-- Info banner: washed/peeled on demand — trilingual -->
     <div id="prep-banner" style="background:linear-gradient(90deg,#f0faf4,#e8f5e9);border-left:4px solid #25a352;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#1a7a3c;line-height:1.6" data-i18n="prep_banner">
-      🔪💧 <strong>Produits lavés et/ou épluchés disponibles sur demande</strong> — sélectionnez la préparation souhaitée dans votre commande. <em>Confirmation sous 1h par l'équipe Empire Fresh.</em>
+      🔪💧 <strong>Produits lavés et/ou épluchés disponibles sur demande</strong> — sélectionnez la préparation souhaitée dans votre commande. <em>Confirmation sous 1h par l'équipe Vita Fresh.</em>
     </div>
     <!-- Filter chips — trilingual -->
     <div class="fbar">
@@ -1563,7 +1672,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
           <div style="font-weight:700;color:#b45309;margin-bottom:8px">🏦 Virement bancaire</div>
           <div id="rib-display" style="font-size:13px;line-height:1.8;color:#333">
             <strong>RIB :</strong> <span id="rib-val" style="font-family:monospace;font-weight:700;letter-spacing:1px">—</span><br>
-            <strong>Bénéficiaire :</strong> <span id="rib-benef">Empire Fresh SARL</span><br>
+            <strong>Bénéficiaire :</strong> <span id="rib-benef">Vita Fresh SARL</span><br>
             <strong>Banque :</strong> <span id="rib-banque">CIH / Attijariwafa / BMCE</span>
           </div>
           <div style="margin-top:10px;font-size:13px;color:#b45309">⚠️ <strong>Justificatif obligatoire</strong> — envoyez le reçu de virement via WhatsApp avant préparation de votre commande.</div>
@@ -1634,8 +1743,8 @@ GET  /api/ext/commandes/:id → suivi commande</div>
         <div class="contact-box">
           <div class="contact-box-title" data-i18n="contact_direct">Contact direct</div>
           <a href="#" id="contactWaLink"><span style="font-size:19px">📲</span><span id="contactPhone">+212 6 00 00 00 00</span></a>
-          <a href="#" id="contactEmailLink"><span style="font-size:19px">📧</span><span id="contactEmail">contact@empire-fresh.ma</span></a>
-          <a href="https://empire-fresh.netlify.app/" target="_blank" style="display:flex;align-items:center;gap:10px;background:rgba(184,150,12,.08);border-radius:8px;padding:10px 13px;font-weight:600;color:var(--o1);text-decoration:none;margin-top:4px;transition:.2s;font-size:13px">
+          <a href="#" id="contactEmailLink"><span style="font-size:19px">📧</span><span id="contactEmail"><span class="__cf_email__" data-cfemail="076468697366647347716e7366617562746f296a66">[email&#160;protected]</span></span></a>
+          <a href="https://vitafresh.vitacore.ma/" target="_blank" style="display:flex;align-items:center;gap:10px;background:rgba(184,150,12,.08);border-radius:8px;padding:10px 13px;font-weight:600;color:var(--o1);text-decoration:none;margin-top:4px;transition:.2s;font-size:13px">
             <span style="font-size:19px">🌐</span><span>Accéder à l'Application FreshLink</span>
           </a>
         </div>
@@ -1697,17 +1806,17 @@ GET  /api/ext/commandes/:id → suivi commande</div>
           <div class="ef"><div class="efi">💰</div><div class="efc"><strong>Prix négociés</strong><span>Tarifs réservés aux professionnels selon votre profil.</span></div></div>
           <div class="ef"><div class="efi">📋</div><div class="efc"><strong>Suivi de commandes</strong><span>Historique complet, statut temps réel, bons de livraison.</span></div></div>
           <div class="ef"><div class="efi">⚡</div><div class="efc"><strong>Sync temps réel</strong><span>Stock et prix synchronisés depuis FreshLink ERP.</span></div></div>
-          <div class="ef"><div class="efi">📱</div><div class="efc"><strong>Application mobile</strong><span>Gérez tout depuis <a href="https://empire-fresh.netlify.app/" target="_blank" style="color:var(--o2);text-decoration:none;font-weight:600">empire-fresh.netlify.app</a></span></div></div>
+          <div class="ef"><div class="efi">📱</div><div class="efc"><strong>Application mobile</strong><span>Gérez tout depuis <a href="https://vitafresh.vitacore.ma/" target="_blank" style="color:var(--o2);text-decoration:none;font-weight:600">vitafresh.vitacore.ma</a></span></div></div>
         </div>
         <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
           <a href="#commander" style="display:inline-block;padding:12px 24px;background:var(--o2);color:#000;border-radius:10px;font-weight:700;text-decoration:none">Commander maintenant</a>
-          <a href="https://empire-fresh.netlify.app/" target="_blank" style="display:inline-block;padding:12px 24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;font-weight:600;text-decoration:none;font-size:14px">🌐 Accéder à l'App</a>
+          <a href="https://vitafresh.vitacore.ma/" target="_blank" style="display:inline-block;padding:12px 24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;font-weight:600;text-decoration:none;font-size:14px">🌐 Accéder à l'App</a>
         </div>
       </div>
       <div class="ediag">
         <div class="dl">🔗 Connexion FreshLink ERP — Temps réel</div>
         <div class="df">
-          <div class="dn hl"><div class="dni">🌐</div><div><div class="dnn">Site web public</div><div class="dns">empire-fresh.netlify.app</div></div><div class="dst sl">● EN LIGNE</div></div>
+          <div class="dn hl"><div class="dni">🌐</div><div><div class="dnn">Site web public</div><div class="dns">vitafresh.vitacore.ma</div></div><div class="dst sl">● EN LIGNE</div></div>
           <div class="da">↕️</div>
           <div class="dn hl"><div class="dni">⚡</div><div><div class="dnn">Supabase Realtime</div><div class="dns">Mises à jour instantanées</div></div><div class="dst sl">● ACTIF</div></div>
           <div class="da">↕️</div>
@@ -1739,7 +1848,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   <div class="container">
     <div style="text-align:center;margin-bottom:40px">
       <span style="display:inline-block;background:rgba(255,255,255,.15);color:rgba(255,255,255,.85);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:.6px">💬 WhatsApp Business</span>
-      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;margin-bottom:10px" data-i18n="wa_grp_title">Rejoignez notre communauté WhatsApp</h2>
+      <h2 style="font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;margin-bottom:10px" data-i18n="wa_grp_title">Rejoignez la communauté Vita Fresh</h2>
       <p style="font-size:15px;color:rgba(255,255,255,.75);max-width:520px;margin:0 auto" data-i18n="wa_grp_sub">Restez connectés avec nos groupes WhatsApp professionnels</p>
     </div>
     <div class="wa-section-grid" style="grid-template-columns:repeat(3,1fr)">
@@ -1799,11 +1908,10 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   <div class="container">
     <div class="slbl">Avis &amp; Témoignages</div>
     <div class="stit" data-i18n="avis_title">Ce que disent nos partenaires</div>
-    <div style="font-size:14px;color:rgba(255,255,255,.5);margin-top:6px;margin-bottom:28px" data-i18n="avis_sub">Avis vérifiés — clients et fournisseurs</div>
+    <div style="font-size:14px;color:rgba(255,255,255,.5);margin-top:6px;margin-bottom:28px" data-i18n="avis_sub">Avis vérifiés — CHR, marchands &amp; particuliers</div>
     <div style="display:flex;gap:8px;justify-content:center;margin-bottom:28px;flex-wrap:wrap">
       <button class="avis-tab active" data-source="all" onclick="filterAvis('all',this)" data-i18n="avis_tab_all">Tous</button>
       <button class="avis-tab" data-source="client" onclick="filterAvis('client',this)" data-i18n="avis_tab_client">Clients</button>
-      <button class="avis-tab" data-source="fournisseur" onclick="filterAvis('fournisseur',this)" data-i18n="avis_tab_fourn">Fournisseurs</button>
     </div>
 
     <!-- Carousel wrapper -->
@@ -1821,21 +1929,14 @@ GET  /api/ext/commandes/:id → suivi commande</div>
 
         <div class="tc2" data-source="client">
           <div class="stars">★★★★★</div>
-          <div class="tt">"Kanthder l3shiya o l ghda kayjini fresh. Mzyan bzaf l7anout dyali. Shokran Empire Fresh, dima katnta7ou!"</div>
+          <div class="tt">"Kanthder l3shiya o l ghda kayjini fresh. Mzyan bzaf l7anout dyali. Shokran Vita Fresh, dima katnta7ou!"</div>
           <div class="ta2">
             <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80&auto=format&fit=crop&crop=face" alt="Fatima" onerror="this.outerHTML='<div class=av>🏪</div>'">
             <div><div class="an">Fatima Z.</div><div class="ar">Épicière Maarif · Client</div></div>
           </div>
         </div>
 
-        <div class="tc2" data-source="fournisseur">
-          <div class="stars">★★★★☆</div>
-          <div class="tt">"Partenariat sérieux, paiements ponctuels et communication claire. L'équipe est très professionnelle."</div>
-          <div class="ta2">
-            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80&auto=format&fit=crop&crop=face" alt="Ahmed" onerror="this.outerHTML='<div class=av>🚚</div>'">
-            <div><div class="an">Ahmed R.</div><div class="ar">Grossiste Souss · Fournisseur</div></div>
-          </div>
-        </div>
+        <div class="tc2" data-source="client">
 
         <div class="tc2" data-source="client">
           <div class="stars">★★★★★</div>
@@ -1855,18 +1956,18 @@ GET  /api/ext/commandes/:id → suivi commande</div>
           </div>
         </div>
 
-        <div class="tc2" data-source="fournisseur">
+        <div class="tc2" data-source="client">
           <div class="stars">★★★★★</div>
-          <div class="tt">"Une équipe dynamique avec une logistique bien rodée. Les volumes sont respectés et les délais de paiement tenus."</div>
+          <div class="tt">"Vita Fresh livré à 7h00 pétantes — légumes ultra frais, équipe réactive. Je recommande à tous les CHR de Casa."</div>
           <div class="ta2">
-            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80&auto=format&fit=crop&crop=face" alt="Omar" onerror="this.outerHTML='<div class=av>🌾</div>'">
-            <div><div class="an">Omar T.</div><div class="ar">Grossiste Souss · Fournisseur</div></div>
+            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80&auto=format&fit=crop&crop=face" alt="Omar" onerror="this.outerHTML='<div class=av>🍽️</div>'">
+            <div><div class="an">Omar T.</div><div class="ar">Gérant restaurant · Maarif</div></div>
           </div>
         </div>
 
         <div class="tc2" data-source="client">
           <div class="stars">★★★★★</div>
-          <div class="tt">"Karim dyali kolchi kayjib men Empire Fresh. Prix mzyan, khdar fresh. Ma3andiش shi m3a had les gars — dima perfect!"</div>
+          <div class="tt">"Karim dyali kolchi kayjib men Vita Fresh. Prix mzyan, khdar fresh. Ma3andiش shi m3a had les gars — dima perfect!"</div>
           <div class="ta2">
             <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80&auto=format&fit=crop&crop=face" alt="Karim" onerror="this.outerHTML='<div class=av>🥗</div>'">
             <div><div class="an">Karim M.</div><div class="ar">Traiteur CHR · Client</div></div>
@@ -1906,7 +2007,6 @@ GET  /api/ext/commandes/:id → suivi commande</div>
               <select id="rv-source" required style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(20,40,25,.92);color:#fff;font-size:14px;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif">
                 <option value="">Choisir...</option>
                 <option value="client" data-i18n="avis_tab_client">Client</option>
-                <option value="fournisseur" data-i18n="avis_tab_fourn">Fournisseur</option>
               </select>
             </div>
           </div>
@@ -1927,7 +2027,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
           </div>
           <div style="margin-bottom:18px">
             <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px" data-i18n="avis_form_msg">Votre avis *</label>
-            <textarea id="rv-message" required rows="4" placeholder="Décrivez votre expérience avec Empire Fresh..." style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#fff;font-size:14px;resize:vertical;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif"></textarea>
+            <textarea id="rv-message" required rows="4" placeholder="Décrivez votre expérience avec Vita Fresh..." style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#fff;font-size:14px;resize:vertical;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif"></textarea>
           </div>
           <button type="submit" id="rv-submit" data-i18n="avis_form_btn" style="width:100%;padding:13px;border-radius:12px;background:linear-gradient(135deg,#4ade80,#22c55e);color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:opacity .2s;font-family:'Inter',sans-serif">Soumettre mon avis</button>
         </form>
@@ -1935,7 +2035,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   </div>
 </section>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── AVIS CAROUSEL ──
 (function(){
   var cur=0;
@@ -1971,7 +2071,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     <div class="section-header">
       <div class="recipe-day-badge">👨‍🍳 <span data-i18n="rec_badge">Recette du jour</span></div>
       <h2 class="section-title" data-i18n="rec_title">Une recette par jour</h2>
-      <p class="section-sub" data-i18n="rec_sub">Des idées fraîches pour cuisiner vos fruits &amp; légumes Empire Fresh</p>
+      <p class="section-sub" data-i18n="rec_sub">Des idées fraîches pour cuisiner vos fruits &amp; légumes Vita Fresh</p>
     </div>
     <div class="recipe-card" id="recipe-card">
       <!-- rendered by renderRecipe() -->
@@ -1989,8 +2089,12 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     <div class="footer-cols">
       <div>
         <div class="footer-brand">
-          <img class="footer-logo" src="./logo.png" alt="Empire Fresh" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div class="footer-logo-fallback" style="display:none">🌿</div>
+          <svg class="footer-logo" width="48" height="48" viewBox="0 0 130 130" aria-label="Vita Fresh">
+  <path d="M65 32C41 32,22 52,22 78C22 104,41 120,65 120C89 120,108 104,108 78C108 52,89 32,65 32Z" fill="#6CBC4E"/>
+  <path d="M41 58L65 100L89 58" stroke="white" stroke-width="12" fill="none" stroke-linejoin="miter"/>
+  <rect x="62" y="22" width="6" height="14" fill="#2D7A45"/>
+  <path d="M68 26C80 12,100 10,110 17C103 34,84 38,68 26Z" fill="#2D7A45"/>
+</svg>
         </div>
         <!-- وصف الشركة — ثلاث لغات -->
         <p class="footer-desc" data-i18n="ft_desc">Distribution alimentaire professionnelle à Casablanca. Fruits, légumes et produits frais.</p>
@@ -1998,7 +2102,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
           <a id="footer-wa" href="#">💬 WhatsApp</a>
           <a id="footer-email" href="#">📧 Email</a>
           <span id="footer-addr">📍 Casablanca, Maroc</span>
-          <a href="https://empire-fresh.netlify.app/" target="_blank" style="color:var(--o2);font-size:12px;text-decoration:none;font-weight:600">🌐 empire-fresh.netlify.app</a>
+          <a href="https://vitafresh.vitacore.ma/" target="_blank" style="color:var(--o2);font-size:12px;text-decoration:none;font-weight:600">🌐 vitafresh.vitacore.ma</a>
         </div>
       </div>
       <!-- لينكات سريعة / Liens rapides / Quick links -->
@@ -2036,7 +2140,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     </div>
     <hr class="footer-divider"/>
     <div class="footer-bottom">
-      <span data-i18n="ft_copy" onclick="footerSecretClick()" style="cursor:default;user-select:none">© 2026 Empire Fresh. Tous droits réservés.</span>
+      <span data-i18n="ft_copy" onclick="footerSecretClick()" style="cursor:default;user-select:none">© 2026 Vita Fresh · VITACORE GROUP. Tous droits réservés.</span>
       <span data-i18n="ft_made">Synchronisé FreshLink ERP ⚡</span>
     </div>
   </div>
@@ -2045,11 +2149,11 @@ GET  /api/ext/commandes/:id → suivi commande</div>
 <!-- GUIDE MODAL -->
 <div id="guide-modal" style="display:none;position:fixed;inset:0;z-index:2500;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)closeGuide()">
   <div style="background:#fff;border-radius:20px;width:100%;max-width:620px;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 24px 64px rgba(0,0,0,.3)">
-    <div style="background:linear-gradient(135deg,#1B4332,#22c55e);padding:28px 28px 24px;border-radius:20px 20px 0 0;position:sticky;top:0;z-index:1">
+    <div style="background:linear-gradient(135deg,#1E5631,#22c55e);padding:28px 28px 24px;border-radius:20px 20px 0 0;position:sticky;top:0;z-index:1">
       <button onclick="closeGuide()" style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center">✕</button>
       <div style="font-size:28px;margin-bottom:8px">📱</div>
       <h2 style="color:#fff;font-size:20px;font-weight:800;margin-bottom:4px">Guide — FreshLink & Commandes</h2>
-      <p style="color:rgba(255,255,255,.75);font-size:13px">Comment passer votre commande et utiliser l'application Empire Fresh</p>
+      <p style="color:rgba(255,255,255,.75);font-size:13px">Comment passer votre commande et utiliser l'application Vita Fresh</p>
     </div>
     <div style="padding:28px">
 
@@ -2057,7 +2161,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
       <div style="margin-bottom:28px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
           <div style="width:36px;height:36px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🛒</div>
-          <h3 style="font-size:16px;font-weight:800;color:#1B4332">Commander via ce site</h3>
+          <h3 style="font-size:16px;font-weight:800;color:#1E5631">Commander via ce site</h3>
         </div>
         <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px">
           <li style="font-size:14px;color:#374151;line-height:1.6"><strong>Parcourez le catalogue</strong> — cliquez sur <em>Catalogue</em> dans le menu. Filtrez par catégorie (Fruits, Légumes, Prêt à cuisiner).</li>
@@ -2073,7 +2177,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
       <div style="margin-bottom:28px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
           <div style="width:36px;height:36px;background:linear-gradient(135deg,#25d366,#128c7e);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">💬</div>
-          <h3 style="font-size:16px;font-weight:800;color:#1B4332">Commander via WhatsApp</h3>
+          <h3 style="font-size:16px;font-weight:800;color:#1E5631">Commander via WhatsApp</h3>
         </div>
         <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px">
           <li style="font-size:14px;color:#374151;line-height:1.6">Cliquez sur <strong>"📲 Commander maintenant"</strong> depuis la section WhatsApp du site ou le bouton vert en haut.</li>
@@ -2090,13 +2194,13 @@ GET  /api/ext/commandes/:id → suivi commande</div>
       <div style="margin-bottom:28px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
           <div style="width:36px;height:36px;background:linear-gradient(135deg,#B8960C,#f59e0b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🌐</div>
-          <h3 style="font-size:16px;font-weight:800;color:#1B4332">Utiliser l'application FreshLink (ERP)</h3>
+          <h3 style="font-size:16px;font-weight:800;color:#1E5631">Utiliser l'application FreshLink (ERP)</h3>
         </div>
         <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:13px;color:#92400e">
-          ⚠️ Cette application est réservée à l'équipe interne Empire Fresh (gérants, commerciaux, livreurs).
+          ⚠️ Cette application est réservée à l'équipe interne Vita Fresh (gérants, commerciaux, livreurs).
         </div>
         <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px">
-          <li style="font-size:14px;color:#374151;line-height:1.6"><strong>Accédez à :</strong> <a href="https://empire-fresh.netlify.app/" target="_blank" style="color:#16a34a;font-weight:700">empire-fresh.netlify.app</a></li>
+          <li style="font-size:14px;color:#374151;line-height:1.6"><strong>Accédez à :</strong> <a href="https://vitafresh.vitacore.ma/" target="_blank" style="color:#16a34a;font-weight:700">vitafresh.vitacore.ma</a></li>
           <li style="font-size:14px;color:#374151;line-height:1.6"><strong>Connectez-vous</strong> avec vos identifiants fournis par l'administrateur.</li>
           <li style="font-size:14px;color:#374151;line-height:1.6"><strong>Tableau de bord</strong> — visualisez les commandes du jour, le stock et les livraisons en temps réel.</li>
           <li style="font-size:14px;color:#374151;line-height:1.6"><strong>Créer une commande terrain</strong> → menu <em>Commandes</em> → <em>Nouvelle commande</em> → sélectionnez client, articles, zone.</li>
@@ -2110,7 +2214,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
       <div style="margin-bottom:24px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
           <div style="width:36px;height:36px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">💳</div>
-          <h3 style="font-size:16px;font-weight:800;color:#1B4332">Modes de paiement acceptés</h3>
+          <h3 style="font-size:16px;font-weight:800;color:#1E5631">Modes de paiement acceptés</h3>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <div style="background:#f9fafb;border-radius:10px;padding:12px;font-size:13px;color:#374151"><strong>💵 Cash à la livraison</strong><br>Payez à la réception de votre commande.</div>
@@ -2130,7 +2234,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
 </div>
 
 <!-- CHAT BOT FAB (single icon) -->
-<button id="chat-fab" onclick="toggleChat()" title="Assistant Empire Fresh" aria-label="Assistant virtuel">
+<button id="chat-fab" onclick="toggleChat()" title="Assistant Vita Fresh" aria-label="Assistant virtuel">
   <span id="chat-fab-icon">💬</span>
   <span id="chat-notif-dot" style="position:absolute;top:4px;right:4px;width:12px;height:12px;background:#ff4444;border-radius:50%;border:2px solid #fff;display:none"></span>
 </button>
@@ -2138,7 +2242,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   <div class="chat-header">
     <div class="chat-avatar" style="font-size:22px">🤖</div>
     <div class="chat-header-info">
-      <div class="chat-header-name">Fifi ✨ — Assistant IA Empire Fresh</div>
+      <div class="chat-header-name">Nour ✨ — Assistant IA Vita Fresh</div>
       <div class="chat-header-status" id="chat-status-txt">● IA Claude · متاح · Powered by AI 24h/24</div>
     </div>
     <button class="chat-close-btn" onclick="toggleChat()">✕</button>
@@ -2216,7 +2320,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
       <button onclick="document.getElementById('pro-app-msg-modal').style.display='none'" style="background:none;border:2px solid #ddd;color:#666;padding:11px 22px;border-radius:30px;font-size:14px;cursor:pointer">Fermer</button>
     </div>
     <div id="pro-app-link-reveal" style="display:none;margin-top:14px;padding:12px;background:#fffbe6;border-radius:10px;font-size:13px;color:#555">
-      🔗 <a href="https://empire-fresh.netlify.app/" target="_blank" style="color:#1a7a3c;font-weight:700">empire-fresh.netlify.app</a><br>
+      🔗 <a href="https://vitafresh.vitacore.ma/" target="_blank" style="color:#1a7a3c;font-weight:700">vitafresh.vitacore.ma</a><br>
       <span style="font-size:12px;color:#999">Ouvrez ce lien sur votre navigateur ou via l'app mobile.</span>
     </div>
   </div>
@@ -2234,7 +2338,12 @@ GET  /api/ext/commandes/:id → suivi commande</div>
 <div class="modal-overlay" id="loginModal" onclick="closeLoginOutside(event)">
   <div class="modal-box">
     <button class="modal-close" onclick="closeLogin()">✕</button>
-    <img class="modal-logo" src="./logo.png" alt="Empire Fresh" onerror="this.style.display='none'"/>
+    <svg width="64" height="64" viewBox="0 0 130 130" class="modal-logo" aria-label="Vita Fresh logo" style="display:block;margin:0 auto 12px">
+  <path d="M65 32C41 32,22 52,22 78C22 104,41 120,65 120C89 120,108 104,108 78C108 52,89 32,65 32Z" fill="#6CBC4E"/>
+  <path d="M41 58L65 100L89 58" stroke="white" stroke-width="12" fill="none" stroke-linejoin="miter"/>
+  <rect x="62" y="22" width="6" height="14" fill="#2D7A45"/>
+  <path d="M68 26C80 12,100 10,110 17C103 34,84 38,68 26Z" fill="#2D7A45"/>
+</svg>
     <!-- Tabs: Connexion / Créer un compte -->
     <div style="display:flex;border-bottom:2px solid #eee;margin-bottom:18px">
       <button id="tabLogin" onclick="switchLoginTab('login')" style="flex:1;padding:10px;border:none;background:none;font-weight:700;font-size:15px;color:var(--g1);border-bottom:3px solid var(--g1);cursor:pointer">Se connecter</button>
@@ -2336,15 +2445,15 @@ GET  /api/ext/commandes/:id → suivi commande</div>
 (function(){
 // ── CFG ──
 var CFG = {
-  wa:"212600000000", email:"contact@empire-fresh.ma", addr:"Casablanca, Maroc",
+  wa:"212600000000", email:"contact@vitafresh.ma", addr:"Casablanca, Maroc",
   fb:"", ig:"", exp:20, expDelay:"2h", free:150, std:15,
-  rib:"", ribBanque:"CIH / Attijariwafa / BMCE", ribBenef:"Empire Fresh SARL",
+  rib:"", ribBanque:"CIH / Attijariwafa / BMCE", ribBenef:"Vita Fresh SARL",
   sbUrl:"https://jwdrwapuetqoqnankgma.supabase.co",
   sbKey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3ZHJ3YXB1ZXRxb3FuYW5rZ21hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0NDE1NzUsImV4cCI6MjA5NDAxNzU3NX0.9l0e2eE9milvCWg29TIoGXgWY-ULOmTVrPmWRCsIvtw"
 };
-try{ Object.assign(CFG, JSON.parse(localStorage.getItem("ef_cfg_v2")||"{}")); }catch(e){}
+try{ Object.assign(CFG, JSON.parse(localStorage.getItem("vf_cfg_v2")||"{}")); }catch(e){}
 // كرجّع الإحصائيات المحفوظة من الإدارة
-try{ var savedStats=JSON.parse(localStorage.getItem("ef_stats_v1")||"null"); if(savedStats&&savedStats.length) CONFIG.STATS=savedStats; }catch(e){}
+try{ var savedStats=JSON.parse(localStorage.getItem("vf_stats_v1")||"null"); if(savedStats&&savedStats.length) CONFIG.STATS=savedStats; }catch(e){}
 
 var sb=null, realtimeChannel=null;
 function initSupabase(){
@@ -2610,7 +2719,7 @@ function updateCatCounts(){
 
 // ══════════════════════════════════════════════════════════════════
 // ██████████████████████████████████████████████████████████████████
-//  هاد الفايل هو القلب ديال موقع Empire Fresh
+//  هاد الفايل هو القلب ديال موقع Vita Fresh
 //  كيتعامل مع: الكتالوج، السلة، الطلبيات، اللغة، الزبائن
 //  بدّل CONFIG ديال فوق باش تغير الأثمنة، الزونات، الإحصائيات
 //  Supabase + ERP API — fallback تلقائي إذا ما كانش الإنترنت
@@ -2664,9 +2773,9 @@ function onPayChange(val){
   if(bloc) bloc.style.display=(val==="virement")?"block":"none";
   if(val==="virement"){
     var rv=document.getElementById("rib-val"); if(rv) rv.textContent=CFG.rib||"Non configuré — voir Admin";
-    var rb=document.getElementById("rib-benef"); if(rb) rb.textContent=CFG.ribBenef||"Empire Fresh SARL";
+    var rb=document.getElementById("rib-benef"); if(rb) rb.textContent=CFG.ribBenef||"Vita Fresh SARL";
     var rk=document.getElementById("rib-banque"); if(rk) rk.textContent=CFG.ribBanque||"CIH / Attijariwafa / BMCE";
-    var waMsg=encodeURIComponent("🏦 Justificatif virement — Empire Fresh\n💰 RIB : "+CFG.rib+"\nMerci de joindre la photo de votre reçu de virement.");
+    var waMsg=encodeURIComponent("🏦 Justificatif virement — Vita Fresh\n💰 RIB : "+CFG.rib+"\nMerci de joindre la photo de votre reçu de virement.");
     // Envoyer le justificatif virement sur le numéro privé (pas le groupe public)
     var wbtn=document.getElementById("vir-wa-btn"); if(wbtn) wbtn.href="https://wa.me/"+CONFIG.WA_EQUIPE_1+"?text="+waMsg;
   }
@@ -2687,7 +2796,7 @@ function submitOrder(){
   var orderData={nom_client:nom+(co?" ("+co+")":""),telephone:tel,email:email||null,adresse_livraison:adr+(zone?" — "+zone:""),lignes:lignes,montant_total:tot,creneau:delMode==="exp"?"Express "+CFG.expDelay:"Standard 24h",instructions:[preps?"Préparation: "+preps:"",notes].filter(Boolean).join(" | ")||null,statut:"recu"};
   var cmdRef=Date.now().toString().slice(-6);
   // ── Message COMPLET (privé — équipe seulement) ──
-  var msgFull="🍃 *COMMANDE EMPIRE FRESH*\n";
+  var msgFull="🍃 *COMMANDE VITA FRESH*\n";
   msgFull+="━━━━━━━━━━━━━━━━━━━━\n";
   msgFull+="👤 *Client :* "+nom+"\n";
   if(co) msgFull+="🏢 *Enseigne :* "+co+"\n";
@@ -2822,12 +2931,12 @@ function saveConfig(){
   CFG.fb=get("c-fb"); CFG.ig=get("c-ig");
   CFG.exp=parseInt(get("c-exp"))||CFG.exp; CFG.free=parseInt(get("c-free"))||CFG.free; CFG.std=parseInt(get("c-std"))||CFG.std;
   var expDelay=document.getElementById("c-expdelay"); CFG.expDelay=expDelay?expDelay.value:CFG.expDelay;
-  CFG.rib=get("c-rib"); CFG.ribBenef=get("c-rib-benef")||"Empire Fresh SARL"; CFG.ribBanque=get("c-rib-banque")||"CIH / Attijariwafa / BMCE";
+  CFG.rib=get("c-rib"); CFG.ribBenef=get("c-rib-benef")||"Vita Fresh SARL"; CFG.ribBanque=get("c-rib-banque")||"CIH / Attijariwafa / BMCE";
   var newUrl=get("c-sb-url"), newKey=get("c-sb-key");
   if(newUrl)CFG.sbUrl=newUrl; if(newKey)CFG.sbKey=newKey;
   // Save stats separately in localStorage so they survive refresh
-  try{ localStorage.setItem("ef_stats_v1", JSON.stringify(CONFIG.STATS)); } catch(_){}
-  localStorage.setItem("ef_cfg_v2",JSON.stringify(CFG)); updateContactLinks(); renderStats();
+  try{ localStorage.setItem("vf_stats_v1", JSON.stringify(CONFIG.STATS)); } catch(_){}
+  localStorage.setItem("vf_cfg_v2",JSON.stringify(CFG)); updateContactLinks(); renderStats();
   var msg=document.getElementById("cfg-saved"); if(msg){msg.textContent="✅ Enregistré — كتسجّل !";setTimeout(function(){msg.textContent="";},3000);}
   if(newUrl||newKey){sb=initSupabase();syncFromSupabase();}
 }
@@ -2869,7 +2978,7 @@ function orderWhatsApp(e){
   if(e) e.preventDefault();
   // Construire un message rapide avec le panier actuel si non vide
   var items=Object.values(cart);
-  var msg="🍃 *Bonjour Empire Fresh !*\n\nJe souhaite passer une commande :\n\n";
+  var msg="🍃 *Bonjour Vita Fresh !*\n\nJe souhaite passer une commande :\n\n";
   if(items.length){
     items.forEach(function(p){msg+="  • "+p.em+" "+p.n+" — "+p.qty+" "+p.u+"\n";});
     var sub=items.reduce(function(s,p){return s+p.p*p.qty;},0);
@@ -3002,7 +3111,7 @@ async function doSignup(e){
   }catch(err){
     errEl.textContent="Connexion impossible. Contactez-nous par WhatsApp pour créer votre compte.";errEl.classList.add("show");
     setTimeout(function(){
-      var waMsg=encodeURIComponent("🆕 Demande de compte Empire Fresh\nType : "+type+"\nNom : "+name+"\nTél : "+phone+(ville?"\nVille : "+ville:"")+(societe?"\nSociété : "+societe:""));
+      var waMsg=encodeURIComponent("🆕 Demande de compte Vita Fresh\nType : "+type+"\nNom : "+name+"\nTél : "+phone+(ville?"\nVille : "+ville:"")+(societe?"\nSociété : "+societe:""));
       window.open("https://wa.me/"+CFG.wa+"?text="+waMsg,"_blank");
     },1500);
   }
@@ -3046,7 +3155,7 @@ async function submitProForm(e){
   var payload={nom,telephone:tel,type,societe:document.getElementById("fSociete").value.trim(),email:document.getElementById("fEmail").value.trim(),ville:document.getElementById("fVille").value.trim(),volume:document.getElementById("fVolume").value,message:document.getElementById("fMsg").value.trim(),source:"site-web",lang:currentLang};
   var ok=false;
   try{var r=await fetch(CONFIG.API_URL+"/api/ext/demande-acces",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});ok=r.ok;}catch{ok=false;}
-  if(!ok){var wa=encodeURIComponent("📋 *Demande Accès Pro — Empire Fresh*\n\n👤 "+payload.nom+"\n📱 "+payload.telephone+"\n🏷️ "+payload.type+"\n📍 "+payload.ville+"\n💬 "+payload.message);window.open("https://wa.me/"+CFG.wa+"?text="+wa,"_blank");}
+  if(!ok){var wa=encodeURIComponent("📋 *Demande Accès Pro — Vita Fresh*\n\n👤 "+payload.nom+"\n📱 "+payload.telephone+"\n🏷️ "+payload.type+"\n📍 "+payload.ville+"\n💬 "+payload.message);window.open("https://wa.me/"+CFG.wa+"?text="+wa,"_blank");}
   msg.textContent=t("form_ok"); msg.classList.add("success");
   document.getElementById("proForm").reset(); btn.disabled=false; btn.textContent=t("btn_submit");
 }
@@ -3451,7 +3560,7 @@ document.addEventListener("DOMContentLoaded",function(){
 });
 
 // ── ADMIN PIN ──
-var ADMIN_PIN = "EmpireFresh2026";
+var ADMIN_PIN = "VitaFresh2026";
 var cfgClickCount=0,cfgTimer;
 function footerSecretClick(){
   cfgClickCount++;
@@ -3480,15 +3589,15 @@ function checkAdminPin(){
 
 // ── LEGAL MODAL ──
 var LEGAL_CONTENT = {
-  mentions: "<h2>Mentions légales</h2><p><strong>Éditeur du site</strong><br>Empire Fresh — Distribution Alimentaire<br>Zone Industrielle, Casablanca, Maroc<br>Téléphone : +212 6 00 00 00 00<br>Email : contact@empire-fresh.ma</p><p><strong>Directeur de la publication</strong><br>Empire Fresh SARL</p><p><strong>Hébergement</strong><br>Netlify Inc. — 2325 3rd Street, San Francisco, CA 94107, USA</p><p><strong>Propriété intellectuelle</strong><br>L'ensemble du contenu de ce site (textes, images, logos) est la propriété exclusive d'Empire Fresh et est protégé par les lois marocaines sur la propriété intellectuelle.</p>",
-  confidentialite: "<h2>Politique de confidentialité</h2><p><strong>Collecte des données</strong><br>Empire Fresh collecte uniquement les données nécessaires au traitement de vos commandes : nom, téléphone, adresse de livraison et email (optionnel).</p><p><strong>Utilisation</strong><br>Vos données sont utilisées exclusivement pour : le traitement de vos commandes, la livraison, la communication commerciale avec votre accord.</p><p><strong>Conservation</strong><br>Vos données sont conservées pendant 3 ans à compter du dernier achat.</p><p><strong>Vos droits</strong><br>Conformément à la loi marocaine 09-08, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Contact : contact@empire-fresh.ma</p><p><strong>Cookies</strong><br>Ce site utilise uniquement des cookies fonctionnels (préférences de langue, panier). Aucun cookie publicitaire n'est utilisé.</p>",
-  cgv: "<h2>Conditions Générales de Vente</h2><p><strong>Objet</strong><br>Les présentes CGV régissent les ventes de fruits, légumes et produits frais par Empire Fresh à ses clients.</p><p><strong>Commandes</strong><br>Toute commande passée via le site, WhatsApp ou l'application constitue un engagement d'achat. Les commandes sont confirmées par SMS ou WhatsApp.</p><p><strong>Prix</strong><br>Les prix sont indiqués en Dirham Marocain (MAD) TTC. Empire Fresh se réserve le droit de modifier ses prix à tout moment.</p><p><strong>Livraison</strong><br>Livraison standard sous 24h — Livraison express sous 2 à 4h selon la zone. Casablanca uniquement. Les frais de livraison sont indiqués lors de la commande.</p><p><strong>Paiement</strong><br>Paiement accepté : Cash à la livraison, virement bancaire.</p><p><strong>Retours</strong><br>Tout produit non conforme doit être signalé dans l'heure suivant la livraison. Empire Fresh procédera au remplacement ou au remboursement.</p><p><strong>Litige</strong><br>En cas de litige, les tribunaux de Casablanca sont seuls compétents.</p>"
+  mentions: "<h2>Mentions légales</h2><p><strong>Éditeur du site</strong><br>Vita Fresh — Distribution Alimentaire<br>Zone Industrielle, Casablanca, Maroc<br>Téléphone : +212 6 00 00 00 00<br>Email : contact@vitafresh.ma</p><p><strong>Directeur de la publication</strong><br>Vita Fresh SARL</p><p><strong>Hébergement</strong><br>Netlify Inc. — 2325 3rd Street, San Francisco, CA 94107, USA</p><p><strong>Propriété intellectuelle</strong><br>L'ensemble du contenu de ce site (textes, images, logos) est la propriété exclusive d'Vita Fresh et est protégé par les lois marocaines sur la propriété intellectuelle.</p>",
+  confidentialite: "<h2>Politique de confidentialité</h2><p><strong>Collecte des données</strong><br>Vita Fresh collecte uniquement les données nécessaires au traitement de vos commandes : nom, téléphone, adresse de livraison et email (optionnel).</p><p><strong>Utilisation</strong><br>Vos données sont utilisées exclusivement pour : le traitement de vos commandes, la livraison, la communication commerciale avec votre accord.</p><p><strong>Conservation</strong><br>Vos données sont conservées pendant 3 ans à compter du dernier achat.</p><p><strong>Vos droits</strong><br>Conformément à la loi marocaine 09-08, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Contact : contact@vitafresh.ma</p><p><strong>Cookies</strong><br>Ce site utilise uniquement des cookies fonctionnels (préférences de langue, panier). Aucun cookie publicitaire n'est utilisé.</p>",
+  cgv: "<h2>Conditions Générales de Vente</h2><p><strong>Objet</strong><br>Les présentes CGV régissent les ventes de fruits, légumes et produits frais par Vita Fresh à ses clients.</p><p><strong>Commandes</strong><br>Toute commande passée via le site, WhatsApp ou l'application constitue un engagement d'achat. Les commandes sont confirmées par SMS ou WhatsApp.</p><p><strong>Prix</strong><br>Les prix sont indiqués en Dirham Marocain (MAD) TTC. Vita Fresh se réserve le droit de modifier ses prix à tout moment.</p><p><strong>Livraison</strong><br>Livraison standard sous 24h — Livraison express sous 2 à 4h selon la zone. Casablanca uniquement. Les frais de livraison sont indiqués lors de la commande.</p><p><strong>Paiement</strong><br>Paiement accepté : Cash à la livraison, virement bancaire.</p><p><strong>Retours</strong><br>Tout produit non conforme doit être signalé dans l'heure suivant la livraison. Vita Fresh procédera au remplacement ou au remboursement.</p><p><strong>Litige</strong><br>En cas de litige, les tribunaux de Casablanca sont seuls compétents.</p>"
 };
 function openLegal(key){ document.getElementById('legal-content').innerHTML=LEGAL_CONTENT[key]; document.getElementById('legal-modal').style.display='flex'; }
 function closeLegal(){ document.getElementById('legal-modal').style.display='none'; }
 
 // ── CHAT IA CLAUDE ENGINE ──
-// فيفي ✨ — المساعدة الذكية ديال Empire Fresh — كتفهم الدارجة، الفرنسية، والإنجليزية
+// فيفي ✨ — المساعدة الذكية ديال Vita Fresh — كتفهم الدارجة، الفرنسية، والإنجليزية
 var chatOpen=false, chatInitialized=false;
 var chatHistory=[]; // full conversation history for Claude API
 document.addEventListener("click",function(e){
@@ -3496,7 +3605,7 @@ document.addEventListener("click",function(e){
     chatOpen=false; document.getElementById("chat-panel").classList.remove("open");
   }
 });
-// ── ASSISTANT IA CLAUDE — Empire Fresh ──
+// ── ASSISTANT IA CLAUDE — Vita Fresh ──
 function chatLang(){ return(typeof currentLang!=="undefined"&&currentLang)||"fr"; }
 
 function chatAddMsg(who, text){
@@ -3551,7 +3660,7 @@ function chatDoAction(action){
     waTrack:   function(){ window.open(waBase+encodeURIComponent("Bonjour, je voudrais suivre ma commande 📦"),"_blank"); done("Redirection WhatsApp pour le suivi 📦"); },
     waSignup:  function(){ window.open(CONFIG.WHATSAPP_SIGNUP,"_blank"); done("Groupe WhatsApp Partenaires 🤝 Notre équipe vous contactera sous 24h !"); },
     waTeam:    function(){ window.open("https://chat.whatsapp.com/K9zqxKXd3qLEIMLt3Oh3lI","_blank"); done("Groupe WhatsApp de l'équipe ouvert 👥 Un conseiller va vous répondre !"); },
-    waDirect:  function(){ window.open(waBase+encodeURIComponent("Bonjour Empire Fresh, j'ai une question."),"_blank"); done("En contact avec notre équipe 💬"); },
+    waDirect:  function(){ window.open(waBase+encodeURIComponent("Bonjour Vita Fresh, j'ai une question."),"_blank"); done("En contact avec notre équipe 💬"); },
     callTeam:  function(){ window.open("tel:+"+CFG.wa); done("📞 Appel en cours — ouvrez votre téléphone"); },
     catalogue: function(){ toggleChat(); setTimeout(function(){ var el=document.getElementById("catalogue"); if(el) el.scrollIntoView({behavior:"smooth"}); },200); },
     signup:    function(){ toggleChat(); setTimeout(function(){ openLogin(); setTimeout(function(){switchLoginTab("signup");},200); },300); }
@@ -3565,9 +3674,9 @@ function buildSystemPrompt(){
   var prodList=prods.slice(0,30).map(function(p){
     return p.n+(p.p?" — "+p.p+" MAD/"+p.u:"")+(p.dispo===false?" (rupture)":"")+(p.o?" ("+p.o+")":"");
   }).join(", ");
-  return "Tu es Fifi ✨, l'assistante IA intelligente de Empire Fresh, une entreprise de distribution de fruits et légumes frais à Casablanca, Maroc.\n\n"
+  return "Tu es Nour ✨, l'assistante IA intelligente de Vita Fresh, une entreprise de distribution de fruits et légumes frais à Casablanca, Maroc.\n\n"
     +"ENTREPRISE :\n"
-    +"- Nom: Empire Fresh | Email: "+CONFIG.COMPANY_EMAIL+"\n"
+    +"- Nom: Vita Fresh | Email: "+CONFIG.COMPANY_EMAIL+"\n"
     +"- Adresse: "+CONFIG.COMPANY_ADDRESS+"\n"
     +"- WhatsApp: +"+CONFIG.WHATSAPP+" | Horaires: "+CONFIG.HOURS+"\n"
     +"- Clients: CHR (restaurants/hôtels), marchands, particuliers\n\n"
@@ -3588,7 +3697,7 @@ function buildSystemPrompt(){
     +"- Utilise des emojis appropriés\n"
     +"- Pour les commandes, oriente vers WhatsApp ou le panier en ligne\n"
     +"- Ne promets pas de prix que tu ne connais pas avec certitude\n"
-    +"- Si question hors sujet, recentre poliment sur Empire Fresh";
+    +"- Si question hors sujet, recentre poliment sur Vita Fresh";
 }
 
 async function chatAskAI(userText){
@@ -3652,7 +3761,7 @@ function toggleChat(){
       chatHistory=[];
       // Welcome message
       var l=chatLang();
-      var welcome={fr:"Bonjour 👋 Je suis **Fifi ✨**, votre assistante IA Empire Fresh.\nComment puis-je vous aider ? Produits, livraison, commandes, tarifs pro — je suis là !",ar:"السلام عليكم 👋 أنا **فيفي ✨**، المساعدة الذكية ديال Empire Fresh.\nكيفاش نقدر نعاونك؟ المنتجات، التوصيل، الطلبيات — أنا هنا!",en:"Hello 👋 I'm **Fifi ✨**, your AI assistant at Empire Fresh.\nHow can I help? Products, delivery, orders, pro pricing — I'm here!"};
+      var welcome={fr:"Bonjour 👋 Je suis **Nour ✨**, votre assistante IA Vita Fresh.\nComment puis-je vous aider ? Produits, livraison, commandes, tarifs pro — je suis là !",ar:"السلام عليكم 👋 أنا **فيفي ✨**، المساعدة الذكية ديال Vita Fresh.\nكيفاش نقدر نعاونك؟ المنتجات، التوصيل، الطلبيات — أنا هنا!",en:"Hello 👋 I'm **Nour ✨**, your AI assistant at Vita Fresh.\nHow can I help? Products, delivery, orders, pro pricing — I'm here!"};
       chatAddMsg("bot", welcome[l]||welcome.fr);
       chatShowQuickReplies([
         {label:"🛒 Commander",action:"catalogue"},
