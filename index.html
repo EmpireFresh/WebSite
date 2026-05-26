@@ -703,9 +703,24 @@ html[dir="rtl"] .modal-close{right:auto;left:14px}
 /* Stars rating shimmer */
 .stars { background:linear-gradient(90deg,#f59e0b,#fbbf24,#f59e0b); -webkit-background-clip:text; background-clip:text; color:transparent; background-size:200% 100%; animation:starsShimmer 3s ease infinite; }
 @keyframes starsShimmer{0%,100%{background-position:0%}50%{background-position:100%}}
+
+/* Admin user management */
+.ua-list{display:grid;gap:10px;margin-bottom:14px}
+.ua-card{background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ua-card-info{flex:1;min-width:0}
+.ua-card-name{font-size:14px;font-weight:700;color:#111}
+.ua-card-meta{font-size:12px;color:#6b7280;margin-top:2px}
+.ua-card-actions{display:flex;gap:6px;flex-shrink:0}
+.ua-btn-sm{padding:5px 10px;border-radius:7px;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.ua-btn-edit{background:#dbeafe;color:#1d4ed8}
+.ua-btn-del{background:#fee2e2;color:#dc2626}
+.ua-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 </style>
 </head>
 <body>
+
+<!-- Site Vita Fresh — accès public. FreshLink ERP (f-l.vercel.app) est restreint. -->
+
 <script>
 // ── NAVBAR SCROLL CLASS ──
 window.addEventListener('scroll',function(){
@@ -1163,6 +1178,8 @@ function setLang(lang){
     <button class="cfg-tab"    onclick="cfgTab(this,'s-livraison')">🚚 Livraison</button>
     <button class="cfg-tab"    onclick="cfgTab(this,'s-supabase')">🔗 Connexion ERP</button>
     <button class="cfg-tab"    onclick="cfgTab(this,'s-galerie')">🖼️ Galerie</button>
+    <button class="cfg-tab"    onclick="cfgTab(this,'s-users');loadAdminUsers()">👥 Comptes</button>
+    <button class="cfg-tab"    onclick="cfgTab(this,'s-access');loadAccessRequests()">🔐 Accès</button>
     <button class="cfg-tab"    onclick="cfgTab(this,'s-guide')">📖 Guide</button>
   </div>
   <div class="cfg-body">
@@ -1176,8 +1193,8 @@ function setLang(lang){
       <div class="cfg-f"><label>Bénéficiaire</label><input id="c-rib-benef" type="text" placeholder="Vita Fresh SARL"></div>
       <div class="cfg-f"><label>Banque</label><input id="c-rib-banque" type="text" placeholder="CIH / Attijariwafa / BMCE"></div>
       <div class="cfg-grp">🌍 Réseaux sociaux</div>
-      <div class="cfg-f"><label>Facebook</label><input id="c-fb" type="url" placeholder="https://facebook.com/empirefreshmaroc"></div>
-      <div class="cfg-f"><label>Instagram</label><input id="c-ig" type="url" placeholder="https://instagram.com/empirefreshmaroc"></div>
+      <div class="cfg-f"><label>Facebook</label><input id="c-fb" type="url" placeholder="https://facebook.com/vitafreshmaroc"></div>
+      <div class="cfg-f"><label>Instagram</label><input id="c-ig" type="url" placeholder="https://instagram.com/vitafreshmaroc"></div>
     </div>
     <div class="cfg-sec" id="s-stats">
       <div class="cfg-grp">📊 Chiffres clés — بدّل الأرقام هنا مباشرة</div>
@@ -1257,6 +1274,70 @@ function setLang(lang){
       </div>
       <div style="font-size:11px;color:var(--gy);margin-top:10px">Entrez des URLs directes d'images (.jpg/.png/.webp) ou de vidéos (.mp4). Vous pouvez utiliser des liens Supabase Storage ou tout hébergement public.</div>
     </div>
+    <!-- ── GESTION COMPTES UTILISATEURS ── -->
+    <div class="cfg-sec" id="s-users">
+      <div class="cfg-grp">👥 Comptes utilisateurs du site</div>
+      <div style="font-size:12px;color:var(--gy);margin-bottom:14px;line-height:1.7">Gérez les comptes de connexion (espace client). Modifiez les mots de passe ou créez de nouveaux comptes.</div>
+
+      <!-- Créer un nouveau compte -->
+      <div style="background:#f0fdf4;border-radius:12px;padding:16px;margin-bottom:16px;border:1px solid #bbf7d0">
+        <div style="font-weight:700;color:#166534;margin-bottom:12px;font-size:13px">➕ Créer un nouveau compte</div>
+        <div class="ua-form-grid">
+          <div class="cfg-f"><label>Nom</label><input id="ua-new-nom" type="text" placeholder="Nom complet"/></div>
+          <div class="cfg-f"><label>Téléphone</label><input id="ua-new-phone" type="tel" placeholder="0661234567"/></div>
+          <div class="cfg-f"><label>Mot de passe</label><input id="ua-new-pass" type="text" placeholder="Mot de passe" autocomplete="new-password"/></div>
+          <div class="cfg-f"><label>Rôle</label>
+            <select id="ua-new-role">
+              <option value="client">Client</option>
+              <option value="chr">CHR</option>
+              <option value="marchand">Marchand</option>
+              <option value="fournisseur">Fournisseur</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+        </div>
+        <div class="cfg-f"><label>Email (optionnel)</label><input id="ua-new-email" type="email" placeholder="client@email.com"/></div>
+        <button onclick="adminCreateUser()" style="padding:10px 20px;background:linear-gradient(135deg,#1E5631,#2D7A45);color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif">✅ Créer le compte</button>
+        <div id="ua-create-msg" style="font-size:13px;margin-top:8px"></div>
+      </div>
+
+      <!-- Liste des comptes -->
+      <div style="font-weight:700;color:#374151;margin-bottom:10px;font-size:13px">📋 Comptes existants</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <input id="ua-search" type="text" placeholder="🔍 Rechercher par nom ou téléphone..." style="flex:1;padding:9px 12px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:13px;font-family:'Inter',sans-serif" oninput="filterAdminUsers()"/>
+        <button onclick="loadAdminUsers()" style="padding:9px 14px;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:9px;font-size:12px;cursor:pointer">🔄 Actualiser</button>
+      </div>
+      <div id="ua-list" class="ua-list"><div style="color:var(--gy);font-size:13px;padding:10px">Cliquez sur l'onglet pour charger les comptes...</div></div>
+
+      <!-- Modal changement de mot de passe -->
+      <div id="ua-pwd-modal" style="display:none;background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;padding:18px;margin-top:12px">
+        <div style="font-weight:700;color:#374151;margin-bottom:12px">🔑 Changer le mot de passe</div>
+        <input type="hidden" id="ua-edit-id"/>
+        <div class="cfg-f"><label>Nouveau mot de passe</label><input id="ua-edit-pass" type="text" placeholder="Nouveau mot de passe" autocomplete="new-password"/></div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button onclick="adminSavePassword()" style="padding:9px 18px;background:var(--g1);color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif">💾 Enregistrer</button>
+          <button onclick="document.getElementById('ua-pwd-modal').style.display='none'" style="padding:9px 16px;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:9px;font-size:13px;cursor:pointer">Annuler</button>
+        </div>
+        <div id="ua-pwd-msg" style="font-size:13px;margin-top:8px"></div>
+      </div>
+    </div>
+
+    <!-- ── DEMANDES D'ACCÈS SITE ── -->
+    <div class="cfg-sec" id="s-access">
+      <div class="cfg-grp">🔐 Demandes d'accès au site</div>
+      <div style="font-size:12px;color:var(--gy);margin-bottom:14px;line-height:1.7">Gérez les demandes d'accès soumises depuis le portail sécurisé. Approuvez ou bloquez chaque appareil.</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <select id="acc-filter" style="flex:1;padding:9px 12px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:13px;font-family:'Inter',sans-serif" onchange="loadAccessRequests()">
+          <option value="en_attente">⏳ En attente</option>
+          <option value="autorise">✅ Autorisés</option>
+          <option value="bloque">🚫 Bloqués</option>
+          <option value="">Tous</option>
+        </select>
+        <button onclick="loadAccessRequests()" style="padding:9px 14px;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:9px;font-size:12px;cursor:pointer">🔄 Actualiser</button>
+      </div>
+      <div id="acc-list" style="display:grid;gap:10px"><div style="color:var(--gy);font-size:13px;padding:10px">Chargement...</div></div>
+    </div>
+
     <div class="cfg-sec" id="s-guide">
       <div class="cfg-grp">🚀 Comment publier ce site</div>
       <div style="font-size:13px;color:var(--gy);line-height:1.8;margin-bottom:14px">Ce site est un fichier HTML autonome. Déployez-le en glissant le dossier sur <a href="https://netlify.com/drop" target="_blank" style="color:var(--g1);font-weight:700">netlify.com/drop</a>.</div>
@@ -1279,17 +1360,16 @@ GET  /api/ext/commandes/:id → suivi commande</div>
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="#" class="nav-brand" style="display:flex;align-items:center;gap:10px;text-decoration:none">
-      <img src="data:image/webp;base64,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" alt="Vita Fresh" style="height:52px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(108,188,78,.25))" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-      <div style="display:none;flex-direction:column">
-        <span style="font-size:17px;font-weight:900;background:linear-gradient(90deg,#4ade80,#86efac);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.3px">VITA FRESH</span>
-        <span style="font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.8px;text-transform:uppercase">VITACORE GROUP</span>
+    <a href="#" class="nav-brand">
+      <img src="https://f-l.vercel.app/vita-fresh-logo.svg"
+           class="nav-logo" alt="Vita Fresh"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="nav-logo-fallback">🌿</div>
+      <div class="nav-brand-text">
+        <span class="nav-brand-name">VITA FRESH</span>
+        <span class="nav-brand-sub">FRUITS &amp; LÉGUMES · CASABLANCA</span>
       </div>
     </a>
-      <div style="display:flex;flex-direction:column;margin-left:2px;padding-left:10px;border-left:1px solid rgba(255,255,255,.12)">
-        <span style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:1.2px;text-transform:uppercase;line-height:1.2">Membre du</span>
-        <span style="font-size:11px;font-weight:800;color:rgba(255,255,255,.65);letter-spacing:.5px;line-height:1.2">VITACORE GROUP</span>
-      </div>
     <ul class="nav-links">
       <li><a href="#services"   data-i18n="nav_services">Services</a></li>
       <li><a href="#livraison"  data-i18n="nav_delivery">Livraison</a></li>
@@ -2077,7 +2157,12 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     <div class="footer-cols">
       <div>
         <div class="footer-brand">
-<img src="data:image/webp;base64,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" alt="Vita Fresh" style="height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9" onerror="this.style.display='none'">
+          <svg class="footer-logo" width="48" height="48" viewBox="0 0 130 130" aria-label="Vita Fresh">
+  <path d="M65 32C41 32,22 52,22 78C22 104,41 120,65 120C89 120,108 104,108 78C108 52,89 32,65 32Z" fill="#6CBC4E"/>
+  <path d="M41 58L65 100L89 58" stroke="white" stroke-width="12" fill="none" stroke-linejoin="miter"/>
+  <rect x="62" y="22" width="6" height="14" fill="#2D7A45"/>
+  <path d="M68 26C80 12,100 10,110 17C103 34,84 38,68 26Z" fill="#2D7A45"/>
+</svg>
         </div>
         <!-- وصف الشركة — ثلاث لغات -->
         <p class="footer-desc" data-i18n="ft_desc">Distribution alimentaire professionnelle à Casablanca. Fruits, légumes et produits frais.</p>
@@ -2123,12 +2208,6 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     </div>
     <hr class="footer-divider"/>
     <div class="footer-bottom">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-        <span style="font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.5px">Une marque du groupe</span>
-        <span style="font-size:12px;font-weight:800;color:rgba(78,222,128,.5);letter-spacing:1px">VITACORE GROUP</span>
-        <span style="font-size:11px;color:rgba(255,255,255,.2)">·</span>
-        <span style="font-size:11px;color:rgba(255,255,255,.3)">Vita Tech · Vita Trade · Vita Logi</span>
-      </div>
       <span data-i18n="ft_copy" onclick="footerSecretClick()" style="cursor:default;user-select:none">© 2026 Vita Fresh · VITACORE GROUP. Tous droits réservés.</span>
       <span data-i18n="ft_made">Synchronisé FreshLink ERP ⚡</span>
     </div>
@@ -2232,7 +2311,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     <div class="chat-avatar" style="font-size:22px">🤖</div>
     <div class="chat-header-info">
       <div class="chat-header-name">Nour ✨ — Assistant IA Vita Fresh</div>
-      <div class="chat-header-status" id="chat-status-txt">● IA Claude · VITACORE GROUP · 24h/24</div>
+      <div class="chat-header-status" id="chat-status-txt">● IA Claude · متاح · Powered by AI 24h/24</div>
     </div>
     <button class="chat-close-btn" onclick="toggleChat()">✕</button>
   </div>
@@ -2327,12 +2406,9 @@ GET  /api/ext/commandes/:id → suivi commande</div>
 <div class="modal-overlay" id="loginModal" onclick="closeLoginOutside(event)">
   <div class="modal-box">
     <button class="modal-close" onclick="closeLogin()">✕</button>
-    <svg width="64" height="64" viewBox="0 0 130 130" class="modal-logo" aria-label="Vita Fresh logo" style="display:block;margin:0 auto 12px">
-  <path d="M65 32C41 32,22 52,22 78C22 104,41 120,65 120C89 120,108 104,108 78C108 52,89 32,65 32Z" fill="#6CBC4E"/>
-  <path d="M41 58L65 100L89 58" stroke="white" stroke-width="12" fill="none" stroke-linejoin="miter"/>
-  <rect x="62" y="22" width="6" height="14" fill="#2D7A45"/>
-  <path d="M68 26C80 12,100 10,110 17C103 34,84 38,68 26Z" fill="#2D7A45"/>
-</svg>
+    <img src="https://f-l.vercel.app/vita-fresh-logo.svg" class="modal-logo"
+         alt="Vita Fresh" style="display:block;margin:0 auto 12px;height:56px;width:auto;object-fit:contain"
+         onerror="this.outerHTML='<div style=&quot;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#1E5631,#2D7A45);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px&quot;>🌿</div>'"/>
     <!-- Tabs: Connexion / Créer un compte -->
     <div style="display:flex;border-bottom:2px solid #eee;margin-bottom:18px">
       <button id="tabLogin" onclick="switchLoginTab('login')" style="flex:1;padding:10px;border:none;background:none;font-weight:700;font-size:15px;color:var(--g1);border-bottom:3px solid var(--g1);cursor:pointer">Se connecter</button>
@@ -2452,6 +2528,198 @@ function initSupabase(){
   }catch(e){ console.error("[Supabase] init:",e); return null; }
 }
 
+// ══════════════════════════════════════════════════════════════════
+// ADMIN USER MANAGEMENT — Gestion comptes + Mots de passe
+// ══════════════════════════════════════════════════════════════════
+var adminUsersCache = [];
+
+function loadAdminUsers(){
+  var listEl = document.getElementById("ua-list");
+  if(!listEl) return;
+  if(!sb) sb = initSupabase();
+  if(!sb){ listEl.innerHTML = '<div style="color:#dc2626;font-size:13px">Supabase non connecté.</div>'; return; }
+  listEl.innerHTML = '<div style="color:var(--gy);font-size:13px;padding:8px">⏳ Chargement...</div>';
+  sb.from("fl_users").select("id,name,email,telephone,phone,role,actif,password").order("name")
+    .then(function(r){
+      if(r.error){ listEl.innerHTML = '<div style="color:#dc2626;font-size:13px">Erreur : '+r.error.message+'</div>'; return; }
+      adminUsersCache = r.data || [];
+      renderAdminUsers(adminUsersCache);
+    }).catch(function(err){ listEl.innerHTML = '<div style="color:#dc2626;font-size:13px">'+err+'</div>'; });
+}
+
+function filterAdminUsers(){
+  var q = (document.getElementById("ua-search").value||"").toLowerCase();
+  if(!q){ renderAdminUsers(adminUsersCache); return; }
+  renderAdminUsers(adminUsersCache.filter(function(u){
+    return (u.name||"").toLowerCase().includes(q) || (u.telephone||u.phone||"").includes(q);
+  }));
+}
+
+function renderAdminUsers(users){
+  var listEl = document.getElementById("ua-list");
+  if(!listEl) return;
+  if(!users.length){ listEl.innerHTML = '<div style="color:var(--gy);font-size:13px;padding:8px">Aucun compte trouvé.</div>'; return; }
+  listEl.innerHTML = users.map(function(u){
+    var roleColor = u.role==="admin"||u.role==="superadmin" ? "#7c3aed" : u.role==="fournisseur" ? "#b45309" : "#1d4ed8";
+    return '<div class="ua-card">'
+      +'<div class="ua-card-info">'
+        +'<div class="ua-card-name">'+(u.name||"—")+'</div>'
+        +'<div class="ua-card-meta">'+(u.telephone||u.phone||"—")+' · <span style="color:'+roleColor+';font-weight:700">'+(u.role||"client")+'</span>'+(u.actif===false?' · <span style="color:#dc2626">Inactif</span>':'')+'</div>'
+      +'</div>'
+      +'<div class="ua-card-actions">'
+        +'<button class="ua-btn-sm ua-btn-edit" onclick="adminEditPassword(\''+u.id+'\')">🔑 MDP</button>'
+        +'<button class="ua-btn-sm ua-btn-del" onclick="adminToggleActive(\''+u.id+'\','+(u.actif===false?'true':'false')+')">'+( u.actif===false?'✅':'🚫')+'</button>'
+      +'</div>'
+    +'</div>';
+  }).join("");
+}
+
+function adminEditPassword(userId){
+  document.getElementById("ua-edit-id").value = userId;
+  document.getElementById("ua-edit-pass").value = "";
+  document.getElementById("ua-pwd-msg").textContent = "";
+  document.getElementById("ua-pwd-modal").style.display = "block";
+  setTimeout(function(){ document.getElementById("ua-edit-pass").focus(); }, 100);
+}
+
+function adminSavePassword(){
+  var userId = document.getElementById("ua-edit-id").value;
+  var newPass = (document.getElementById("ua-edit-pass").value||"").trim();
+  var msgEl   = document.getElementById("ua-pwd-msg");
+  if(!newPass){ msgEl.textContent = "❌ Mot de passe vide."; msgEl.style.color = "#dc2626"; return; }
+  if(!sb) sb = initSupabase();
+  if(!sb){ msgEl.textContent = "❌ Supabase non connecté."; msgEl.style.color = "#dc2626"; return; }
+  msgEl.textContent = "⏳ Enregistrement..."; msgEl.style.color = "#6b7280";
+  // Update payload JSONB password field
+  sb.rpc("update_user_password", { p_user_id: userId, p_password: newPass })
+    .then(function(r){
+      if(r.error){
+        // Fallback: direct JSONB update
+        return sb.from("fl_users").select("payload").eq("id", userId).single().then(function(sel){
+          if(sel.error || !sel.data) throw new Error(sel.error?.message||"User not found");
+          var payload = Object.assign({}, sel.data.payload, { password: newPass });
+          return sb.from("fl_users").update({ payload: payload, updated_at: new Date().toISOString() }).eq("id", userId);
+        });
+      }
+      return r;
+    })
+    .then(function(res){
+      if(res && res.error) throw new Error(res.error.message);
+      msgEl.textContent = "✅ Mot de passe mis à jour !"; msgEl.style.color = "#166534";
+      setTimeout(function(){ document.getElementById("ua-pwd-modal").style.display = "none"; loadAdminUsers(); }, 1500);
+    })
+    .catch(function(err){ msgEl.textContent = "❌ Erreur : " + err.message; msgEl.style.color = "#dc2626"; });
+}
+
+function adminToggleActive(userId, newActive){
+  if(!sb) sb = initSupabase();
+  if(!sb) return;
+  sb.from("fl_users").select("payload").eq("id", userId).single()
+    .then(function(r){
+      if(r.error || !r.data) return;
+      var payload = Object.assign({}, r.data.payload, { actif: newActive });
+      return sb.from("fl_users").update({ payload: payload, updated_at: new Date().toISOString() }).eq("id", userId);
+    })
+    .then(function(){ loadAdminUsers(); showToast(newActive ? "✅ Compte activé" : "🚫 Compte désactivé"); })
+    .catch(function(err){ showToast("❌ Erreur : "+err.message); });
+}
+
+function adminCreateUser(){
+  var nom   = (document.getElementById("ua-new-nom").value||"").trim();
+  var phone = (document.getElementById("ua-new-phone").value||"").trim();
+  var pass  = (document.getElementById("ua-new-pass").value||"").trim();
+  var role  = document.getElementById("ua-new-role").value||"client";
+  var email = (document.getElementById("ua-new-email").value||"").trim();
+  var msgEl = document.getElementById("ua-create-msg");
+  if(!nom||!phone||!pass){ msgEl.textContent = "❌ Nom, téléphone et mot de passe requis."; msgEl.style.color = "#dc2626"; return; }
+  if(!sb) sb = initSupabase();
+  if(!sb){ msgEl.textContent = "❌ Supabase non connecté."; msgEl.style.color = "#dc2626"; return; }
+  msgEl.textContent = "⏳ Création en cours..."; msgEl.style.color = "#6b7280";
+  var userId = "usr_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2,7);
+  var payload = {
+    id: userId, name: nom, telephone: phone, phone: phone, role: role,
+    password: pass, email: email||null, actif: true,
+    createdAt: new Date().toISOString(), createdBy: "admin-site"
+  };
+  sb.from("fl_users").insert([{ id: userId, payload: payload, updated_at: new Date().toISOString() }])
+    .then(function(r){
+      if(r.error) throw new Error(r.error.message);
+      msgEl.textContent = "✅ Compte créé : " + nom + " (" + phone + ")"; msgEl.style.color = "#166534";
+      ["ua-new-nom","ua-new-phone","ua-new-pass","ua-new-email"].forEach(function(id){ var el=document.getElementById(id); if(el)el.value=""; });
+      loadAdminUsers();
+    })
+    .catch(function(err){ msgEl.textContent = "❌ Erreur : " + err.message; msgEl.style.color = "#dc2626"; });
+}
+
+window.loadAdminUsers    = loadAdminUsers;
+window.filterAdminUsers  = filterAdminUsers;
+window.adminEditPassword = adminEditPassword;
+window.adminSavePassword = adminSavePassword;
+window.adminToggleActive = adminToggleActive;
+window.adminCreateUser   = adminCreateUser;
+
+// ══════════════════════════════════════════════════════════════════
+// GESTION DEMANDES D'ACCÈS — panneau admin
+// ══════════════════════════════════════════════════════════════════
+function loadAccessRequests(){
+  var listEl = document.getElementById("acc-list");
+  if(!listEl) return;
+  var statut = (document.getElementById("acc-filter")||{}).value||"en_attente";
+  if(!sb) sb = initSupabase();
+  if(!sb){ listEl.innerHTML = '<div style="color:#dc2626;font-size:13px">Supabase non connecté.</div>'; return; }
+  listEl.innerHTML = '<div style="color:var(--gy);font-size:13px;padding:8px">⏳ Chargement...</div>';
+  var q = sb.from("fl_site_access").select("*").order("first_visit_at", {ascending:false}).limit(50);
+  if(statut) q = q.eq("statut", statut);
+  q.then(function(r){
+    if(r.error){ listEl.innerHTML = '<div style="color:#dc2626;font-size:13px">'+r.error.message+'</div>'; return; }
+    var rows = r.data||[];
+    if(!rows.length){ listEl.innerHTML = '<div style="color:var(--gy);font-size:13px;padding:8px">Aucune demande.</div>'; return; }
+    listEl.innerHTML = rows.map(function(row){
+      var stColor = row.statut==="autorise"?"#166534":row.statut==="bloque"?"#dc2626":"#b45309";
+      var stBg    = row.statut==="autorise"?"#f0fdf4":row.statut==="bloque"?"#fef2f2":"#fffbe6";
+      var dt = row.first_visit_at ? new Date(row.first_visit_at).toLocaleString("fr-FR") : "?";
+      var gpsLink = (row.gps_lat&&row.gps_lng) ? '<a href="https://maps.google.com/?q='+row.gps_lat+','+row.gps_lng+'" target="_blank" style="color:#1d4ed8;font-size:11px">📍 Voir sur Maps</a>' : '<span style="color:#9ca3af;font-size:11px">GPS non disponible</span>';
+      return '<div style="background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:14px">'
+        +'<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">'
+          +'<div>'
+            +'<div style="font-weight:700;font-size:14px;color:#111">'+(row.nom||"—")+'</div>'
+            +'<div style="font-size:12px;color:#6b7280;margin-top:2px">'+(row.telephone||"—")+' · '+dt+'</div>'
+            +'<div style="margin-top:4px">'+gpsLink+'</div>'
+            +'<div style="font-size:11px;color:#9ca3af;margin-top:2px;word-break:break-all">ID : '+(row.device_id||"—")+'</div>'
+          +'</div>'
+          +'<span style="padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;background:'+stBg+';color:'+stColor+'">'+row.statut+'</span>'
+        +'</div>'
+        +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">'
+          +(row.statut!=="autorise" ? '<button onclick="accessAction(\''+row.device_id+'\',\'autorise\')" style="padding:7px 14px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">✅ Autoriser</button>' : '')
+          +(row.statut!=="bloque"   ? '<button onclick="accessAction(\''+row.device_id+'\',\'bloque\')"   style="padding:7px 14px;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer">🚫 Bloquer</button>' : '')
+          +(row.statut!=="en_attente" ? '<button onclick="accessAction(\''+row.device_id+'\',\'en_attente\')" style="padding:7px 14px;background:#f9fafb;color:#374151;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;cursor:pointer">↩️ Remettre en attente</button>' : '')
+          +'<button onclick="accessAction(\''+row.device_id+'\',\'DELETE\')" style="padding:7px 14px;background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb;border-radius:8px;font-size:12px;cursor:pointer">🗑️ Supprimer</button>'
+        +'</div>'
+      +'</div>';
+    }).join("");
+  }).catch(function(err){ listEl.innerHTML = '<div style="color:#dc2626;font-size:13px">'+err+'</div>'; });
+}
+
+function accessAction(deviceId, action){
+  if(!sb) sb = initSupabase();
+  if(!sb) return;
+  if(action === "DELETE"){
+    sb.from("fl_site_access").delete().eq("device_id", deviceId)
+      .then(function(){ showToast("🗑️ Supprimé"); loadAccessRequests(); });
+    return;
+  }
+  sb.from("fl_site_access").update({ statut: action, updated_at: new Date().toISOString(),
+    autorise_par: "admin-site", autorise_at: action==="autorise"?new Date().toISOString():null
+  }).eq("device_id", deviceId)
+    .then(function(r){
+      if(r.error) showToast("❌ "+r.error.message);
+      else { showToast(action==="autorise"?"✅ Accès autorisé !":action==="bloque"?"🚫 Accès bloqué":"↩️ Remis en attente"); loadAccessRequests(); }
+    });
+}
+
+window.loadAccessRequests = loadAccessRequests;
+window.accessAction       = accessAction;
+
 // ── EMOJI MAP ──
 var EMOJI_MAP={tomate:"🍅",avocat:"🥑",orange:"🍊",carotte:"🥕",citron:"🍋",brocoli:"🥦",oignon:"🧅",raisin:"🍇",laitue:"🥬",salade:"🥬",aubergine:"🍆",mais:"🌽",fraise:"🍓",concombre:"🥒",banane:"🍌",poivron:"🫑",pomme:"🍎",pasteque:"🍉",courgette:"🥬",ail:"🧄",mangue:"🥭",peche:"🍑",poire:"🍐",prune:"🍑",melon:"🍈",kiwi:"🥝",ananas:"🍍",cerise:"🍒",abricot:"🍑",figues:"🍇",grenade:"🧃",epinard:"🌿",chou:"🥬",haricot:"🟢",pois:"🫘",celeri:"🌿",persil:"🌿",coriandre:"🌿",menthe:"🌿",gingembre:"🫚",patate:"🥔",betterave:"🟣"};
 function getEmoji(nom,f){
@@ -2473,28 +2741,57 @@ var TC={frais:"tf",epluche:"te",lave:"tl",combo:"tc",promo:"tp"};
 var cart={}, delMode="std", currentFilter="tous";
 var sbSynced=false;
 
-// DEFAULT PRODUCTS (fallback)
+// DEFAULT PRODUCTS (fallback — shown when ERP/Supabase unreachable)
 var DEFAULT_PRODS=[
-  {id:"t1",em:"🍅",n:"Tomates",o:"Souss",p:8,u:"kg",cat:"legumes",tags:["frais","epluche"],t:"frais",dispo:true},
-  {id:"t2",em:"🥑",n:"Avocats",o:"Marrakech",p:35,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true},
-  {id:"t3",em:"🍊",n:"Oranges",o:"Maroc",p:6,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true},
-  {id:"t4",em:"🥕",n:"Carottes",o:"Gharb",p:5,u:"kg",cat:"legumes",tags:["frais","lave"],t:"lave",dispo:true},
-  {id:"t5",em:"🥦",n:"Brocolis",o:"Meknès",p:18,u:"kg",cat:"prepare",tags:["frais","combo"],t:"combo",dispo:true},
-  {id:"t6",em:"🧅",n:"Oignons",o:"Settat",p:7,u:"kg",cat:"legumes",tags:["frais","epluche"],t:"epluche",dispo:true},
-  {id:"t7",em:"🍇",n:"Raisins",o:"Meknès",p:28,u:"kg",cat:"fruits",tags:["frais","promo"],t:"promo",dispo:true},
-  {id:"t8",em:"🧄",n:"Ail épluché",o:"Meknès",p:40,u:"kg",cat:"prepare",tags:["epluche"],t:"epluche",dispo:true}
+  {id:"t1",em:"🍅",n:"Tomates Beldi",no:"طماطم بلدي",o:"Souss, Maroc",p:8,u:"kg",cat:"legumes",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1546470427-e26264be0b0d?w=400&q=80"},
+  {id:"t2",em:"🥑",n:"Avocats Hass",no:"أفوكادو هاس",o:"Marrakech",p:35,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=400&q=80"},
+  {id:"t3",em:"🍊",n:"Oranges Navel",no:"برتقال نيفال",o:"Béni Mellal",p:6,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?w=400&q=80"},
+  {id:"t4",em:"🥕",n:"Carottes",no:"جزر",o:"Gharb",p:5,u:"kg",cat:"legumes",tags:["frais","lave"],t:"lave",dispo:true,img:"https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80"},
+  {id:"t5",em:"🥦",n:"Brocolis",no:"بروكلي",o:"Meknès",p:18,u:"kg",cat:"legumes",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=400&q=80"},
+  {id:"t6",em:"🧅",n:"Oignons",no:"بصل",o:"Settat",p:7,u:"kg",cat:"legumes",tags:["frais","epluche"],t:"epluche",dispo:true,img:"https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=400&q=80"},
+  {id:"t7",em:"🍇",n:"Raisins Meknès",no:"عنب مكناس",o:"Meknès",p:28,u:"kg",cat:"fruits",tags:["frais","promo"],t:"promo",dispo:true,img:"https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&q=80"},
+  {id:"t8",em:"🧄",n:"Ail épluché",no:"ثوم مقشّر",o:"Meknès",p:40,u:"kg",cat:"legumes",tags:["epluche"],t:"epluche",dispo:true,img:"https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&q=80"},
+  {id:"t9",em:"🍋",n:"Citrons Eureka",no:"ليمون يوريكا",o:"Souss",p:7,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1590502593747-42a996133562?w=400&q=80"},
+  {id:"t10",em:"🥔",n:"Pommes de Terre",no:"بطاطا",o:"Azilal",p:4,u:"kg",cat:"legumes",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&q=80"},
+  {id:"t11",em:"🍌",n:"Bananes",no:"موز",o:"Canaries/Maroc",p:9,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&q=80"},
+  {id:"t12",em:"🍎",n:"Pommes Gala",no:"تفاح غالا",o:"Maroc",p:13,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=400&q=80"},
+  {id:"t13",em:"🫑",n:"Poivrons",no:"فلفل رومي",o:"Agadir",p:12,u:"kg",cat:"legumes",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=400&q=80"},
+  {id:"t14",em:"🍆",n:"Aubergines",no:"دنجال",o:"Souss",p:9,u:"kg",cat:"legumes",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1605027990121-cbae9e0642df?w=400&q=80"},
+  {id:"t15",em:"🥬",n:"Salade Laitue",no:"خس",o:"Gharb",p:5,u:"pièce",cat:"legumes",tags:["frais","lave"],t:"lave",dispo:true,img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80"},
+  {id:"t16",em:"🌿",n:"Coriandre",no:"قصبر",o:"Maroc",p:3,u:"botte",cat:"legumes",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&q=80"},
+  {id:"t17",em:"🌿",n:"Persil",no:"معدنوس",o:"Maroc",p:3,u:"botte",cat:"legumes",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=400&q=80"},
+  {id:"t18",em:"🌿",n:"Menthe fraîche",no:"نعناع",o:"Maroc",p:2.5,u:"botte",cat:"legumes",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?w=400&q=80"},
+  {id:"t19",em:"🥒",n:"Concombres",no:"خيار",o:"Souss",p:6,u:"kg",cat:"legumes",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=400&q=80"},
+  {id:"t20",em:"🥭",n:"Mangues Keitt",no:"مانجو كيط",o:"Maroc",p:32,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1605027990121-cbae9e0642df?w=400&q=80"},
+  {id:"t21",em:"🍓",n:"Fraises Kenitra",no:"فراولة القنيطرة",o:"Gharb",p:22,u:"kg",cat:"fruits",tags:["frais","promo"],t:"promo",dispo:true,img:"https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&q=80"},
+  {id:"t22",em:"🥝",n:"Kiwi",no:"كيوي",o:"Importé",p:38,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1585952171753-a70e0ef6e6e7?w=400&q=80"},
+  {id:"t23",em:"🍑",n:"Pêches",no:"خوخ",o:"Meknès",p:18,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1563246048-5e32e6519ffc?w=400&q=80"},
+  {id:"t24",em:"🥬",n:"Épinards",no:"سبانخ",o:"Gharb",p:8,u:"kg",cat:"legumes",tags:["frais","lave"],t:"lave",dispo:true,img:"https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&q=80"},
+  {id:"t25",em:"🍋",n:"Citrons Verts",no:"ليمون أخضر",o:"Souss",p:8,u:"kg",cat:"fruits",tags:["frais"],t:"frais",dispo:true,img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&q=80"}
 ];
 var PRODS=DEFAULT_PRODS.slice();
 
 // ── SUPABASE SYNC ──
-// Map ERP REST API article format to internal PROD object
+// Map ERP REST API / v_marketplace_catalogue view row to internal PROD object
+// Handles both snake_case (view) and camelCase (legacy) column names
 function mapERPArticle(row){
   var cat=mapFamille(row.famille), tags=Array.isArray(row.tags)?row.tags:[], firstTag=tags[0]||"frais";
-  var promoObj=row.promo&&typeof row.promo==="object"?row.promo:null;
-  var prixBase=parseFloat(row.prix||row.prixVente||0);
+  // Price: support both snake_case (view) and camelCase (legacy)
+  var prixBase=parseFloat(row.prix_public||row.marketplace_prix_public||row.prix||row.prixVente||0);
+  // Promo: support both {promo_prix, etiquette} (view) and {promo: Object} (legacy)
+  var promoObj=null;
+  if(row.promo&&typeof row.promo==="object") promoObj=row.promo;
+  else if(row.promo_prix&&parseFloat(row.promo_prix)>0) promoObj={prixPromo:parseFloat(row.promo_prix),label:row.etiquette||"Promo"};
   var prix=promoObj&&promoObj.prixPromo?parseFloat(promoObj.prixPromo):prixBase;
   var promoLabel=promoObj?(promoObj.label||(promoObj.taux?"-"+promoObj.taux+"%":"Promo")):"";
-  return{id:row.id,em:getEmoji(row.nom,cat),n:row.nom||"",no:row.nomAr||"",o:row.description||row.famille||"Maroc",p:prix,prixBase:prixBase,u:row.unite||"kg",cat:cat,tags:tags,t:firstTag,dispo:row.statut!=="rupture"&&(row.stockDisponible||0)>0,stock:row.stockDisponible||0,img:row.photo||"",promo:!!promoObj,promoLabel:promoLabel,fromERP:true};
+  // nom_ar: support both snake_case (view) and camelCase (legacy)
+  var nomAr=row.nom_ar||row.nomAr||"";
+  // description: view uses 'description', legacy may differ
+  var origin=row.description||row.marketplaceDescription||row.famille||"Maroc";
+  // dispo: always show available (stock tracking optional)
+  var dispo=row.statut!=="rupture"&&row.statut!=="out_of_stock"&&row.statut!=="indisponible";
+  var stock=row.stock_disponible||row.stockDisponible||99;
+  return{id:row.id,em:getEmoji(row.nom,cat),n:row.nom||"",no:nomAr,o:origin,p:prix,prixBase:prixBase,u:row.unite||"kg",cat:cat,tags:tags,t:firstTag,dispo:dispo,stock:stock,img:row.photo||"",promo:!!promoObj,promoLabel:promoLabel,fromERP:true};
 }
 // Map Supabase fl_articles row (payload JSONB) to internal PROD object
 function mapSBArticle(row){
@@ -3529,13 +3826,14 @@ function initReveal(){
 
 // ── INIT ──
 document.addEventListener("DOMContentLoaded",function(){
+  sb=initSupabase();
   updateContactLinks(); renderStats(); renderZones();
   setLang(currentLang);
   showSkeletons(8);
   loadGalleryState(); renderGallery();
   renderStorageTabs(); renderStorageCard();
   currentRecipeIdx=new Date().getDay(); renderRecipe(); renderRecipeNav();
-  sb=initSupabase(); syncFromSupabase(); loadCompanyContacts();
+  syncFromSupabase(); loadCompanyContacts();
   // Auto-refresh catalogue every 5 minutes
   setInterval(function(){ syncFromSupabase(); }, 5*60*1000);
   renderProds(); updateCatCounts(); initReveal(); loadAvis();
