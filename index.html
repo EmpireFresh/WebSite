@@ -629,11 +629,13 @@ const CONFIG = {
   APP_URL:         "https://empire-fresh.netlify.app/",
   API_URL:         "https://f-l.vercel.app",
   LOGO_URL:        "./logo.png",
+  // ── الإحصائيات — قابلة للتعديل من لوحة الإدارة ──
+  // كل عنصر: num = الرقم، fr/ar/en = الترجمة
   STATS: [
-    { num:"500+", fr:"Clients actifs",     ar:"عميل نشيط",      en:"Active clients" },
+    { num:"500+", fr:"Clients actifs",     ar:"زبون نشيط",      en:"Active clients" },
     { num:"98%",  fr:"Satisfaction",        ar:"نسبة الرضا",     en:"Satisfaction" },
-    { num:"24h",  fr:"Livraison standard", ar:"توصيل عادي",     en:"Standard delivery" },
-    { num:"6",    fr:"Zones couvertes",    ar:"مناطق مغطاة",    en:"Zones covered" },
+    { num:"24h",  fr:"Livraison standard",  ar:"توصيل عادي",     en:"Standard delivery" },
+    { num:"6",    fr:"Zones couvertes",     ar:"مناطق مغطاة",    en:"Zones covered" },
   ],
   ZONES: [
     { icon:"🏙️", express:false,
@@ -768,80 +770,139 @@ const TEXTS = {
     ha_client:"Client",
     ft_links:"Liens rapides", ft_contact:"Contact", ft_legal:"Légal",
     ft_copy:"© 2026 Empire Fresh. Tous droits réservés.", ft_made:"Synchronisé FreshLink ERP ⚡",
-  },
+    ft_desc:"Distribution alimentaire professionnelle à Casablanca. Fruits, légumes et produits frais.",
+    ft_legal_1:"Mentions légales", ft_legal_2:"Confidentialité", ft_legal_3:"CGV",
+    ft_wa_title:"WhatsApp", ft_links_title:"Liens rapides",
+    strip_1:"Standard & express", strip_2:"Épluchés & lavés", strip_3:"Prêts à cuisiner",
+    strip_4:"Pro & Marchands", strip_5:"Sync temps réel FreshLink", strip_6:"Fraîcheur garantie", strip_7:"Casablanca, Maroc",
+    cat_all:"Tous", cat_fresh:"🌿 Frais", cat_peeled:"🔪 Épluché", cat_washed:"💧 Lavé", cat_promo:"🔥 Promo",
+    avis_tab_all:"Tous", avis_tab_client:"Clients", avis_tab_fourn:"Fournisseurs",
+    search_ph:"Rechercher un produit...",
+    sort_def:"Tri par défaut", sort_asc:"Prix ↑ croissant", sort_desc:"Prix ↓ décroissant", sort_az:"Nom A→Z", sort_dispo:"Disponibilité",
+    prep_banner:"🔪💧 <strong>Produits lavés et/ou épluchés disponibles sur demande</strong> — sélectionnez la préparation dans votre commande. <em>Confirmation sous 1h par l'équipe Empire Fresh.</em>",
+    ord_tag:"Passez votre commande", ord_title:"Commander en ligne", ord_sub:"Standard ou express, avec ou sans préparation. Enregistré dans FreshLink ERP.",
+    ord_info_title:"📋 Vos informations",
+    ord_tab_part:"🏠 Particulier", ord_tab_pro:"🏢 Professionnel", ord_tab_resto:"🍽️ Restaurant",
+    lbl_nom_ord:"Prénom & Nom", lbl_tel_ord:"Téléphone WhatsApp", lbl_email_ord:"Email (optionnel)",
+    lbl_addr:"Adresse complète — Casablanca", lbl_zone:"Quartier / Zone",
+    lbl_zone_ph:"— Sélectionnez votre quartier —",
+    ord_delivery_title:"🚚 Mode de livraison",
+    del_std_title:"Standard", del_std_sub:"Livraison sous 24h", del_std_note:"Gratuit dès 150 MAD",
+    del_exp_title:"Express", del_exp_sub:"Livraison en 2h", del_exp_note:"+20 MAD",
+    ord_prep_title:"🔪 Préparation souhaitée",
+    ord_notes:"Notes / Instructions",
+    ord_pay_title:"Mode de paiement",
+    ord_pay_cash:"💵 Cash à la livraison", ord_pay_vir:"🏦 Virement bancaire", ord_pay_card:"💳 Paiement en ligne (bientôt)",
+    ord_submit:"✅ Envoyer ma commande",
+    ord_cart_title:"🛒 Votre panier",
+    ord_cart_empty:"Votre panier est vide — ajoutez des produits depuis le catalogue",
+    empty_cat:"Aucun produit trouvé", empty_cat_sub:"Essayez une autre catégorie.",
+    avis_form_title:"Partagez votre avis", avis_form_sub:"Votre retour nous aide à améliorer notre service",
+    avis_form_nom:"Votre nom *", avis_form_type:"Type *", avis_form_act:"Activité / Secteur",
+    avis_form_note:"Note *", avis_form_msg:"Votre avis *", avis_form_btn:"Soumettre mon avis",
   ar: {
-    nav_services:"خدماتنا", nav_delivery:"التوصيل", nav_catalogue:"الكتالوج",
-    nav_pro:"الفضاء المهني", nav_contact:"اتصل بنا", nav_app:"📱 التطبيق",
+    nav_services:"الخدمات", nav_delivery:"التوصيل", nav_catalogue:"الكتالوج",
+    nav_pro:"فضاء المهنيين", nav_contact:"تواصل معانا", nav_app:"📱 التطبيق",
     btn_login:"حسابي",
-    hero_badge:"خدمة مفتوحة — قبّل طلبياتك",
-    hero_h1:"توزيع <em>الفواكه والخضر الطازجة</em> بالمغرب",
-    hero_sub:"أثمنة مهنية للمطاعم والتجار والأفراد. التوصيل بالدار البيضاء في 24 ساعة أو سريع 2-4 ساعات.",
-    btn_catalogue:"شوف الكتالوج", btn_wa_order:"اطلب عبر واتساب", btn_app:"استخدام التطبيق",
+    hero_badge:"خدمة مفتوحة — طلبياتك واصلة",
+    hero_h1:"توزيع <em>الفواكه والخضرة الطازة</em> فالمغرب",
+    hero_sub:"أثمنة مزيانة للمطاعم والتجار والأفراد. التوصيل فالدار البيضاء في 24 ساعة أو سريع 2-4 ساعات.",
+    btn_catalogue:"شوف الكتالوج", btn_wa_order:"طلب عبر واتساب", btn_app:"دخل للتطبيق",
     card_title:"علاش Empire Fresh؟",
-    svc_tag:"خدماتنا", svc_title:"كل ما تحتاجه", svc_sub:"حلول مناسبة لكل نوع زبون",
-    svc1_title:"توصيل عادي 24 ساعة",   svc1_desc:"اطلب قبل 18h، يوصلك الصباح الجاي.",
-    svc2_title:"توصيل سريع 2-4 ساعات",svc2_desc:"المناطق الأولوية — في 2 لـ4 ساعات.",
+    svc_tag:"الخدمات ديالنا", svc_title:"كل شي كتحتاجو", svc_sub:"حلول مناسبة لكل نوع زبون",
+    svc1_title:"توصيل عادي 24 ساعة",   svc1_desc:"طلب قبل 18h، كيوصلك الصباح الجاي.",
+    svc2_title:"توصيل سريع 2-4 ساعات",svc2_desc:"المناطق الأولى — في 2 لـ4 ساعات.",
     svc3_title:"الطلبية أونلاين",       svc3_desc:"تطبيق موبايل أو واتساب، 24/24.",
     svc4_title:"أثمنة CHR والمهنيين",  svc4_desc:"أثمنة مفاوضة للمطاعم والتجار.",
     svc5_title:"الفضاء الشخصي",        svc5_desc:"الطلبيات، نقاط الولاء، التخفيضات.",
     svc6_title:"جودة مراقبة",          svc6_desc:"فريق الجودة كيختار أحسن المنتجات.",
-    del_tag:"التوصيل", del_title:"الدار البيضاء — مناطق التوصيل", del_sub:"توصيل عادي أو سريع حسب حيّك",
-    dm_std_title:"عادي 24 ساعة", dm_std_desc:"اطلب قبل 18h00 — يوصلك من 7h00 الصباح.",
-    dm_exp_title:"سريع 2-4 ساعات", dm_exp_desc:"المناطق الأولوية — في 2 لـ4 ساعات.",
-    cat_tag:"الكتالوج", cat_title:"منتجاتنا الطازجة", cat_sub:"مزامن مع FreshLink ERP · الأثمنة حسب ملفك",
+    del_tag:"التوصيل", del_title:"الدار البيضاء — مناطق التوصيل ديالنا", del_sub:"توصيل عادي أو سريع حسب حيّك",
+    dm_std_title:"عادي 24 ساعة", dm_std_desc:"طلب قبل 18h00 — كيوصلك من 7h00 الصباح.",
+    dm_exp_title:"سريع 2-4 ساعات", dm_exp_desc:"المناطق الأولى — في 2 لـ4 ساعات.",
+    cat_tag:"الكتالوج", cat_title:"المنتجات الطازة ديالنا", cat_sub:"مزامن مع FreshLink ERP · الأثمنة حسب ملفك",
     cat_info_h:"أثمنة شخصية حسب ملفك",
     cat_info_p:"CHR، التجار والأفراد — أثمنة مناسبة لكل زبون.",
-    cat_wa:"📦 اطلب عبر واتساب",
-    btn_add_cart:"أضف", btn_fav:"♡",
-    price_on_request:"السعر حسب الطلب",
-    pro_tag:"الفضاء المهني", pro_title:"الوصول المهني", pro_sub:"دير حسابك وستفيد من الأثمنة الخاصة.",
+    cat_wa:"📦 طلب عبر واتساب",
+    btn_add_cart:"زيد", btn_fav:"♡",
+    price_on_request:"الثمن حسب الطلب",
+    pro_tag:"فضاء المهنيين", pro_title:"الدخول المهني", pro_sub:"دير حسابك وستفيد من الأثمنة الخاصة ديال Empire Fresh.",
     pro_p1_title:"أثمنة مفاوضة",  pro_p1_desc:"CHR والتجار — حسب الملف والكمية.",
-    pro_p2_title:"توصيل مخصص",    pro_p2_desc:"دوارة ثابتة حسب منطقتك.",
+    pro_p2_title:"توصيل مخصص",    pro_p2_desc:"دورة ثابتة حسب منطقتك.",
     pro_p3_title:"تتبع الطلبيات", pro_p3_desc:"تطبيق موبايل + فضاء ويب.",
     pro_p4_title:"برنامج الولاء", pro_p4_desc:"نقاط، تخفيضات وعروض شخصية.",
-    form_title:"طلب الوصول المهني", form_sub:"الفريق ديالنا غيتواصل معاك في أقل من 24 ساعة.",
+    form_title:"طلب الدخول المهني", form_sub:"الفريق ديالنا غيتواصل معاك في أقل من 24 ساعة.",
     lbl_nom:"الاسم الكامل", lbl_societe:"الشركة", lbl_tel:"الهاتف (واتساب)",
     lbl_email:"الإيميل (اختياري)", lbl_type:"نوع النشاط", lbl_ville:"المدينة / المنطقة",
-    lbl_msg:"رسالة", lbl_volume:"الحجم الشهري المقدر",
-    opt_type_0:"اختار...", opt_type_1:"مطعم / فندق / مقهى (CHR)",
-    opt_type_2:"حانوت / دكان", opt_type_3:"جملية / تاجر",
+    lbl_msg:"رسالة", lbl_volume:"الكمية الشهرية المقدرة",
+    opt_type_0:"اختار...", opt_type_1:"مطعم / فندق / قهوة (CHR)",
+    opt_type_2:"حانوت / سوبيرات", opt_type_3:"جملة / تاجر",
     opt_type_4:"تقديم طعام جماعي", opt_type_5:"فرد",
     opt_vol_0:"اختار...", opt_vol_1:"أقل من 500 درهم", opt_vol_2:"500 – 2,000 درهم",
     opt_vol_3:"2,000 – 10,000 درهم", opt_vol_4:"أكثر من 10,000 درهم",
-    btn_submit:"إرسال الطلب",
+    btn_submit:"سيفط الطلب",
     form_ok:"✅ تم الإرسال! غنتواصلو معاك في 24 ساعة.",
-    form_err:"❌ مشكل. عاود أو تواصل معنا عبر واتساب.",
+    form_err:"❌ كاين مشكل. عاود أو تواصل معانا عبر واتساب.",
     login_title:"الدخول", login_sub:"دخل لحسابك الشخصي",
     lbl_phone:"رقم الهاتف", ph_phone:"06 XX XX XX XX",
     lbl_pass:"كلمة السر", ph_pass:"كلمة السر ديالك",
     btn_login_ok:"دخل",
-    login_no_acc:"ماعندكش حساب؟", login_signup:"اطلب الوصول",
-    login_err_fields:"الهاتف وكلمة السر مطلوبين.", login_err_api:"الرقم أو كلمة السر غلط.",
-    portal_welcome:"مرحبا", portal_logout:"خروج",
+    login_no_acc:"ماعندكش حساب؟", login_signup:"طلب الدخول",
+    login_err_fields:"الهاتف وكلمة السر حشمين.", login_err_api:"الرقم أو كلمة السر غلط.",
+    portal_welcome:"أهلا", portal_logout:"خروج",
     portal_pts:"نقاط الولاء", portal_remise:"التخفيض", portal_credit:"الرصيد",
-    portal_orders:"طلبياتي الأخيرة", portal_no_orders:"ماكاين طلبيات.",
-    portal_wa:"📦 اطلب دبا",
-    contact_direct:"التواصل المباشر",
+    portal_orders:"الطلبيات ديالي", portal_no_orders:"ماكاين طلبيات للحين.",
+    portal_wa:"📦 طلب دبا",
+    contact_direct:"تواصل مباشر",
     wa_grp_title:"انضم لمجتمعنا على واتساب",
-    wa_grp_sub:"ابق متواصل مع مجموعاتنا المهنية على واتساب",
-    wa_order_title:"مجموعة الطلبيات", wa_order_desc:"مرسل طلبياتك مباشرة في مجموعة واتساب ديالنا. رد مضمون في أقل من ساعة.",
-    wa_signup_title:"كن شريكا", wa_signup_desc:"انضم لشبكة شركائنا المهنيين واستفد من الأثمنة الخاصة.",
+    wa_grp_sub:"ابقى على تواصل مع المجموعات المهنية ديالنا",
+    wa_order_title:"مجموعة الطلبيات", wa_order_desc:"سيفط الطلبية ديالك مباشرة فالمجموعة. رد مضمون في أقل من ساعة.",
+    wa_signup_title:"كون شريكنا", wa_signup_desc:"انضم لشبكة المهنيين ديالنا واستفد من الأثمنة الخاصة.",
     wa_join:"انضم للمجموعة",
-    avis_title:"ما يقوله شركاؤنا", avis_sub:"آراء موثقة — عملاء وموردون",
-    stor_tag:"التخزين",
-    stor_title:"نصائح الحفظ",
-    stor_sub:"احتفظ بفواكهك وخضروارك طازجة أطول فترة ممكنة",
+    avis_title:"واش كيقولو الزبائن ديالنا", avis_sub:"آراء موثقة — زبائن ومورّدين",
+    stor_tag:"الحفظ",
+    stor_title:"نصايح الحفظ",
+    stor_sub:"احفظ الفواكه والخضرة ديالك طازة أكثر وقت ممكن",
     rec_badge:"وصفة اليوم",
     rec_title:"وصفة في اليوم",
-    rec_sub:"أفكار طازجة لطهي فواكه وخضروات Empire Fresh",
+    rec_sub:"أفكار طازة لطبخ الفواكه والخضرة ديال Empire Fresh",
     ha_grow:"الزراعة",
     ha_harvest:"الحصاد",
     ha_sort:"الفرز",
     ha_pack:"التعبئة",
     ha_deliver:"التوصيل",
-    ha_client:"العميل",
-    ft_links:"روابط سريعة", ft_contact:"التواصل", ft_legal:"قانوني",
+    ha_client:"الزبون",
+    ft_links:"لينكات سريعة", ft_contact:"تواصل", ft_legal:"قانوني",
     ft_copy:"© 2026 Empire Fresh. جميع الحقوق محفوظة.", ft_made:"مزامن مع FreshLink ERP ⚡",
+    ft_desc:"توزيع غذائي مهني فالدار البيضاء. فواكه، خضرة ومنتجات طازة.",
+    ft_legal_1:"المعلومات القانونية", ft_legal_2:"الخصوصية", ft_legal_3:"الشروط العامة",
+    ft_wa_title:"واتساب", ft_links_title:"لينكات سريعة",
+    strip_1:"عادي وسريع", strip_2:"مقشّر ومغسول", strip_3:"جاهز للطبخ",
+    strip_4:"مهنيين وتجار", strip_5:"مزامن FreshLink", strip_6:"طازة مضمونة", strip_7:"الدار البيضاء",
+    cat_all:"الكل", cat_fresh:"🌿 طازة", cat_peeled:"🔪 مقشّر", cat_washed:"💧 مغسول", cat_promo:"🔥 عروض",
+    avis_tab_all:"الكل", avis_tab_client:"الزبائن", avis_tab_fourn:"المورّدين",
+    search_ph:"قلّب على منتج...",
+    sort_def:"ترتيب افتراضي", sort_asc:"الثمن ↑ من الأرخص", sort_desc:"الثمن ↓ من الأغلى", sort_az:"الاسم أ→ي", sort_dispo:"التوفر",
+    prep_banner:"🔪💧 <strong>المنتجات المغسولة و/أو المقشرة متوفرة عند الطلب</strong> — اختار التحضير المطلوب فالطلبية ديالك. <em>التأكيد خلال ساعة من فريق Empire Fresh.</em>",
+    ord_tag:"سيفط طلبيتك", ord_title:"طلب أونلاين", ord_sub:"عادي أو سريع، مع أو بلا تحضير. مسجّل فـ FreshLink ERP.",
+    ord_info_title:"📋 معلوماتك",
+    ord_tab_part:"🏠 فرد", ord_tab_pro:"🏢 مهني", ord_tab_resto:"🍽️ مطعم",
+    lbl_nom_ord:"الاسم الكامل", lbl_tel_ord:"هاتف واتساب", lbl_email_ord:"الإيميل (اختياري)",
+    lbl_addr:"العنوان الكامل — الدار البيضاء", lbl_zone:"الحي / المنطقة",
+    lbl_zone_ph:"— اختار الحي ديالك —",
+    ord_delivery_title:"🚚 طريقة التوصيل",
+    del_std_title:"عادي", del_std_sub:"توصيل في 24 ساعة", del_std_note:"مجاني من 150 درهم",
+    del_exp_title:"سريع", del_exp_sub:"توصيل في ساعتين", del_exp_note:"+20 درهم",
+    ord_prep_title:"🔪 التحضير المطلوب",
+    ord_notes:"ملاحظات / تعليمات",
+    ord_pay_title:"طريقة الدفع",
+    ord_pay_cash:"💵 كاش عند التوصيل", ord_pay_vir:"🏦 تحويل بنكي", ord_pay_card:"💳 دفع إلكتروني (قريبًا)",
+    ord_submit:"✅ سيفط الطلبية",
+    ord_cart_title:"🛒 السلة ديالك",
+    ord_cart_empty:"السلة فارغة — زيد منتجات من الكتالوج",
+    empty_cat:"ماكاين منتجات", empty_cat_sub:"جرب كاتيكوري أخرى.",
+    avis_form_title:"شارك رأيك", avis_form_sub:"رأيك كيعاوننا نحسّنو الخدمة",
+    avis_form_nom:"الاسم *", avis_form_type:"النوع *", avis_form_act:"النشاط / القطاع",
+    avis_form_note:"التقييم *", avis_form_msg:"رأيك *", avis_form_btn:"سيفط الرأي",
   },
   en: {
     nav_services:"Services", nav_delivery:"Delivery", nav_catalogue:"Catalogue",
@@ -916,6 +977,36 @@ const TEXTS = {
     ha_client:"Customer",
     ft_links:"Quick links", ft_contact:"Contact", ft_legal:"Legal",
     ft_copy:"© 2026 Empire Fresh. All rights reserved.", ft_made:"Synced with FreshLink ERP ⚡",
+    ft_desc:"Professional food distribution in Casablanca. Fresh fruits, vegetables and produce.",
+    ft_legal_1:"Legal notice", ft_legal_2:"Privacy policy", ft_legal_3:"Terms",
+    ft_wa_title:"WhatsApp", ft_links_title:"Quick links",
+    strip_1:"Standard & express", strip_2:"Peeled & washed", strip_3:"Ready to cook",
+    strip_4:"Pro & Merchants", strip_5:"FreshLink real-time sync", strip_6:"Guaranteed freshness", strip_7:"Casablanca, Morocco",
+    cat_all:"All", cat_fresh:"🌿 Fresh", cat_peeled:"🔪 Peeled", cat_washed:"💧 Washed", cat_promo:"🔥 Promo",
+    avis_tab_all:"All", avis_tab_client:"Clients", avis_tab_fourn:"Suppliers",
+    search_ph:"Search a product...",
+    sort_def:"Default order", sort_asc:"Price ↑ low to high", sort_desc:"Price ↓ high to low", sort_az:"Name A→Z", sort_dispo:"Availability",
+    prep_banner:"🔪💧 <strong>Washed and/or peeled products available on request</strong> — select desired preparation in your order. <em>Confirmed within 1h by Empire Fresh team.</em>",
+    ord_tag:"Place your order", ord_title:"Order online", ord_sub:"Standard or express, with or without preparation. Saved in FreshLink ERP.",
+    ord_info_title:"📋 Your information",
+    ord_tab_part:"🏠 Individual", ord_tab_pro:"🏢 Professional", ord_tab_resto:"🍽️ Restaurant",
+    lbl_nom_ord:"First & Last name", lbl_tel_ord:"WhatsApp phone", lbl_email_ord:"Email (optional)",
+    lbl_addr:"Full address — Casablanca", lbl_zone:"Neighbourhood / Zone",
+    lbl_zone_ph:"— Select your neighbourhood —",
+    ord_delivery_title:"🚚 Delivery mode",
+    del_std_title:"Standard", del_std_sub:"Delivery within 24h", del_std_note:"Free from 150 MAD",
+    del_exp_title:"Express", del_exp_sub:"Delivery in 2h", del_exp_note:"+20 MAD",
+    ord_prep_title:"🔪 Desired preparation",
+    ord_notes:"Notes / Instructions",
+    ord_pay_title:"Payment method",
+    ord_pay_cash:"💵 Cash on delivery", ord_pay_vir:"🏦 Bank transfer", ord_pay_card:"💳 Online payment (soon)",
+    ord_submit:"✅ Send my order",
+    ord_cart_title:"🛒 Your cart",
+    ord_cart_empty:"Your cart is empty — add products from the catalogue",
+    empty_cat:"No products found", empty_cat_sub:"Try another category.",
+    avis_form_title:"Share your review", avis_form_sub:"Your feedback helps us improve our service",
+    avis_form_nom:"Your name *", avis_form_type:"Type *", avis_form_act:"Activity / Sector",
+    avis_form_note:"Rating *", avis_form_msg:"Your review *", avis_form_btn:"Submit my review",
   },
 };
 
@@ -953,6 +1044,7 @@ function setLang(lang){
   </div>
   <div class="cfg-tabs">
     <button class="cfg-tab on" onclick="cfgTab(this,'s-contact')">📱 Contact</button>
+    <button class="cfg-tab"    onclick="cfgTab(this,'s-stats')">📊 Chiffres</button>
     <button class="cfg-tab"    onclick="cfgTab(this,'s-livraison')">🚚 Livraison</button>
     <button class="cfg-tab"    onclick="cfgTab(this,'s-supabase')">🔗 Connexion ERP</button>
     <button class="cfg-tab"    onclick="cfgTab(this,'s-galerie')">🖼️ Galerie</button>
@@ -971,6 +1063,14 @@ function setLang(lang){
       <div class="cfg-grp">🌍 Réseaux sociaux</div>
       <div class="cfg-f"><label>Facebook</label><input id="c-fb" type="url" placeholder="https://facebook.com/empirefreshmaroc"></div>
       <div class="cfg-f"><label>Instagram</label><input id="c-ig" type="url" placeholder="https://instagram.com/empirefreshmaroc"></div>
+    </div>
+    <div class="cfg-sec" id="s-stats">
+      <div class="cfg-grp">📊 Chiffres clés — بدّل الأرقام هنا مباشرة</div>
+      <div style="font-size:12px;color:var(--gy);margin-bottom:14px;line-height:1.7">هاد الأرقام كتبان فالبار ديال الإحصائيات. بدّلهم هنا وسجّل — كتتحدّث مباشرة ف الموقع.</div>
+      <div id="stats-cfg-list" style="display:grid;gap:14px">
+        <!-- Rendered by renderStatsCfg() -->
+      </div>
+      <button onclick="addStatRow()" style="margin-top:14px;padding:9px 16px;border-radius:8px;background:var(--g1);color:#fff;border:none;cursor:pointer;font-size:13px;font-weight:700">➕ Ajouter un chiffre</button>
     </div>
     <div class="cfg-sec" id="s-livraison">
       <div class="cfg-grp">⚡ Livraison Express</div>
@@ -1060,6 +1160,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   </div>
 </div>
 
+<!-- ── شريط التنقل — الناف بار ديال الموقع ──  -->
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-inner">
@@ -1102,7 +1203,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     <div class="nav-right">
       <div class="lang-switcher">
         <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">🇫🇷 FR</button>
-        <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">🇲🇦 عر</button>
+        <button class="lang-btn" data-lang="ar" onclick="setLang('ar')">🇲🇦 Darija</button>
         <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇬🇧 EN</button>
       </div>
       <a class="btn-app-link" href="#" onclick="openGuide();return false;">📖 Guide</a>
@@ -1131,19 +1232,56 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   </div>
 </div>
 
+<!-- ── القسم الرئيسي — السلايدر بالصور الطازة ── -->
 <!-- HERO -->
+<style>
+/* ── HERO SLIDESHOW ── */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:80px 20px 60px;overflow:hidden;background:#030805}
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s cubic-bezier(.4,0,.2,1),transform 8s ease;transform:scale(1.06)}
+.hero-slide.active{opacity:1;transform:scale(1)}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(2,8,4,.82) 0%,rgba(2,12,6,.6) 50%,rgba(10,20,10,.5) 100%)}
+.hero-slide-dots{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s}
+.hero-dot.active{width:22px;border-radius:4px;background:var(--o2)}
+
+/* ── HERO PHOTO CARDS ── */
+.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:340px;z-index:2;animation:scaleIn .8s .4s cubic-bezier(.22,1,.36,1) both}
+.hcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s;backdrop-filter:blur(10px)}
+.hcard:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.hcard-img{width:100%;height:110px;object-fit:cover;display:block}
+.hcard-img-ph{width:100%;height:110px;display:flex;align-items:center;justify-content:center;font-size:42px;background:rgba(255,255,255,.04)}
+.hcard-b{padding:10px 12px}
+.hcard-n{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px}
+.hcard-p{font-size:12px;color:var(--o2);font-weight:600}
+
+/* ── ANIMATED COUNTER ── */
+.counter-val{display:inline-block;animation:countUp .8s ease both}
+@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── AVIS UPGRADED ── */
+.avis-carousel{overflow:hidden;position:relative;padding-bottom:24px}
+.avis-track{display:flex;gap:20px;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.tc2{flex:0 0 calc(33.33% - 14px);min-width:280px}
+@media(max-width:900px){.tc2{flex:0 0 calc(50% - 10px)}}
+@media(max-width:600px){.tc2{flex:0 0 90%}}
+.avis-nav{display:flex;justify-content:center;gap:10px;margin-top:20px}
+.avis-nav-btn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;font-size:16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.avis-nav-btn:hover{background:var(--g1);border-color:var(--g1)}
+.avis-avatar-img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.15)}
+</style>
+
 <section class="hero" id="accueil">
-  <!-- Floating particles -->
-  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0">
-    <span style="position:absolute;font-size:28px;top:12%;left:8%;animation:floatY 5s 0s ease-in-out infinite;opacity:.18">🌿</span>
-    <span style="position:absolute;font-size:20px;top:28%;left:15%;animation:floatY 6.5s 1s ease-in-out infinite;opacity:.12">🍃</span>
-    <span style="position:absolute;font-size:36px;top:55%;left:5%;animation:floatY 7s 2s ease-in-out infinite;opacity:.1">🥬</span>
-    <span style="position:absolute;font-size:24px;top:70%;left:18%;animation:floatY 5.5s .5s ease-in-out infinite;opacity:.12">🌱</span>
-    <span style="position:absolute;font-size:22px;top:15%;right:10%;animation:floatY 6s 1.5s ease-in-out infinite;opacity:.14">🍎</span>
-    <span style="position:absolute;font-size:18px;top:40%;right:7%;animation:floatY 5.2s 0.8s ease-in-out infinite;opacity:.1">🥦</span>
-    <span style="position:absolute;font-size:30px;top:65%;right:12%;animation:floatY 7.5s 3s ease-in-out infinite;opacity:.12">🍋</span>
-    <span style="position:absolute;font-size:16px;top:80%;right:20%;animation:floatY 4.8s 2.2s ease-in-out infinite;opacity:.15">🌿</span>
+  <!-- Photo Slideshow Background -->
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1600&q=80&auto=format&fit=crop')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1464454709131-ffd692591ee5?w=1600&q=80&auto=format&fit=crop')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=1600&q=80&auto=format&fit=crop')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1600&q=80&auto=format&fit=crop')"></div>
   </div>
+  <!-- Slide dots -->
+  <div class="hero-slide-dots" id="heroSlideDots"></div>
+
   <div class="hero-inner" style="position:relative;z-index:1">
     <div class="hero-txt">
       <div class="hero-badge"><span class="dot"></span><span data-i18n="hero_badge">En ligne — Commandes ouvertes</span></div>
@@ -1155,32 +1293,56 @@ GET  /api/ext/commandes/:id → suivi commande</div>
         <a href="#" class="btn-hero-app" onclick="openGuide();return false;">📖 <span>Guide commande</span></a>
       </div>
       <div class="hero-stats" style="display:flex;gap:28px;margin-top:44px;padding-top:28px;border-top:1px solid rgba(255,255,255,.1);animation:fadeSlideUp .75s .55s cubic-bezier(.22,1,.36,1) both">
-        <div><div style="font-size:26px;font-weight:700;background:linear-gradient(135deg,var(--o2),#FFE066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text" id="stat-prods">50+</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:2px">Produits frais</div></div>
-        <div><div style="font-size:26px;font-weight:700;background:linear-gradient(135deg,var(--o2),#FFE066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">2h</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:2px">Livraison express</div></div>
-        <div><div style="font-size:26px;font-weight:700;background:linear-gradient(135deg,var(--o2),#FFE066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">500+</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:2px">Clients actifs</div></div>
+        <div><div class="counter-val" style="font-size:26px;font-weight:700;background:linear-gradient(135deg,var(--o2),#FFE066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text" id="stat-prods">50+</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:2px">Produits frais</div></div>
+        <div><div class="counter-val" style="font-size:26px;font-weight:700;background:linear-gradient(135deg,var(--o2),#FFE066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">2h</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:2px">Livraison express</div></div>
+        <div><div class="counter-val" style="font-size:26px;font-weight:700;background:linear-gradient(135deg,var(--o2),#FFE066);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">500+</div><div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:2px">Clients actifs</div></div>
       </div>
     </div>
     <div class="hero-cards" id="hero-cards"></div>
   </div><!-- end hero-inner -->
 </section>
 
+<script>
+// ── HERO SLIDESHOW ──
+(function(){
+  var slides=document.querySelectorAll('.hero-slide');
+  var dotsEl=document.getElementById('heroSlideDots');
+  var cur=0;
+  slides.forEach(function(_,i){
+    var d=document.createElement('div');
+    d.className='hero-dot'+(i===0?' active':'');
+    d.onclick=function(){go(i);};
+    dotsEl.appendChild(d);
+  });
+  function go(n){
+    slides[cur].classList.remove('active');
+    dotsEl.children[cur].classList.remove('active');
+    cur=n;
+    slides[cur].classList.add('active');
+    dotsEl.children[cur].classList.add('active');
+  }
+  setInterval(function(){go((cur+1)%slides.length);},5000);
+})();
+</script>
+
+<!-- ── الشريط المتحرك — الرسائل الرئيسية للعلامة ── -->
 <!-- STRIP -->
 <div class="strip">
   <div class="strip-inner">
-    <div class="si"><span>🚚</span>Standard &amp; express</div>
-    <div class="si"><span>🔪</span>Épluchés &amp; lavés</div>
-    <div class="si"><span>💧</span>Prêts à cuisiner</div>
-    <div class="si"><span>🏪</span>Pro &amp; Marchands</div>
-    <div class="si"><span>⚡</span>Sync temps réel FreshLink</div>
-    <div class="si"><span>🌿</span>Fraîcheur garantie</div>
-    <div class="si"><span>🇲🇦</span>Casablanca, Maroc</div>
-    <div class="si"><span>🚚</span>Standard &amp; express</div>
-    <div class="si"><span>🔪</span>Épluchés &amp; lavés</div>
-    <div class="si"><span>💧</span>Prêts à cuisiner</div>
-    <div class="si"><span>🏪</span>Pro &amp; Marchands</div>
-    <div class="si"><span>⚡</span>Sync temps réel FreshLink</div>
-    <div class="si"><span>🌿</span>Fraîcheur garantie</div>
-    <div class="si"><span>🇲🇦</span>Casablanca, Maroc</div>
+    <div class="si"><span>🚚</span><span data-i18n="strip_1">Standard &amp; express</span></div>
+    <div class="si"><span>🔪</span><span data-i18n="strip_2">Épluchés &amp; lavés</span></div>
+    <div class="si"><span>💧</span><span data-i18n="strip_3">Prêts à cuisiner</span></div>
+    <div class="si"><span>🏪</span><span data-i18n="strip_4">Pro &amp; Marchands</span></div>
+    <div class="si"><span>⚡</span><span data-i18n="strip_5">Sync temps réel FreshLink</span></div>
+    <div class="si"><span>🌿</span><span data-i18n="strip_6">Fraîcheur garantie</span></div>
+    <div class="si"><span>🇲🇦</span><span data-i18n="strip_7">Casablanca, Maroc</span></div>
+    <div class="si"><span>🚚</span><span data-i18n="strip_1">Standard &amp; express</span></div>
+    <div class="si"><span>🔪</span><span data-i18n="strip_2">Épluchés &amp; lavés</span></div>
+    <div class="si"><span>💧</span><span data-i18n="strip_3">Prêts à cuisiner</span></div>
+    <div class="si"><span>🏪</span><span data-i18n="strip_4">Pro &amp; Marchands</span></div>
+    <div class="si"><span>⚡</span><span data-i18n="strip_5">Sync temps réel FreshLink</span></div>
+    <div class="si"><span>🌿</span><span data-i18n="strip_6">Fraîcheur garantie</span></div>
+    <div class="si"><span>🇲🇦</span><span data-i18n="strip_7">Casablanca, Maroc</span></div>
   </div>
 </div>
 
@@ -1233,6 +1395,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   </div>
 </div>
 
+<!-- ── قسم الخدمات — كل الخدمات ديال Empire Fresh ── -->
 <!-- SERVICES -->
 <section id="services" class="reveal">
   <div class="container">
@@ -1272,7 +1435,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
 <!-- CATEGORIES & CATALOGUE -->
 <section class="cats-sec" id="catalogue">
   <div class="container">
-    <div class="slbl" style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--o1);font-weight:700;margin-bottom:8px">Notre catalogue</div>
+    <div class="slbl" style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--o1);font-weight:700;margin-bottom:8px" data-i18n="cat_tag">Notre catalogue</div>
     <div class="stit" style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;line-height:1.2;margin-bottom:10px" data-i18n="cat_title">Nos produits frais</div>
     <div style="font-size:15px;color:var(--gy);line-height:1.8;max-width:520px" data-i18n="cat_sub">Synchronisé avec FreshLink ERP · Prix selon profil</div>
     <div class="cat-wa-banner" style="margin-top:28px">
@@ -1284,10 +1447,10 @@ GET  /api/ext/commandes/:id → suivi commande</div>
       <a href="#" class="btn-wa-green" onclick="orderWhatsApp(event)"><span data-i18n="cat_wa">📦 Commander par WhatsApp</span></a>
     </div>
     <div class="cats">
-      <div class="ccat on" onclick="fcat('tous',this)"><span class="ccat-em">🛒</span><div class="ccat-n" data-i18n="nav_catalogue">Tout voir</div><div class="ccat-c" id="cat-count-tous">Chargement...</div></div>
-      <div class="ccat" onclick="fcat('fruits',this)"><span class="ccat-em">🍎</span><div class="ccat-n">Fruits frais</div><div class="ccat-c" id="cat-count-fruits">...</div><div class="ccat-new">Saison</div></div>
+      <div class="ccat on" onclick="fcat('tous',this)"><span class="ccat-em">🛒</span><div class="ccat-n" data-i18n="cat_all">Tout voir</div><div class="ccat-c" id="cat-count-tous">...</div></div>
+      <div class="ccat" onclick="fcat('fruits',this)"><span class="ccat-em">🍎</span><div class="ccat-n" data-i18n="nav_catalogue">Fruits frais</div><div class="ccat-c" id="cat-count-fruits">...</div><div class="ccat-new">Saison</div></div>
       <div class="ccat" onclick="fcat('legumes',this)"><span class="ccat-em">🥦</span><div class="ccat-n">Légumes</div><div class="ccat-c" id="cat-count-legumes">...</div></div>
-      <div class="ccat" onclick="fcat('prepare',this)"><span class="ccat-em">🔪</span><div class="ccat-n">Prêt à cuisiner</div><div class="ccat-c" id="cat-count-prepare">...</div><div class="ccat-new">Nouveau</div></div>
+      <div class="ccat" onclick="fcat('prepare',this)"><span class="ccat-em">🔪</span><div class="ccat-n" data-i18n="cat_peeled">Prêt à cuisiner</div><div class="ccat-c" id="cat-count-prepare">...</div><div class="ccat-new">Nouveau</div></div>
     </div>
   </div>
 </section>
@@ -1298,80 +1461,85 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
       <div style="flex:1;min-width:200px;position:relative">
         <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#aaa;font-size:15px">🔍</span>
-        <input id="prod-search" type="text" placeholder="Rechercher un produit..." oninput="renderProds()" style="width:100%;padding:10px 12px 10px 36px;border:1.5px solid #dde;border-radius:24px;font-size:14px;font-family:inherit;outline:none;background:#fff;box-sizing:border-box"/>
+        <input id="prod-search" type="text" data-i18n-ph="search_ph" placeholder="Rechercher un produit..." oninput="renderProds()" style="width:100%;padding:10px 12px 10px 36px;border:1.5px solid #dde;border-radius:24px;font-size:14px;font-family:inherit;outline:none;background:#fff;box-sizing:border-box"/>
       </div>
       <select id="prod-sort" onchange="renderProds()" style="padding:10px 14px;border:1.5px solid #dde;border-radius:24px;font-size:13px;font-family:inherit;background:#fff;cursor:pointer">
-        <option value="def">Tri par défaut</option>
-        <option value="prix-asc">Prix ↑ croissant</option>
-        <option value="prix-desc">Prix ↓ décroissant</option>
-        <option value="nom-asc">Nom A→Z</option>
-        <option value="dispo">Disponibilité</option>
+        <option value="def" data-i18n="sort_def">Tri par défaut</option>
+        <option value="prix-asc" data-i18n="sort_asc">Prix ↑ croissant</option>
+        <option value="prix-desc" data-i18n="sort_desc">Prix ↓ décroissant</option>
+        <option value="nom-asc" data-i18n="sort_az">Nom A→Z</option>
+        <option value="dispo" data-i18n="sort_dispo">Disponibilité</option>
       </select>
       <div class="erp-sync-badge">
         <div class="dot loading" id="sync-dot"></div>
         <span id="sync-label">Connexion...</span>
       </div>
     </div>
-    <!-- Info banner: washed/peeled on demand -->
-    <div style="background:linear-gradient(90deg,#f0faf4,#e8f5e9);border-left:4px solid #25a352;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#1a7a3c;line-height:1.6">
+    <!-- Info banner: washed/peeled on demand — trilingual -->
+    <div id="prep-banner" style="background:linear-gradient(90deg,#f0faf4,#e8f5e9);border-left:4px solid #25a352;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#1a7a3c;line-height:1.6" data-i18n="prep_banner">
       🔪💧 <strong>Produits lavés et/ou épluchés disponibles sur demande</strong> — sélectionnez la préparation souhaitée dans votre commande. <em>Confirmation sous 1h par l'équipe Empire Fresh.</em>
     </div>
+    <!-- Filter chips — trilingual -->
     <div class="fbar">
-      <button class="fb on" onclick="filt(this,'tous')">Tous</button>
-      <button class="fb" onclick="filt(this,'frais')">🌿 Frais</button>
-      <button class="fb" onclick="filt(this,'epluche')">🔪 Épluché</button>
-      <button class="fb" onclick="filt(this,'lave')">💧 Lavé</button>
-      <button class="fb" onclick="filt(this,'promo')">🔥 Promo</button>
+      <button class="fb on" onclick="filt(this,'tous')" data-i18n="cat_all">Tous</button>
+      <button class="fb" onclick="filt(this,'frais')" data-i18n="cat_fresh">🌿 Frais</button>
+      <button class="fb" onclick="filt(this,'epluche')" data-i18n="cat_peeled">🔪 Épluché</button>
+      <button class="fb" onclick="filt(this,'lave')" data-i18n="cat_washed">💧 Lavé</button>
+      <button class="fb" onclick="filt(this,'promo')" data-i18n="cat_promo">🔥 Promo</button>
     </div>
     <div class="pgrid" id="pgrid"></div>
   </div>
 </div>
 
+<!-- ── قسم الطلبية — trilingual ── -->
+<!-- ── قسم الطلبية — الفورم ديال الطلب أونلاين ── -->
 <!-- ORDER -->
 <section class="ord-sec" id="commander">
   <div class="container">
-    <div class="slbl" style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--o1);font-weight:700;margin-bottom:8px">Passez votre commande</div>
-    <div class="stit" style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1.2;margin-bottom:8px">Commander en ligne</div>
-    <div style="font-size:14px;color:var(--gy)">Standard ou express, avec ou sans préparation. Enregistré dans FreshLink ERP.</div>
+    <div class="slbl" style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--o1);font-weight:700;margin-bottom:8px" data-i18n="ord_tag">Passez votre commande</div>
+    <div class="stit" style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1.2;margin-bottom:8px" data-i18n="ord_title">Commander en ligne</div>
+    <div style="font-size:14px;color:var(--gy)" data-i18n="ord_sub">Standard ou express, avec ou sans préparation. Enregistré dans FreshLink ERP.</div>
     <div class="ogrid">
       <div class="oform">
-        <div class="ftit">📋 Vos informations</div>
+        <div class="ftit" data-i18n="ord_info_title">📋 Vos informations</div>
         <div class="ctabs">
-          <button class="ctab on" onclick="setCt(this,'part')">🏠 Particulier</button>
-          <button class="ctab" onclick="setCt(this,'pro')">🏢 Professionnel</button>
-          <button class="ctab" onclick="setCt(this,'resto')">🍽️ Restaurant</button>
+          <button class="ctab on" onclick="setCt(this,'part')" data-i18n="ord_tab_part">🏠 Particulier</button>
+          <button class="ctab" onclick="setCt(this,'pro')" data-i18n="ord_tab_pro">🏢 Professionnel</button>
+          <button class="ctab" onclick="setCt(this,'resto')" data-i18n="ord_tab_resto">🍽️ Restaurant</button>
         </div>
         <div class="frow">
-          <div class="fg"><label>Prénom &amp; Nom</label><input id="f-nom" type="text" placeholder="Mohammed Alami"></div>
-          <div class="fg"><label>Téléphone WhatsApp</label><input id="f-tel" type="tel" placeholder="+212 6XX XXX XXX"></div>
+          <div class="fg"><label data-i18n="lbl_nom_ord">Prénom &amp; Nom</label><input id="f-nom" type="text" placeholder="Mohammed Alami"></div>
+          <div class="fg"><label data-i18n="lbl_tel_ord">Téléphone WhatsApp</label><input id="f-tel" type="tel" placeholder="+212 6XX XXX XXX"></div>
         </div>
         <div class="fg" id="co-row" style="display:none"><label>Raison sociale / Enseigne</label><input id="f-co" type="text" placeholder="Restaurant Al Fès..."></div>
-        <div class="fg"><label>Email (optionnel)</label><input id="f-email" type="email" placeholder="email@exemple.com"></div>
-        <div class="fg"><label>Adresse complète — Casablanca</label><input id="f-adr" type="text" placeholder="N° rue, quartier, bâtiment..."></div>
-        <div class="fg"><label>Quartier / Zone</label>
+        <div class="fg"><label data-i18n="lbl_email_ord">Email (optionnel)</label><input id="f-email" type="email" placeholder="email@exemple.com"></div>
+        <div class="fg"><label data-i18n="lbl_addr">Adresse complète — Casablanca</label><input id="f-adr" type="text" placeholder="N° rue, quartier, bâtiment..."></div>
+        <div class="fg"><label data-i18n="lbl_zone">Quartier / Zone</label>
           <select id="f-zone">
-            <option value="">— Sélectionnez votre quartier —</option>
+            <option value="" data-i18n="lbl_zone_ph">— Sélectionnez votre quartier —</option>
             <option>Maarif</option><option>Ain Diab / Anfa</option><option>Centre-ville</option>
             <option>Hay Mohammadi</option><option>Sidi Bernoussi</option><option>Derb Sultan</option>
             <option>Moulay Rachid</option><option>Ain Sebaa</option><option>Hay Hassani</option>
             <option>Bernoussi / Sidi Moumen</option><option>Autre quartier</option>
           </select>
         </div>
-        <div class="fsec">🚚 Mode de livraison</div>
+        <div class="fsec" data-i18n="ord_delivery_title">🚚 Mode de livraison</div>
         <div class="dopts">
           <div class="dopt on" id="d-std" onclick="setDel('std')">
-            <div class="di">🚚</div><div class="dt">Standard</div>
-            <div class="ds">Livraison sous 24h</div>
-            <div class="dp" id="std-lbl">Gratuit dès 150 MAD</div>
+            <div class="di">🚚</div>
+            <div class="dt" data-i18n="del_std_title">Standard</div>
+            <div class="ds" data-i18n="del_std_sub">Livraison sous 24h</div>
+            <div class="dp" id="std-lbl" data-i18n="del_std_note">Gratuit dès 150 MAD</div>
           </div>
           <div class="dopt exo" id="d-exp" onclick="setDel('exp')">
             <div class="ebadge">RAPIDE</div>
-            <div class="di">⚡</div><div class="dt">Express</div>
-            <div class="ds" id="exp-delay-lbl">Livraison en 2h</div>
-            <div class="dp" id="exp-lbl">+20 MAD</div>
+            <div class="di">⚡</div>
+            <div class="dt" data-i18n="del_exp_title">Express</div>
+            <div class="ds" id="exp-delay-lbl" data-i18n="del_exp_sub">Livraison en 2h</div>
+            <div class="dp" id="exp-lbl" data-i18n="del_exp_note">+20 MAD</div>
           </div>
         </div>
-        <div class="fsec">🔪 Préparation souhaitée</div>
+        <div class="fsec" data-i18n="ord_prep_title">🔪 Préparation souhaitée</div>
         <div class="popts">
           <div class="popt on" onclick="this.classList.toggle('on')"><span class="pi2">🌿</span>Frais tel quel</div>
           <div class="popt" onclick="this.classList.toggle('on')"><span class="pi2">🔪</span>Épluché (+5%)</div>
@@ -1380,14 +1548,14 @@ GET  /api/ext/commandes/:id → suivi commande</div>
           <div class="popt" onclick="this.classList.toggle('on')"><span class="pi2">🧺</span>Coupé (+10%)</div>
           <div class="popt" onclick="this.classList.toggle('on')"><span class="pi2">📦</span>Emballé</div>
         </div>
-        <div class="fg" style="margin-top:16px"><label>Notes / Instructions</label>
+        <div class="fg" style="margin-top:16px"><label data-i18n="ord_notes">Notes / Instructions</label>
           <textarea id="f-notes" placeholder="Heure préférée, accès immeuble, allergies..."></textarea>
         </div>
-        <div class="fg"><label>Mode de paiement</label>
+        <div class="fg"><label data-i18n="ord_pay_title">Mode de paiement</label>
           <select id="f-pay" onchange="onPayChange(this.value)">
-            <option value="cash">💵 Cash à la livraison</option>
-            <option value="virement">🏦 Virement bancaire</option>
-            <option value="online">💳 Paiement en ligne (bientôt)</option>
+            <option value="cash" data-i18n="ord_pay_cash">💵 Cash à la livraison</option>
+            <option value="virement" data-i18n="ord_pay_vir">🏦 Virement bancaire</option>
+            <option value="online" data-i18n="ord_pay_card">💳 Paiement en ligne (bientôt)</option>
           </select>
         </div>
         <!-- Virement bancaire bloc (hidden by default) -->
@@ -1410,8 +1578,9 @@ GET  /api/ext/commandes/:id → suivi commande</div>
         </button>
       </div>
       <div class="osum">
-        <div class="osum-h">🛒 Votre panier</div>
-        <div id="cart-items"><div class="cempty">Votre panier est vide.<br>Ajoutez des produits depuis le catalogue.</div></div>
+        <!-- عنوان السلة — ثلاث لغات -->
+        <div class="osum-h" data-i18n="ord_cart_title">🛒 Votre panier</div>
+        <div id="cart-items"><div class="cempty" data-i18n="ord_cart_empty">Votre panier est vide.<br>Ajoutez des produits depuis le catalogue.</div></div>
         <div id="cart-totals" style="display:none">
           <div class="ibox"><span style="font-size:17px">ℹ️</span><div class="ibox-t" id="del-info">Livraison standard — gratuite dès 150 MAD.</div></div>
           <div class="tr"><span>Sous-total</span><span id="t-sub">0 MAD</span></div>
@@ -1624,6 +1793,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   </div>
 </div>
 
+<!-- ── آراء الزبائن — كاروسيل الآراء بالدارجة والفرنسية والإنجليزية ── -->
 <!-- AVIS -->
 <section class="t-sec reveal" id="avis-section">
   <div class="container">
@@ -1631,67 +1801,169 @@ GET  /api/ext/commandes/:id → suivi commande</div>
     <div class="stit" data-i18n="avis_title">Ce que disent nos partenaires</div>
     <div style="font-size:14px;color:rgba(255,255,255,.5);margin-top:6px;margin-bottom:28px" data-i18n="avis_sub">Avis vérifiés — clients et fournisseurs</div>
     <div style="display:flex;gap:8px;justify-content:center;margin-bottom:28px;flex-wrap:wrap">
-      <button class="avis-tab active" data-source="all" onclick="filterAvis('all',this)">Tous</button>
-      <button class="avis-tab" data-source="client" onclick="filterAvis('client',this)">Clients</button>
-      <button class="avis-tab" data-source="fournisseur" onclick="filterAvis('fournisseur',this)">Fournisseurs</button>
-    </div>
-    <div class="tg" id="avis-grid">
-      <!-- Virtual reviews — completed from ERP fl_feedbacks when available -->
-      <div class="tc2" data-source="client"><div class="stars">★★★★★</div><div class="tt">"Produits toujours frais, livrés à l'heure. Le service express est parfait pour mon restaurant."</div><div class="ta2"><div class="av">👨‍🍳</div><div><div class="an">Hassan B.</div><div class="ar">Restaurateur · Client</div></div></div></div>
-      <div class="tc2" data-source="client"><div class="stars">★★★★★</div><div class="tt">"Commande le soir, livraison le lendemain matin avant l'ouverture. Parfait pour mon épicerie."</div><div class="ta2"><div class="av">🏪</div><div><div class="an">Fatima Z.</div><div class="ar">Épicière · Client</div></div></div></div>
-      <div class="tc2" data-source="fournisseur"><div class="stars">★★★★☆</div><div class="tt">"Partenariat sérieux, paiements ponctuels et communication claire. Très professionnel."</div><div class="ta2"><div class="av">🚚</div><div><div class="an">Ahmed R.</div><div class="ar">Grossiste · Fournisseur</div></div></div></div>
-      <div class="tc2" data-source="client"><div class="stars">★★★★★</div><div class="tt">"Le rapport qualité-prix est imbattable. Mes clients remarquent la différence avec les autres fournisseurs."</div><div class="ta2"><div class="av">🥗</div><div><div class="an">Karim M.</div><div class="ar">Traiteur CHR · Client</div></div></div></div>
-      <div class="tc2" data-source="client"><div class="stars">★★★★★</div><div class="tt">"Service WhatsApp très réactif. J'envoie ma liste et c'est livré sans faute. Bravo Empire Fresh !"</div><div class="ta2"><div class="av">🛒</div><div><div class="an">Nadia O.</div><div class="ar">Épicerie fine · Client</div></div></div></div>
-      <div class="tc2" data-source="client"><div class="stars">★★★★☆</div><div class="tt">"منتجات طازجة دائمًا والتسليم في الوقت المحدد. خدمة ممتازة ونسيتها مع الموردين الآخرين."</div><div class="ta2"><div class="av">🏬</div><div><div class="an">يوسف ب.</div><div class="ar">تاجر تجزئة · عميل</div></div></div></div>
-      <div class="tc2" data-source="fournisseur"><div class="stars">★★★★★</div><div class="tt">"Une équipe professionnelle et sérieuse. La logistique est bien organisée et les volumes sont respectés."</div><div class="ta2"><div class="av">🌾</div><div><div class="an">Omar T.</div><div class="ar">Maraîcher · Fournisseur</div></div></div></div>
-      <div class="tc2" data-source="client"><div class="stars">★★★★★</div><div class="tt">"Great service! Fresh vegetables delivered early morning. My hotel kitchen has never been better supplied."</div><div class="ta2"><div class="av">🏨</div><div><div class="an">Sarah L.</div><div class="ar">Hotel F&amp;B Manager · Client</div></div></div></div>
-      <div class="tc2" data-source="client"><div class="stars">★★★★★</div><div class="tt">"La livraison express en 2h est une révolution pour mon café-restaurant. Je commande toujours à la dernière minute et ça arrive !"</div><div class="ta2"><div class="av">☕</div><div><div class="an">Meryem K.</div><div class="ar">Café-Restaurant · Client</div></div></div></div>
+      <button class="avis-tab active" data-source="all" onclick="filterAvis('all',this)" data-i18n="avis_tab_all">Tous</button>
+      <button class="avis-tab" data-source="client" onclick="filterAvis('client',this)" data-i18n="avis_tab_client">Clients</button>
+      <button class="avis-tab" data-source="fournisseur" onclick="filterAvis('fournisseur',this)" data-i18n="avis_tab_fourn">Fournisseurs</button>
     </div>
 
-    <!-- REVIEW FORM -->
-    <div id="review-form-wrap" style="margin-top:48px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:30px;max-width:620px;margin-left:auto;margin-right:auto">
-      <div style="font-size:19px;font-weight:800;color:#fff;margin-bottom:5px">Partagez votre avis</div>
-      <div style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:22px">Votre retour nous aide à améliorer notre service</div>
-      <div id="review-success" style="display:none;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.4);border-radius:12px;padding:14px;color:#34d399;font-size:14px;font-weight:600;margin-bottom:18px">✓ Merci ! Votre avis a été soumis et sera affiché après validation.</div>
-      <form id="review-form" onsubmit="submitReview(event)">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px">
-          <div>
-            <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px">Votre nom *</label>
-            <input id="rv-nom" required placeholder="Mohamed A." style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#fff;font-size:14px;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif">
-          </div>
-          <div>
-            <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px">Type de partenaire *</label>
-            <select id="rv-source" required style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(20,40,25,.92);color:#fff;font-size:14px;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif">
-              <option value="">Choisir...</option>
-              <option value="client">Client</option>
-              <option value="fournisseur">Fournisseur</option>
-            </select>
+    <!-- Carousel wrapper -->
+    <div class="avis-carousel" id="avis-carousel-wrap">
+      <div class="avis-track" id="avis-grid">
+        <!-- Darija + FR + EN reviews with real Unsplash avatars -->
+        <div class="tc2" data-source="client">
+          <div class="stars">★★★★★</div>
+          <div class="tt">"Rani safi satisfied! Les produits kayjio toujours fresh, o delivery kaywsel f waqtou. Safi mo7tajch nkhdem m3a 7ad akhor."</div>
+          <div class="ta2">
+            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80&auto=format&fit=crop&crop=face" alt="Hassan" onerror="this.outerHTML='<div class=av>👨‍🍳</div>'">
+            <div><div class="an">Hassan B.</div><div class="ar">Restaurateur Casa · Client</div></div>
           </div>
         </div>
-        <div style="margin-bottom:13px">
-          <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px">Activité / Secteur</label>
-          <input id="rv-activite" placeholder="Restaurateur, Épicier, Grossiste..." style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#fff;font-size:14px;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif">
-        </div>
-        <div style="margin-bottom:13px">
-          <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:7px">Note *</label>
-          <div id="star-picker" style="display:flex;gap:5px">
-            <span class="star-btn" data-v="1" onclick="setStars(1)">★</span>
-            <span class="star-btn" data-v="2" onclick="setStars(2)">★</span>
-            <span class="star-btn" data-v="3" onclick="setStars(3)">★</span>
-            <span class="star-btn" data-v="4" onclick="setStars(4)">★</span>
-            <span class="star-btn" data-v="5" onclick="setStars(5)">★</span>
+
+        <div class="tc2" data-source="client">
+          <div class="stars">★★★★★</div>
+          <div class="tt">"Kanthder l3shiya o l ghda kayjini fresh. Mzyan bzaf l7anout dyali. Shokran Empire Fresh, dima katnta7ou!"</div>
+          <div class="ta2">
+            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80&auto=format&fit=crop&crop=face" alt="Fatima" onerror="this.outerHTML='<div class=av>🏪</div>'">
+            <div><div class="an">Fatima Z.</div><div class="ar">Épicière Maarif · Client</div></div>
           </div>
-          <input type="hidden" id="rv-note" value="0">
         </div>
-        <div style="margin-bottom:18px">
-          <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px">Votre avis *</label>
-          <textarea id="rv-message" required rows="4" placeholder="Décrivez votre expérience avec Empire Fresh..." style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#fff;font-size:14px;resize:vertical;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif"></textarea>
+
+        <div class="tc2" data-source="fournisseur">
+          <div class="stars">★★★★☆</div>
+          <div class="tt">"Partenariat sérieux, paiements ponctuels et communication claire. L'équipe est très professionnelle."</div>
+          <div class="ta2">
+            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80&auto=format&fit=crop&crop=face" alt="Ahmed" onerror="this.outerHTML='<div class=av>🚚</div>'">
+            <div><div class="an">Ahmed R.</div><div class="ar">Grossiste Souss · Fournisseur</div></div>
+          </div>
         </div>
-        <button type="submit" id="rv-submit" style="width:100%;padding:13px;border-radius:12px;background:linear-gradient(135deg,#4ade80,#22c55e);color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:opacity .2s;font-family:'Inter',sans-serif">Soumettre mon avis</button>
-      </form>
+
+        <div class="tc2" data-source="client">
+          <div class="stars">★★★★★</div>
+          <div class="tt">"Rapport qualité-prix imbattable. L'express 2h c'est what we needed pour notre cuisine. Highly recommend!"</div>
+          <div class="ta2">
+            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80&auto=format&fit=crop&crop=face" alt="Sarah" onerror="this.outerHTML='<div class=av>🏨</div>'">
+            <div><div class="an">Sarah L.</div><div class="ar">F&amp;B Manager · Client</div></div>
+          </div>
+        </div>
+
+        <div class="tc2" data-source="client">
+          <div class="stars">★★★★★</div>
+          <div class="tt">"WhatsApp dyalhom kayredd b sur3a. Kansift lista o kaywsel ghir haka. Had shi mkayn 3and 7ta wa7ed akhor f Casa!"</div>
+          <div class="ta2">
+            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&q=80&auto=format&fit=crop&crop=face" alt="Nadia" onerror="this.outerHTML='<div class=av>🛒</div>'">
+            <div><div class="an">Nadia O.</div><div class="ar">Épicerie fine · Client</div></div>
+          </div>
+        </div>
+
+        <div class="tc2" data-source="fournisseur">
+          <div class="stars">★★★★★</div>
+          <div class="tt">"Une équipe dynamique avec une logistique bien rodée. Les volumes sont respectés et les délais de paiement tenus."</div>
+          <div class="ta2">
+            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80&auto=format&fit=crop&crop=face" alt="Omar" onerror="this.outerHTML='<div class=av>🌾</div>'">
+            <div><div class="an">Omar T.</div><div class="ar">Grossiste Souss · Fournisseur</div></div>
+          </div>
+        </div>
+
+        <div class="tc2" data-source="client">
+          <div class="stars">★★★★★</div>
+          <div class="tt">"Karim dyali kolchi kayjib men Empire Fresh. Prix mzyan, khdar fresh. Ma3andiش shi m3a had les gars — dima perfect!"</div>
+          <div class="ta2">
+            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&q=80&auto=format&fit=crop&crop=face" alt="Karim" onerror="this.outerHTML='<div class=av>🥗</div>'">
+            <div><div class="an">Karim M.</div><div class="ar">Traiteur CHR · Client</div></div>
+          </div>
+        </div>
+
+        <div class="tc2" data-source="client">
+          <div class="stars">★★★★☆</div>
+          <div class="tt">"L'express 2h c'est une révolution. Mon café-restaurant commande à la dernière minute, ça arrive sans faute. Bravo !"</div>
+          <div class="ta2">
+            <img class="avis-avatar-img" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&q=80&auto=format&fit=crop&crop=face" alt="Meryem" onerror="this.outerHTML='<div class=av>☕</div>'">
+            <div><div class="an">Meryem K.</div><div class="ar">Café-Restaurant · Client</div></div>
+          </div>
+        </div>
+      </div><!-- end avis-track -->
+    </div><!-- end avis-carousel-wrap -->
+
+    <!-- Carousel navigation -->
+    <div class="avis-nav">
+      <button class="avis-nav-btn" onclick="avisScroll(-1)" aria-label="Précédent">‹</button>
+      <button class="avis-nav-btn" onclick="avisScroll(1)" aria-label="Suivant">›</button>
     </div>
+
+      <div id="review-form-wrap" style="margin-top:48px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:30px;max-width:620px;margin-left:auto;margin-right:auto">
+        <!-- نموذج الرأي — ثلاث لغات -->
+        <div style="font-size:19px;font-weight:800;color:#fff;margin-bottom:5px" data-i18n="avis_form_title">Partagez votre avis</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.45);margin-bottom:22px" data-i18n="avis_form_sub">Votre retour nous aide à améliorer notre service</div>
+        <div id="review-success" style="display:none;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.4);border-radius:12px;padding:14px;color:#34d399;font-size:14px;font-weight:600;margin-bottom:18px">✓ Merci ! Votre avis a été soumis et sera affiché après validation.</div>
+        <form id="review-form" onsubmit="submitReview(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px">
+            <div>
+              <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px" data-i18n="avis_form_nom">Votre nom *</label>
+              <input id="rv-nom" required placeholder="Mohamed A." style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#fff;font-size:14px;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif">
+            </div>
+            <div>
+              <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px" data-i18n="avis_form_type">Type *</label>
+              <select id="rv-source" required style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(20,40,25,.92);color:#fff;font-size:14px;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif">
+                <option value="">Choisir...</option>
+                <option value="client" data-i18n="avis_tab_client">Client</option>
+                <option value="fournisseur" data-i18n="avis_tab_fourn">Fournisseur</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:13px">
+            <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px" data-i18n="avis_form_act">Activité / Secteur</label>
+            <input id="rv-activite" placeholder="Restaurateur, Épicier, Grossiste..." style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#fff;font-size:14px;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif">
+          </div>
+          <div style="margin-bottom:13px">
+            <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:7px" data-i18n="avis_form_note">Note *</label>
+            <div id="star-picker" style="display:flex;gap:5px">
+              <span class="star-btn" data-v="1" onclick="setStars(1)">★</span>
+              <span class="star-btn" data-v="2" onclick="setStars(2)">★</span>
+              <span class="star-btn" data-v="3" onclick="setStars(3)">★</span>
+              <span class="star-btn" data-v="4" onclick="setStars(4)">★</span>
+              <span class="star-btn" data-v="5" onclick="setStars(5)">★</span>
+            </div>
+            <input type="hidden" id="rv-note" value="0">
+          </div>
+          <div style="margin-bottom:18px">
+            <label style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px" data-i18n="avis_form_msg">Votre avis *</label>
+            <textarea id="rv-message" required rows="4" placeholder="Décrivez votre expérience avec Empire Fresh..." style="width:100%;padding:11px 13px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#fff;font-size:14px;resize:vertical;box-sizing:border-box;outline:none;font-family:'Inter',sans-serif"></textarea>
+          </div>
+          <button type="submit" id="rv-submit" data-i18n="avis_form_btn" style="width:100%;padding:13px;border-radius:12px;background:linear-gradient(135deg,#4ade80,#22c55e);color:#fff;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:opacity .2s;font-family:'Inter',sans-serif">Soumettre mon avis</button>
+        </form>
+      </div>
   </div>
 </section>
+
+<script>
+// ── AVIS CAROUSEL ──
+(function(){
+  var cur=0;
+  window.avisScroll=function(dir){
+    var track=document.getElementById('avis-grid');
+    if(!track) return;
+    var cards=track.querySelectorAll('.tc2:not([style*="display: none"])');
+    if(!cards.length) return;
+    var cardW=cards[0].offsetWidth+20; // gap
+    var visible=Math.floor(track.parentElement.offsetWidth/cardW)||1;
+    var max=Math.max(0,cards.length-visible);
+    cur=Math.max(0,Math.min(max,cur+dir));
+    track.style.transform='translateX(-'+(cur*cardW)+'px)';
+  };
+  // Auto-scroll every 4s
+  setInterval(function(){
+    var track=document.getElementById('avis-grid');
+    if(!track) return;
+    var cards=track.querySelectorAll('.tc2:not([style*="display: none"])');
+    if(!cards.length) return;
+    var cardW=cards[0].offsetWidth+20;
+    var visible=Math.floor(track.parentElement.offsetWidth/cardW)||1;
+    var max=Math.max(0,cards.length-visible);
+    cur=cur>=max?0:cur+1;
+    track.style.transform='translateX(-'+(cur*cardW)+'px)';
+  },4000);
+})();
+</script>
 
 <!-- RECETTE DU JOUR -->
 <section class="recipe-sec reveal" id="recettes">
@@ -1710,6 +1982,7 @@ GET  /api/ext/commandes/:id → suivi commande</div>
   </div>
 </section>
 
+<!-- ── الفوتر — ثلاث لغات، كتترجم مع setLang ── -->
 <!-- FOOTER -->
 <footer id="contact">
   <div class="container">
@@ -1719,7 +1992,8 @@ GET  /api/ext/commandes/:id → suivi commande</div>
           <img class="footer-logo" src="./logo.png" alt="Empire Fresh" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
           <div class="footer-logo-fallback" style="display:none">🌿</div>
         </div>
-        <p class="footer-desc">Distribution alimentaire professionnelle à Casablanca. Fruits, légumes et produits frais. Standard sous 24h, express en 2h.</p>
+        <!-- وصف الشركة — ثلاث لغات -->
+        <p class="footer-desc" data-i18n="ft_desc">Distribution alimentaire professionnelle à Casablanca. Fruits, légumes et produits frais.</p>
         <div class="fct">
           <a id="footer-wa" href="#">💬 WhatsApp</a>
           <a id="footer-email" href="#">📧 Email</a>
@@ -1727,33 +2001,36 @@ GET  /api/ext/commandes/:id → suivi commande</div>
           <a href="https://empire-fresh.netlify.app/" target="_blank" style="color:var(--o2);font-size:12px;text-decoration:none;font-weight:600">🌐 empire-fresh.netlify.app</a>
         </div>
       </div>
+      <!-- لينكات سريعة / Liens rapides / Quick links -->
       <div>
-        <div class="footer-heading" data-i18n="ft_links">Liens rapides</div>
+        <div class="footer-heading" data-i18n="ft_links_title">Liens rapides</div>
         <ul class="footer-links">
-          <li><a href="#catalogue">Catalogue</a></li>
+          <li><a href="#catalogue" data-i18n="nav_catalogue">Catalogue</a></li>
           <li><a href="#commander">Commander</a></li>
           <li><a href="#conservation">🧊 Conservation</a></li>
           <li><a href="#recettes">👨‍🍳 Recettes</a></li>
-          <li><a href="#livraison">Zones livraison</a></li>
+          <li><a href="#livraison" data-i18n="nav_delivery">Zones livraison</a></li>
           <li><a href="#" onclick="openGuide();return false;">📖 Guide FreshLink</a></li>
         </ul>
       </div>
+      <!-- واتساب — كل اللغات -->
       <div>
-        <div class="footer-heading">WhatsApp</div>
+        <div class="footer-heading" data-i18n="ft_wa_title">WhatsApp</div>
         <ul class="footer-links">
-          <li><a href="https://chat.whatsapp.com/D11jvGbbWd5Kc2pyXl79SK" target="_blank">📦 Groupe Commandes</a></li>
-          <li><a href="https://chat.whatsapp.com/K9zqxKXd3qLEIMLt3Oh3lI" target="_blank">👥 Groupe Partenaires</a></li>
-          <li><a id="footer-wa2" href="#">💬 Contact direct</a></li>
+          <li><a href="https://chat.whatsapp.com/D11jvGbbWd5Kc2pyXl79SK" target="_blank" data-i18n="wa_order_title">📦 Groupe Commandes</a></li>
+          <li><a href="https://chat.whatsapp.com/K9zqxKXd3qLEIMLt3Oh3lI" target="_blank" data-i18n="wa_signup_title">👥 Groupe Partenaires</a></li>
+          <li><a id="footer-wa2" href="#" data-i18n="contact_direct">💬 Contact direct</a></li>
           <li><a id="footer-fb" href="#" style="display:none">Facebook</a></li>
           <li><a id="footer-ig" href="#" style="display:none">Instagram</a></li>
         </ul>
       </div>
+      <!-- قانوني / Légal / Legal -->
       <div>
         <div class="footer-heading" data-i18n="ft_legal">Légal</div>
         <ul class="footer-links">
-          <li><a href="#" onclick="openLegal('mentions')">Mentions légales</a></li>
-          <li><a href="#" onclick="openLegal('confidentialite')">Politique de confidentialité</a></li>
-          <li><a href="#" onclick="openLegal('cgv')">CGV</a></li>
+          <li><a href="#" onclick="openLegal('mentions')" data-i18n="ft_legal_1">Mentions légales</a></li>
+          <li><a href="#" onclick="openLegal('confidentialite')" data-i18n="ft_legal_2">Politique de confidentialité</a></li>
+          <li><a href="#" onclick="openLegal('cgv')" data-i18n="ft_legal_3">CGV</a></li>
         </ul>
       </div>
     </div>
@@ -2066,6 +2343,8 @@ var CFG = {
   sbKey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3ZHJ3YXB1ZXRxb3FuYW5rZ21hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0NDE1NzUsImV4cCI6MjA5NDAxNzU3NX0.9l0e2eE9milvCWg29TIoGXgWY-ULOmTVrPmWRCsIvtw"
 };
 try{ Object.assign(CFG, JSON.parse(localStorage.getItem("ef_cfg_v2")||"{}")); }catch(e){}
+// كرجّع الإحصائيات المحفوظة من الإدارة
+try{ var savedStats=JSON.parse(localStorage.getItem("ef_stats_v1")||"null"); if(savedStats&&savedStats.length) CONFIG.STATS=savedStats; }catch(e){}
 
 var sb=null, realtimeChannel=null;
 function initSupabase(){
@@ -2155,6 +2434,7 @@ function applyProds(data,source){
   showToast("✅ "+PRODS.length+" articles chargés ("+source+")");
   updateERPConnBox(true,"Connecté — "+PRODS.length+" articles · "+source);
 }
+// ── المزامنة مع ERP — كتحاول أولاً API، وإذا فشلت كتروح لـ Supabase مباشرة ──
 function syncFromSupabase(){
   setERPBar("loading","Connexion FreshLink ERP...",""); setSyncBadge("loading","Sync...");
   // Mode 1: ERP REST API — with 4s timeout, silent fallback
@@ -2239,13 +2519,45 @@ function testSupabase(){
 }
 
 // ── HERO CARDS ──
+var PRODUCT_PHOTOS={
+  "tomate":"https://images.unsplash.com/photo-1546470427-e26264be0b0d?w=300&q=80&auto=format&fit=crop",
+  "poivron":"https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=300&q=80&auto=format&fit=crop",
+  "carotte":"https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=300&q=80&auto=format&fit=crop",
+  "courgette":"https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=300&q=80&auto=format&fit=crop",
+  "orange":"https://images.unsplash.com/photo-1557800636-894a64c1696f?w=300&q=80&auto=format&fit=crop",
+  "citron":"https://images.unsplash.com/photo-1590502593747-42a996133562?w=300&q=80&auto=format&fit=crop",
+  "mangue":"https://images.unsplash.com/photo-1605027990121-cbae9e0642df?w=300&q=80&auto=format&fit=crop",
+  "banane":"https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300&q=80&auto=format&fit=crop",
+  "pomme":"https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=300&q=80&auto=format&fit=crop",
+  "fraise":"https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=300&q=80&auto=format&fit=crop",
+  "raisin":"https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=300&q=80&auto=format&fit=crop",
+  "salade":"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&q=80&auto=format&fit=crop",
+  "brocoli":"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=300&q=80&auto=format&fit=crop",
+  "aubergine":"https://images.unsplash.com/photo-1603819952999-7ac1a21f93f8?w=300&q=80&auto=format&fit=crop",
+  "oignon":"https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=300&q=80&auto=format&fit=crop",
+  "concombre":"https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=300&q=80&auto=format&fit=crop",
+  "default":"https://images.unsplash.com/photo-1540420773420-3366772f4999?w=300&q=80&auto=format&fit=crop"
+};
+function getProductPhoto(name){
+  var n=(name||"").toLowerCase();
+  for(var k in PRODUCT_PHOTOS){ if(n.includes(k)) return PRODUCT_PHOTOS[k]; }
+  return PRODUCT_PHOTOS.default;
+}
 function renderHeroCards(){
   var avail=PRODS.filter(function(p){return p.dispo;}).slice(0,4);
+  if(!avail.length) avail=[
+    {n:"Tomates Beldi",p:"12",u:"kg",em:"🍅",img:""},{n:"Poivrons doux",p:"9",u:"kg",em:"🫑",img:""},
+    {n:"Citrons frais",p:"8",u:"kg",em:"🍋",img:""},{n:"Carottes",p:"7",u:"kg",em:"🥕",img:""}
+  ];
   document.getElementById("hero-cards").innerHTML=avail.map(function(p){
-    var src=p.img||"";
-    return'<div class="hcard" onclick="document.getElementById(\'commander\').scrollIntoView({behavior:\'smooth\'})">'+(src?'<img class="hcard-img" src="'+src+'" alt="'+p.n+'" onerror="this.style.display=\'none\'">':'<div class="hcard-img" style="display:flex;align-items:center;justify-content:center;font-size:40px">'+p.em+'</div>')+'<div class="hcard-b"><div class="hcard-n">'+p.em+' '+p.n+'</div><div class="hcard-p">'+p.p+' MAD/'+p.u+'</div></div></div>';
+    var photoUrl=p.img||getProductPhoto(p.n);
+    return '<div class="hcard" onclick="document.getElementById(\'commander\').scrollIntoView({behavior:\'smooth\'})">'
+      +'<img class="hcard-img" src="'+photoUrl+'" alt="'+p.n+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
+      +'<div class="hcard-img-ph" style="display:none">'+p.em+'</div>'
+      +'<div class="hcard-b"><div class="hcard-n">'+p.em+' '+p.n+'</div><div class="hcard-p">'+p.p+' MAD/'+p.u+'</div></div>'
+      +'</div>';
   }).join("");
-  var sp=document.getElementById("stat-prods"); if(sp) sp.textContent=PRODS.filter(function(p){return p.dispo;}).length+"+";
+  var sp=document.getElementById("stat-prods"); if(sp) sp.textContent=PRODS.filter(function(p){return p.dispo;}).length+"+"
 }
 
 // ── SKELETON ──
@@ -2277,7 +2589,7 @@ function renderProds(f){
   else if(sort==="nom-asc") list.sort(function(a,b){return (a.n||"").localeCompare(b.n||"","fr");});
   else if(sort==="dispo") list.sort(function(a,b){return (b.dispo?1:0)-(a.dispo?1:0);});
   if(!list.length){
-    document.getElementById("pgrid").innerHTML='<div class="no-prods"><span class="no-prods-icon">🔍</span><h3>Aucun produit trouvé</h3><p>'+(q?"Essayez un autre terme de recherche.":"Essayez une autre catégorie.")+'</p></div>'; return;
+    document.getElementById("pgrid").innerHTML='<div class="no-prods"><span class="no-prods-icon">🔍</span><h3>'+t("empty_cat")+'</h3><p>'+t("empty_cat_sub")+'</p></div>'; return;
   }
   document.getElementById("pgrid").innerHTML=list.map(function(p){
     var qty=cart[p.id]?cart[p.id].qty:0, outStock=!p.dispo;
@@ -2296,7 +2608,14 @@ function updateCatCounts(){
   ["tous","fruits","legumes","prepare"].forEach(function(k){ var el=document.getElementById("cat-count-"+k); if(el) el.textContent=counts[k]+" produit"+(counts[k]>1?"s":""); });
 }
 
-// ── CART ──
+// ══════════════════════════════════════════════════════════════════
+// ██████████████████████████████████████████████████████████████████
+//  هاد الفايل هو القلب ديال موقع Empire Fresh
+//  كيتعامل مع: الكتالوج، السلة، الطلبيات، اللغة، الزبائن
+//  بدّل CONFIG ديال فوق باش تغير الأثمنة، الزونات، الإحصائيات
+//  Supabase + ERP API — fallback تلقائي إذا ما كانش الإنترنت
+// ██████████████████████████████████████████████████████████████████
+// ══════════════════════════════════════════════════════════════════
 function upCart(id,d){
   var p=PRODS.find(function(x){return x.id===id||x.id===parseInt(id);});
   if(!p||!p.dispo) return;
@@ -2441,6 +2760,40 @@ function submitOrder(){
 function openCfg(){ document.getElementById("cfg-overlay").classList.add("show"); document.getElementById("cfg-drawer").classList.add("show"); loadCfgFields(); }
 function closeCfg(){ document.getElementById("cfg-overlay").classList.remove("show"); document.getElementById("cfg-drawer").classList.remove("show"); }
 function cfgTab(el,id){ document.querySelectorAll(".cfg-tab").forEach(function(t){t.classList.remove("on");}); document.querySelectorAll(".cfg-sec").forEach(function(s){s.classList.remove("on");}); el.classList.add("on"); document.getElementById(id).classList.add("on"); }
+
+// ── STATS CONFIG ──
+function renderStatsCfg(){
+  var container=document.getElementById("stats-cfg-list"); if(!container) return;
+  container.innerHTML="";
+  CONFIG.STATS.forEach(function(s,i){
+    var row=document.createElement("div");
+    row.style.cssText="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;display:grid;gap:8px";
+    row.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">'
+      +'<span style="font-size:12px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px">Chiffre '+(i+1)+'</span>'
+      +'<button onclick="removeStatRow('+i+')" style="padding:3px 10px;border-radius:6px;background:#fee2e2;color:#dc2626;border:none;cursor:pointer;font-size:12px;font-weight:700">✕ Supprimer</button></div>'
+      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
+        +'<div><label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:3px">🔢 Valeur affichée</label>'
+          +'<input value="'+s.num+'" oninput="CONFIG.STATS['+i+'].num=this.value;renderStats()" style="width:100%;padding:8px 10px;border-radius:7px;border:1px solid #d1d5db;font-size:14px;font-weight:700;font-family:\'Inter\',sans-serif;box-sizing:border-box" placeholder="500+"></div>'
+        +'<div><label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:3px">🇫🇷 Français</label>'
+          +'<input value="'+s.fr+'" oninput="CONFIG.STATS['+i+'].fr=this.value;renderStats()" style="width:100%;padding:8px 10px;border-radius:7px;border:1px solid #d1d5db;font-size:13px;font-family:\'Inter\',sans-serif;box-sizing:border-box" placeholder="Clients actifs"></div>'
+      +'</div>'
+      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
+        +'<div><label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:3px">🇲🇦 Darija</label>'
+          +'<input value="'+s.ar+'" dir="rtl" oninput="CONFIG.STATS['+i+'].ar=this.value;renderStats()" style="width:100%;padding:8px 10px;border-radius:7px;border:1px solid #d1d5db;font-size:13px;font-family:\'Inter\',sans-serif;box-sizing:border-box;text-align:right" placeholder="زبون نشيط"></div>'
+        +'<div><label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:3px">🇬🇧 English</label>'
+          +'<input value="'+s.en+'" oninput="CONFIG.STATS['+i+'].en=this.value;renderStats()" style="width:100%;padding:8px 10px;border-radius:7px;border:1px solid #d1d5db;font-size:13px;font-family:\'Inter\',sans-serif;box-sizing:border-box" placeholder="Active clients"></div>'
+      +'</div>';
+    container.appendChild(row);
+  });
+}
+window.removeStatRow=function(i){
+  CONFIG.STATS.splice(i,1); renderStatsCfg(); renderStats();
+};
+window.addStatRow=function(){
+  CONFIG.STATS.push({num:"0",fr:"Nouveau chiffre",ar:"رقم جديد",en:"New figure"});
+  renderStatsCfg(); renderStats();
+};
+
 function loadCfgFields(){
   function set(id,v){var el=document.getElementById(id);if(el)el.value=v||"";}
   set("c-wa",CFG.wa);set("c-email",CFG.email);set("c-addr",CFG.addr);set("c-fb",CFG.fb);set("c-ig",CFG.ig);
@@ -2448,7 +2801,7 @@ function loadCfgFields(){
   set("c-rib",CFG.rib);set("c-rib-benef",CFG.ribBenef);set("c-rib-banque",CFG.ribBanque);
   syncGalleryAdminUI();
   var ds=document.getElementById("c-expdelay"); if(ds) ds.value=CFG.expDelay||"2h";
-  // Show current connection status in admin panel
+  renderStatsCfg();
   if(sbSynced){
     updateSBConnBox("api",true,"Catalogue chargé — "+PRODS.length+" articles");
     updateSBConnBox("sb",true,"Fallback Supabase disponible");
@@ -2472,8 +2825,10 @@ function saveConfig(){
   CFG.rib=get("c-rib"); CFG.ribBenef=get("c-rib-benef")||"Empire Fresh SARL"; CFG.ribBanque=get("c-rib-banque")||"CIH / Attijariwafa / BMCE";
   var newUrl=get("c-sb-url"), newKey=get("c-sb-key");
   if(newUrl)CFG.sbUrl=newUrl; if(newKey)CFG.sbKey=newKey;
-  localStorage.setItem("ef_cfg_v2",JSON.stringify(CFG)); updateContactLinks();
-  var msg=document.getElementById("cfg-saved"); if(msg){msg.textContent="✅ Configuration enregistrée !";setTimeout(function(){msg.textContent="";},3000);}
+  // Save stats separately in localStorage so they survive refresh
+  try{ localStorage.setItem("ef_stats_v1", JSON.stringify(CONFIG.STATS)); } catch(_){}
+  localStorage.setItem("ef_cfg_v2",JSON.stringify(CFG)); updateContactLinks(); renderStats();
+  var msg=document.getElementById("cfg-saved"); if(msg){msg.textContent="✅ Enregistré — كتسجّل !";setTimeout(function(){msg.textContent="";},3000);}
   if(newUrl||newKey){sb=initSupabase();syncFromSupabase();}
 }
 
@@ -2538,6 +2893,7 @@ function toggleMenu(){ document.getElementById("mobileMenu").classList.toggle("o
 function closeMobileMenu(){ document.getElementById("mobileMenu").classList.remove("open"); }
 
 // ── STATS & ZONES ──
+// ── الإحصائيات — كتتجمع من CONFIG.STATS، قابلة للتعديل من الإدارة ──
 function renderStats(){
   var el=document.getElementById("statsInner"); if(!el) return;
   var lk=currentLang==="ar"?"ar":currentLang==="en"?"en":"fr";
@@ -3132,6 +3488,7 @@ function openLegal(key){ document.getElementById('legal-content').innerHTML=LEGA
 function closeLegal(){ document.getElementById('legal-modal').style.display='none'; }
 
 // ── CHAT IA CLAUDE ENGINE ──
+// فيفي ✨ — المساعدة الذكية ديال Empire Fresh — كتفهم الدارجة، الفرنسية، والإنجليزية
 var chatOpen=false, chatInitialized=false;
 var chatHistory=[]; // full conversation history for Claude API
 document.addEventListener("click",function(e){
@@ -3225,7 +3582,8 @@ function buildSystemPrompt(){
     +"PRODUITS DISPONIBLES (sync ERP) :\n"+prodList+"\n\n"
     +"COMPTE PRO : tarifs exclusifs CHR/marchands, livraison prioritaire, facturation mensuelle, accès FreshLink ERP.\n\n"
     +"INSTRUCTIONS :\n"
-    +"- Réponds en FRANÇAIS (sauf si l'utilisateur écrit en arabe ou anglais — adapte-toi)\n"
+    +"- Réponds en FRANÇAIS par défaut. Si l'utilisateur écrit en Darija/arabe marocain, réponds en Darija. Si en anglais, réponds en anglais.\n"
+    +"- Maîtrise le Darija : utilise des expressions comme 'mzyan', 'kayjio', 'daba', 'bghit', 'kifach', etc.\n"
     +"- Sois concis, chaleureux, professionnel — max 3-4 phrases\n"
     +"- Utilise des emojis appropriés\n"
     +"- Pour les commandes, oriente vers WhatsApp ou le panier en ligne\n"
@@ -3294,7 +3652,7 @@ function toggleChat(){
       chatHistory=[];
       // Welcome message
       var l=chatLang();
-      var welcome={fr:"Bonjour 👋 Je suis **Fifi ✨**, votre assistante IA Empire Fresh.\nComment puis-je vous aider ? Produits, livraison, commandes, tarifs pro — je suis là !",ar:"مرحبا 👋 أنا **فيفي ✨**، مساعدتك الذكية من Empire Fresh.\nكيف يمكنني مساعدتك؟",en:"Hello 👋 I'm **Fifi ✨**, your AI assistant at Empire Fresh.\nHow can I help? Products, delivery, orders, pro pricing — I'm here!"};
+      var welcome={fr:"Bonjour 👋 Je suis **Fifi ✨**, votre assistante IA Empire Fresh.\nComment puis-je vous aider ? Produits, livraison, commandes, tarifs pro — je suis là !",ar:"السلام عليكم 👋 أنا **فيفي ✨**، المساعدة الذكية ديال Empire Fresh.\nكيفاش نقدر نعاونك؟ المنتجات، التوصيل، الطلبيات — أنا هنا!",en:"Hello 👋 I'm **Fifi ✨**, your AI assistant at Empire Fresh.\nHow can I help? Products, delivery, orders, pro pricing — I'm here!"};
       chatAddMsg("bot", welcome[l]||welcome.fr);
       chatShowQuickReplies([
         {label:"🛒 Commander",action:"catalogue"},
